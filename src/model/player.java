@@ -3,7 +3,7 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
-public class player extends team{
+public class player{
 	
 	private String playerName;
 	private String password;
@@ -18,11 +18,12 @@ public class player extends team{
 	private int numOfAssists;
 	private int goals;
 	private int idPlayer;
+	private team MyTeam;
 	private Set<game> setOfGames = new HashSet<game>();
 	//////////////////////////////////////////
 	
 	public player(String playerName, String role, String team, int age, double height, double weight, String mail, int idPlayer, String passWord) {
-		      super(team);
+		      super();
 		      this.setPlayerName(playerName);
 		      this.setRole(role);
 		      this.setAge(age);
@@ -203,6 +204,12 @@ public class player extends team{
 	public void setIdPlayer(int idPlayer) {
 		this.idPlayer = idPlayer;
 	}
+	public team getMyTeam() {
+		return MyTeam;
+	}
+	public void setMyTeam(team myTeam) {
+		MyTeam = myTeam;
+	}
 	public Set<game> getSetOfGames() {
 		return setOfGames;
 	}
@@ -215,14 +222,13 @@ public class player extends team{
 		
 	@Override
 	public String toString() {
-		return "player -  [playerName=" + playerName + ", idPlayer=" + idPlayer + ", role=" + role + "\n" + "team =" + getTeamName() + ", age=" + age + ", height=" + height
+		return "player -  [playerName=" + playerName + ", idPlayer=" + idPlayer + ", role=" + role + "\n" + ", age=" + age + ", height=" + height
 				+ ", weight=" + weight + "\n" + ", mail=" + mail + ", yellowCard=" + yellowCard + ", redCard=" + redCard
 				+ "\n" + ", totalPlayingTime=" + totalPlayingTime + ", numOfAssists=" + numOfAssists + ", goals=" + goals + "." + "\n" + "\n";
 	}	
 	public void editInformation(String name,String team,String role,int age,double height,double weight,String mail)
 	{
 		this.setPlayerName(name);
-		this.setTeamName(team);
 		this.setRole(role);
 		this.setAge(age);
 		this.setHeight(height);

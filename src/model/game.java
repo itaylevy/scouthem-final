@@ -14,10 +14,9 @@ public class game{
 	public game() {
 	
 	}
-	
+
 	public game(String date, int yellowCard, int redCard, int playTimeGame, String rivalTeam, int numOfAssists,
 			int numOfGoals) {
-		super();
 		this.date = date;
 		this.yellowCard = yellowCard;
 		this.redCard = redCard;
@@ -76,7 +75,8 @@ public class game{
 	public String toString() {
 		return "game : [date=" + date + ", yellow-Card=" + yellowCard + ", red-Card=" + redCard + ", play-Time-Game="
 				+ playTimeGame + ", rival-Team=" + rivalTeam + ", num-Of-Assists=" + numOfAssists + ", num-Of-Goals="
-				+ numOfGoals +"\n";
+				+ numOfGoals + "." + "\n";
+		
 	}
 
 

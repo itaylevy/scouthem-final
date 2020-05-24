@@ -9,6 +9,7 @@ public class scout extends team{
 	private String scoutName;
 	private String password;
 	private int scoutId;
+	private team MyTeam;
 	private Set<scout> setOfScouters = new HashSet<scout>();
 	private LinkedList<player> InterestList = new LinkedList<player>();
 	/////////////////////////////////////תכונות
@@ -17,10 +18,10 @@ public class scout extends team{
 	
 	}
 	public scout(String scoutName, String team, String password, int scoutId, LinkedList<player> InterestList) {
-		super(team);
 		this.scoutName = scoutName;
 		this.password=password;
 		this.scoutId=scoutId;
+		MyTeam =new team(team);
 		this.InterestList = null;
 	}
 	////////////////////////////////////set&get
@@ -59,7 +60,7 @@ public class scout extends team{
 	///////////////////////////////////פונקציות
 	@Override
 	public String toString() {
-		return "scout - [scoutName=" + scoutName  + ", team =" +  getTeamName() + "." + "\n" + "\n";
+		return  "scout - [scoutName = " + scoutName  + ", team = " +  MyTeam.getTeamName() + "." + "\n" + "\n";
 	}
 	public player getPlayerInformatin()
 	{

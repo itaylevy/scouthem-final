@@ -22,15 +22,16 @@ public class player{
 	private Set<game> setOfGames = new HashSet<game>();
 	//////////////////////////////////////////
 	
-	public player(String playerName, String role, String team, int age, double height, double weight, String mail, int idPlayer, String passWord) {
-		      super();
+	public player(String playerName,String team, String role, int age, double height, double weight, String mail, int idPlayer, String passWord) {
 		      this.setPlayerName(playerName);
+		      MyTeam= new team(team);
 		      this.setRole(role);
 		      this.setAge(age);
 		      this.setHeight(height);
 		      this.setWeight(weight);
 		      this.setMail(mail);
 		      this.setIdPlayer(idPlayer);
+		      this.setPassword(passWord);
 		      
 	}
 	public player() {
@@ -139,7 +140,7 @@ public class player{
 	public void setYellowCard(int yellowCard) {
 		if(yellowCard!=0)
 		{
-			this.yellowCard = yellowCard;
+			this.yellowCard += yellowCard;
 		}
 		else
 		{
@@ -152,7 +153,7 @@ public class player{
 	public void setRedCard(int redCard) {
 		if(redCard!=0)
 		{
-			this.redCard = redCard;
+			this.redCard += redCard;
 		}
 		else
 		{
@@ -165,7 +166,7 @@ public class player{
 	public void setTotalPlayingTime(int totalPlayingTime) {
 		if(totalPlayingTime!=0)
 		{
-			this.totalPlayingTime = totalPlayingTime;
+			this.totalPlayingTime += totalPlayingTime;
 		}
 		else
 		{
@@ -178,7 +179,7 @@ public class player{
 	public void setNumOfAssists(int numOfAssists) {
 		if(numOfAssists!=0)
 		{
-			this.numOfAssists = numOfAssists;
+			this.numOfAssists += numOfAssists;
 		}
 		else
 		{
@@ -191,7 +192,7 @@ public class player{
 	public void setGoals(int goals) {
 		if(goals!=0)
 		{
-			this.goals = goals;
+			this.goals += goals;
 		}
 		else
 		{
@@ -203,12 +204,6 @@ public class player{
 	}
 	public void setIdPlayer(int idPlayer) {
 		this.idPlayer = idPlayer;
-	}
-	public team getMyTeam() {
-		return MyTeam;
-	}
-	public void setMyTeam(team myTeam) {
-		MyTeam = myTeam;
 	}
 	public Set<game> getSetOfGames() {
 		return setOfGames;
@@ -222,9 +217,9 @@ public class player{
 		
 	@Override
 	public String toString() {
-		return "player -  [playerName=" + playerName + ", idPlayer=" + idPlayer + ", role=" + role + "\n" + ", age=" + age + ", height=" + height
-				+ ", weight=" + weight + "\n" + ", mail=" + mail + ", yellowCard=" + yellowCard + ", redCard=" + redCard
-				+ "\n" + ", totalPlayingTime=" + totalPlayingTime + ", numOfAssists=" + numOfAssists + ", goals=" + goals + "." + "\n" + "\n";
+		return "player -  [playerName = " + playerName + ", team = " + MyTeam.getTeamName() + ", role = " + role + "\n" + ", age = " + age + ", height = " + height
+				+ ", weight = " + weight + "\n" + ", mail = " + mail + ", yellowCard = " + yellowCard + ", redCard = " + redCard
+				+ "\n" + ", totalPlayingTime = " + totalPlayingTime + ", numOfAssists = " + numOfAssists + ", goals = " + goals + "." + "\n" + "\n";
 	}	
 	public void editInformation(String name,String team,String role,int age,double height,double weight,String mail)
 	{

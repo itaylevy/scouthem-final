@@ -10,7 +10,6 @@ public class team{
 
 	}
 	public team(String teamName) {
-		super();
 		this.teamName = teamName;
 	}
 	//////////////////////////////////////
@@ -28,5 +27,6 @@ public class team{
 	public void setMyGame(game myGame) {
 		MyGame = myGame;
 	}
+
 	//////////////////////////////////////
 }

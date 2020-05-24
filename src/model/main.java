@@ -3,35 +3,59 @@ package model;
 public class main {
 
 	public static void main(String[] args) {
-		//יצירת סקאוט
-		scout s=new scout();
-		scout s1=new scout("mor","hapoel tel aviv","mC1527101215",204272231,null);
-		scout s2=new scout("oz","hapoel tel aviv","mC1527101215",204272231,null);
-		s.addScout(s1);
-		s.addScout(s2);
 		
-		//יצירת שחקן חדש
-		player p = new player();
-		player p1 = new player();
+		//Creating a scout
+		scout s=new scout("x","x","mC1527101215",204272231,null);
 		
-	    //הכנסה לרשימה
+		//insert to list
+		s.addScout(s);
+
+					
+		//Create a new player
+		player p = new player("mor","hapoel tel aviv", "balam", 15, 1.75, 69.4, "mor@gmail.com", 207275631, "Mc0545526935");
+		player p1 = new player("niv","Beitar Jerusalem", "haloz", 16, 1.83, 72.4, "niv@gmail.com", 207775631, "Nk0545526665");
+	    player p2 = new player("itay","maccabi tel aviv", "kasar", 17, 1.77, 70.4, "itay@gmail.com", 207365431, "Il0543765935");
+	    				
+	    //insert to list
 	    player_List players = new player_List();
 	    players.addplayer(p);
 	    players.addplayer(p1);
+	    players.addplayer(p2);
 
-	    //יצירת משחק לשחקן
-	    game g = new game("15.5.20",1,0,94,"Beitar Jerusalem",1,3);
-	    game g1 = new game("17.5.20",1,0,60,"maccabi hanazim",0,2);
-	    game g2 = new game("21.5.20",1,0,45,"maccabi haifa",1,0);
+	    //Creating a game for a player
+	    game g = new game("15.5.20",1,0,94,"Beitar Jerusalem",1,0);
+	    game g1 = new game("15.5.20",1,0,90,"Maccabi tel aviv",0,0);
+	    game g2 = new game("15.5.20",1,0,65,"Maccabi haifa",1,1);
+	    game g3 = new game("15.5.20",1,0,70,"Hapoel tel aviv",1,2);
+	    game g4 = new game("15.5.20",1,0,90,"Hapoel Beer Sheva",1,0);
+	    game g5 = new game("15.5.20",1,0,81,"Hapoel haifa",0,1);
 	    
-	    //הכנסה של משחק לרשימה שחקן
+	    //insert game to list player
 	   p.addGame(g);
+	   p.addGame(g1);
+	   p1.addGame(g2);
+	   p1.addGame(g3);
+	   p2.addGame(g4);
+	   p2.addGame(g5);
 
-		//רשימת סקאוטרים
-		System.out.println(p.getSetOfGames());
+	    // print player information
+		System.out.println(p.toString());
+	    System.out.println(p1.toString());
+	    System.out.println(p2.toString());
+	   
 		
-		//רשימת שחקנים
-		System.out.println(players.getListPlayer());		
+		// print games of player
+		System.out.println(p.getSetOfGames());
+	    System.out.println(p1.getSetOfGames());
+	    System.out.println(p2.getSetOfGames());
+	   
+		
+		//list of players
+		System.out.println(players.getListPlayer());
+		
+		// print set of scouters
+		System.out.println(s.getSetOfScouters());
+		
 
 	}
 

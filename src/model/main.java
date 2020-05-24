@@ -53,9 +53,7 @@ public class main {
 		//list of players
 		System.out.println(players.getListPlayer());
 		
-		// print set of scouters
-		System.out.println(s.getSetOfScouters());
-		
+	
 
 	}
 

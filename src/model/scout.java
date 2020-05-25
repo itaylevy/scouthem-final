@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class scout extends team{
+public class scout extends player_List{
 	
 	private String scoutName;
 	private String password;
@@ -12,19 +12,19 @@ public class scout extends team{
 	private team MyTeam;
 	private Set<scout> setOfScouters = new HashSet<scout>();
 	private LinkedList<player> InterestList = new LinkedList<player>();
-	/////////////////////////////////////תכונות
+	/////////////////////////////////////
 	
 	public scout() {
 	
 	}
-	public scout(String scoutName, String team, String password, int scoutId, LinkedList<player> InterestList) {
+	public scout(String scoutName, String team, String password, int scoutId) {
+		super();
 		this.scoutName = scoutName;
 		this.password=password;
 		this.scoutId=scoutId;
 		MyTeam =new team(team);
-		this.InterestList = null;
 	}
-	////////////////////////////////////set&get
+	////////////////////////////////////
 	
 	public String getScoutName() {
 		return scoutName;
@@ -56,33 +56,35 @@ public class scout extends team{
 	public void setInterestList(LinkedList<player> InterestList) {
 		this.InterestList = InterestList;
 	}
-	
-	///////////////////////////////////פונקציות
+
+	///////////////////////////////////
 	@Override
 	public String toString() {
 		return  "scout - [scoutName = " + scoutName  + ", team = " +  MyTeam.getTeamName() + "." + "\n" + "\n";
 	}
-	public player getPlayerInformatin()
+	public player getPlayerInformatin(player p)
 	{
 		
-		return null;
+		return p;
 		
 	}
 	public void addPlayer(player p)
 	{
-		
+		this.InterestList.add(p);
+		System.out.println("player - " +  p.getPlayerName() + " added to the list");
 	}
 	public void addScout(scout s)
 	{
 		this.setOfScouters.add(s);
 	}
-	public void removePlayer(int idPlayer)
+	public void removePlayer(player p)
 	{
+		InterestList.remove(p);
+		System.out.println("player - " +  p.getPlayerName() + " remove from the list");
 		
 	}
     public LinkedList<player>showInterestList() {
 		return InterestList;
 		}
-
 
 }

@@ -5,12 +5,11 @@ public class main {
 	public static void main(String[] args) {
 		
 		//Creating a scout
-		scout s=new scout("x","x","mC1527101215",204272231,null);
+		scout s=new scout("x","x","mC1527101215",204272231);
 		
 		//insert to list
 		s.addScout(s);
-
-					
+	
 		//Create a new player
 		player p = new player("mor","hapoel tel aviv", "balam", 15, 1.75, 69.4, "mor@gmail.com", 207275631, "Mc0545526935");
 		player p1 = new player("niv","Beitar Jerusalem", "haloz", 16, 1.83, 72.4, "niv@gmail.com", 207775631, "Nk0545526665");
@@ -45,16 +44,36 @@ public class main {
 	   
 		
 		// print games of player
-		System.out.println(p.getSetOfGames());
-	    System.out.println(p1.getSetOfGames());
-	    System.out.println(p2.getSetOfGames());
+		System.out.println(p.getSetOfGames(p));
+	    System.out.println(p1.getSetOfGames(p1));
+	    System.out.println(p2.getSetOfGames(p2));
 	   
 		
 		//list of players
-		System.out.println(players.getListPlayer());
+		System.out.println(players.showListPlayer());
 		
-	
-
+		//scout can see the list of players
+		s.listPlayer=players.listPlayer;
+	   System.out.println(s.listPlayer);
+		
+		// Add a player to Scout interest list
+		s.addPlayer(p);
+		s.addPlayer(p1);
+		s.addPlayer(p2);
+		
+		// show the interest list
+	    System.out.println(s.showInterestList());
+		
+		//remove from interest list
+		s.removePlayer(p);
+		System.out.println(s.showInterestList());
+		
+		//edit player informtion
+		p.editInformation("shar cohen", "maccabi tel aviv", "balam", 17, 1.80, 70.5, "shar@gmail.com");
+		System.out.println(p.toString());
+		p.getMyTeam().setTeamName("hapoel tel aviv");
+		System.out.println(p.toString());
+						
 	}
 
 }

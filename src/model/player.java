@@ -20,7 +20,7 @@ public class player{
 	private int idPlayer;
 	private team MyTeam;
 	private Set<game> setOfGames = new HashSet<game>();
-	//////////////////////////////////////////
+	/////////////////////////////////////////
 	
 	public player(String playerName,String team, String role, int age, double height, double weight, String mail, int idPlayer, String passWord) {
 		      this.setPlayerName(playerName);
@@ -205,16 +205,24 @@ public class player{
 	public void setIdPlayer(int idPlayer) {
 		this.idPlayer = idPlayer;
 	}
-	public Set<game> getSetOfGames() {
+	public Set<game> getSetOfGames(player p) {
+		System.out.println(p.playerName+" games: ");
 		return setOfGames;
 	}
 	public void setSetOfGames(Set<game> setOfGames) {
 		this.setOfGames = setOfGames;
 	}
+	public team getMyTeam() {
+		return MyTeam;
+	}
+	public void setMyTeam(team myTeam) {
+		MyTeam = myTeam;
+	}
 	
 	//////////////////////////////
 ////////////////////////////////////////////////
 		
+
 	@Override
 	public String toString() {
 		return "player -  [playerName = " + playerName + ", team = " + MyTeam.getTeamName() + ", role = " + role + "\n" + ", age = " + age + ", height = " + height
@@ -228,7 +236,8 @@ public class player{
 		this.setAge(age);
 		this.setHeight(height);
 		this.setWeight(weight);
-		this.setMail(mail);		
+		this.setMail(mail);
+		this.MyTeam.setTeamName(team);
 	}
 	public boolean addGame(game g)
 	{

@@ -38,41 +38,41 @@ public class main {
 	   p2.addGame(g5);
 
 	    // print player information
-		System.out.println(p.toString());
-	    System.out.println(p1.toString());
-	    System.out.println(p2.toString());
+		//System.out.println(p.toString());
+	    //System.out.println(p1.toString());
+	    //System.out.println(p2.toString());
 	   
 		
 		// print games of player
-		System.out.println(p.getSetOfGames(p));
-	    System.out.println(p1.getSetOfGames(p1));
-	    System.out.println(p2.getSetOfGames(p2));
+		//System.out.println(p.getSetOfGames(p));
+	   // System.out.println(p1.getSetOfGames(p1));
+	    //System.out.println(p2.getSetOfGames(p2));
 	   
 		
 		//list of players
-		System.out.println(players.showListPlayer());
+		//System.out.println(players.showListPlayer());
 		
 		//scout can see the list of players
 		s.listPlayer=players.listPlayer;
-	   System.out.println(s.listPlayer);
+	   System.out.println(s.showListPlayer());
 		
 		// Add a player to Scout interest list
-		s.addPlayer(p);
-		s.addPlayer(p1);
-		s.addPlayer(p2);
+		//s.addPlayer(p);
+		//s.addPlayer(p1);
+		//s.addPlayer(p2);
 		
 		// show the interest list
-	    System.out.println(s.showInterestList());
+	    //System.out.println(s.showInterestList());
 		
 		//remove from interest list
-		s.removePlayer(p);
-		System.out.println(s.showInterestList());
+		//s.removePlayer(p);
+		//System.out.println(s.showInterestList());
 		
-		//edit player informtion
-		p.editInformation("shar cohen", "maccabi tel aviv", "balam", 17, 1.80, 70.5, "shar@gmail.com");
-		System.out.println(p.toString());
-		p.getMyTeam().setTeamName("hapoel tel aviv");
-		System.out.println(p.toString());
+		//edit player information
+		//p.editInformation("shar cohen", "maccabi tel aviv", "balam", 17, 1.80, 70.5, "shar@gmail.com");
+		//System.out.println(p.toString());
+		//p.getMyTeam().setTeamName("hapoel tel aviv");
+		//System.out.println(p.toString());
 						
 	}
 

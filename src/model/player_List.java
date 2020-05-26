@@ -13,6 +13,14 @@ public class player_List {
 	
 	/////////////////////////////////////////
 	
+	public LinkedList<player> getListPlayer() {
+		return listPlayer;
+	}
+	public void setListPlayer(LinkedList<player> listPlayer) {
+		this.listPlayer = listPlayer;
+	}
+	/////////////////////////////////////////
+	
 	public void addplayer(player p)
 	{
 		 listPlayer.add(p);	

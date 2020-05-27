@@ -1,15 +1,17 @@
 package model;
 
 import java.util.LinkedList;
+import java.util.Comparator;
 
-
-public class player_List {
-
-	public LinkedList<player> listPlayer= new LinkedList<player>();
+public class player_List implements Comparator<player>{
+	
+	protected LinkedList<player> listPlayer= new LinkedList<player>();
+	protected LinkedList<player> sotrlistPlayer= new LinkedList<player>();
 	/////////////////////////////////////////
 	
 	public player_List() {
 	}
+	
 	
 	/////////////////////////////////////////
 	
@@ -21,33 +23,46 @@ public class player_List {
 	}
 	/////////////////////////////////////////
 	
+	public LinkedList<player> showListPlayer() {
+		return listPlayer;
+	}
 	public void addplayer(player p)
 	{
 		 listPlayer.add(p);	
 	}
-	public LinkedList<player> sortByNumOfAssists()
-	{	
-		
-		return listPlayer;
-		
+	
+	
+	public void sortByNumOfAssists() {
+		listPlayer.sort(new player_List());
 	}
-	public LinkedList<player> sortByNumOfGoals(int goals)
-	{
-		return listPlayer;
-		
+	public void sortByNumOfGoals() {
+		listPlayer.sort(new player_List());		
 	}
-	public LinkedList<player> sortByRole(String role)
-	{
-		return listPlayer;
-		
+	public void sortByRole() {
+		listPlayer.sort(new player_List());
 	}
-	public LinkedList<player> sortByTotalPlayingTime(int totalPlayingTime)
-	{
-		return listPlayer;
-		
+	public void sortByTotalPlayingTime() {
+		listPlayer.sort(new player_List());
 	}
-	public LinkedList<player> showListPlayer() {
-		return listPlayer;
+
+	public int compareByGoals(player p1, player p2) {
+
+		return p2.getGoals()-p1.getGoals();
+	
 	}
+	
+	@Override
+	public int compare(player p1, player p2) {
+
+		return p2.getGoals()-p1.getGoals();
+	
+	}
+
+
+
+
+
+
+	
 
 }

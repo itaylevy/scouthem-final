@@ -86,7 +86,4 @@ public class scout extends player_List{
     public LinkedList<player>showInterestList() {
 		return InterestList;
 		}
-	public LinkedList<player> showListPlayer() {
-		return listPlayer;
-	}
 }

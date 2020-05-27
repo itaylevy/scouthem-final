@@ -1,5 +1,9 @@
 package model;
 
+import model.player_List;
+
+import java.util.Comparator;
+
 public class main {
 
 	public static void main(String[] args) {
@@ -53,8 +57,8 @@ public class main {
 		//System.out.println(players.showListPlayer());
 		
 		//scout can see the list of players
-		s.listPlayer=players.listPlayer;
-	   System.out.println(s.showListPlayer());
+		//s.listPlayer=players.listPlayer;
+	   //System.out.println(s.showListPlayer());
 		
 		// Add a player to Scout interest list
 		//s.addPlayer(p);
@@ -73,7 +77,21 @@ public class main {
 		//System.out.println(p.toString());
 		//p.getMyTeam().setTeamName("hapoel tel aviv");
 		//System.out.println(p.toString());
-						
+	   
+	   //System.out.println(players.getListPlayer());
+	  // players.sortByNumOfAssists();
+	  // System.out.println("sort by gols");
+	  // System.out.println(players.getListPlayer());	
+	   players.sortByNumOfAssists();
+	   System.out.println("sort by assists");
+	   System.out.println(players.getListPlayer());
+	   players.sortByNumOfGoals();
+	   System.out.println("sort by goals");
+	   System.out.println(players.getListPlayer());
+	   players.sortByTotalPlayingTime();
+	   System.out.println("sort by playing time");
+	   System.out.println(players.getListPlayer());
+	   
 	}
 
 }

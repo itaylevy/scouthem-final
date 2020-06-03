@@ -2,8 +2,6 @@ package model;
 
 import model.player_List;
 
-import java.util.Comparator;
-
 public class main {
 
 	public static void main(String[] args) {
@@ -11,13 +9,10 @@ public class main {
 		//Creating a scout
 		scout s=new scout("x","x","mC1527101215",204272231);
 		
-		//insert to list
-		s.addScout(s);
-	
 		//Create a new player
-		player p = new player("mor","hapoel tel aviv", "balam", 15, 1.75, 69.4, "mor@gmail.com", 207275631, "Mc0545526935");
-		player p1 = new player("niv","Beitar Jerusalem", "haloz", 16, 1.83, 72.4, "niv@gmail.com", 207775631, "Nk0545526665");
-	    player p2 = new player("itay","maccabi tel aviv", "kasar", 17, 1.77, 70.4, "itay@gmail.com", 207365431, "Il0543765935");
+		player p = new player("mor","hapoel tel aviv", "Centre-back", 14, 1.75, 69.4, "mor@gmail.com", 207275631);
+		player p1 = new player("niv","Beitar Jerusalem", "midfield", 16, 1.83, 72.4, "niv@gmail.com", 207775631);
+	    player p2 = new player("itay","maccabi tel aviv", "Centre forward", 17, 1.77, 70.4, "itay@gmail.com", 207365431);
 	    				
 	    //insert to list
 	    player_List players = new player_List();
@@ -46,13 +41,11 @@ public class main {
 	    //System.out.println(p1.toString());
 	    //System.out.println(p2.toString());
 	   
-		
 		// print games of player
 		//System.out.println(p.getSetOfGames(p));
 	   // System.out.println(p1.getSetOfGames(p1));
 	    //System.out.println(p2.getSetOfGames(p2));
 	   
-		
 		//list of players
 		//System.out.println(players.showListPlayer());
 		
@@ -80,18 +73,16 @@ public class main {
 	   
 	   //System.out.println(players.getListPlayer());
 	  // players.sortByNumOfAssists();
-	  // System.out.println("sort by gols");
-	  // System.out.println(players.getListPlayer());	
-	   players.sortByNumOfAssists();
-	   System.out.println("sort by assists");
-	   System.out.println(players.getListPlayer());
-	   players.sortByNumOfGoals();
-	   System.out.println("sort by goals");
-	   System.out.println(players.getListPlayer());
-	   players.sortByTotalPlayingTime();
-	   System.out.println("sort by playing time");
-	   System.out.println(players.getListPlayer());
+	  // System.out.println("sort by goals");
+	  // System.out.println(players.getListPlayer());
 	   
+	  players.Sort("role","Centre forward");
+	  players.Sort("player name","niv");
+	  players.Sort("team","hapoel tel aviv");
+	  players.Sort("age",14);
+	  players.Sort("goal",null);
+	  players.Sort("assists",null);
+	  players.Sort("playing time",null);
+	       	   
 	}
-
 }

@@ -14,7 +14,6 @@ public class game{
 	public game() {
 	
 	}
-
 	public game(String date, int yellowCard, int redCard, int playTimeGame, String rivalTeam, int numOfAssists,
 			int numOfGoals) {
 		this.date = date;
@@ -69,8 +68,8 @@ public class game{
 	public void setNumOfGoals(int numOfGoals) {
 		this.numOfGoals = numOfGoals;
 	}
+		///////////////////////////////////////
 	
-	///////////////////////////////////////
 	@Override
 	public String toString() {
 		return "game : [date=" + date + ", yellow-Card=" + yellowCard + ", red-Card=" + redCard + ", play-Time-Game="
@@ -78,6 +77,5 @@ public class game{
 				+ numOfGoals + "." + "\n";
 		
 	}
-
 
 }

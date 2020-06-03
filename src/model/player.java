@@ -3,15 +3,14 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
-public class player{
+public class player extends user{
 	
 	private String playerName;
-	private String password;
 	private String role;
-	private int age;
+	private String mail;
 	private double height;
 	private double weight;
-	private String mail;
+	private int age;
 	private int yellowCard;
 	private int redCard;
 	private int totalPlayingTime;
@@ -22,7 +21,8 @@ public class player{
 	private Set<game> setOfGames = new HashSet<game>();
 	/////////////////////////////////////////
 	
-	public player(String playerName,String team, String role, int age, double height, double weight, String mail, int idPlayer, String passWord) {
+	public player(String playerName,String team, String role, int age, double height, double weight, String mail, int idPlayer) {
+		      super();
 		      this.setPlayerName(playerName);
 		      MyTeam= new team(team);
 		      this.setRole(role);
@@ -30,16 +30,14 @@ public class player{
 		      this.setHeight(height);
 		      this.setWeight(weight);
 		      this.setMail(mail);
-		      this.setIdPlayer(idPlayer);
-		      this.setPassword(passWord);
-		      
+		      this.setIdPlayer(idPlayer);		      
 	}
-	public player() {
-
+	public player(String userName, String password) {
+		super(userName,password);
 	}
-	/////////////////////////////////////////
 	
-	public String getPlayerName() {
+	/////////////////////////////////////////
+		public String getPlayerName() {
 		return playerName;
 	}
 	public void setPlayerName(String playerName) {
@@ -53,33 +51,12 @@ public class player{
 		}
 		
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		if(password!=null)
-		{
-			this.password = password;
-		}
-		else
-		{
-			return;
-		}
-	}
 	public String getRole() {
 		
 		return role;
 	}
 	public void setRole(String role) {
-		if(role!=null)
-		{
 			this.role = role;
-		}
-		else
-		{
-			return;
-		}
-	
 	}
 	public int getAge() {
 		return age;
@@ -99,105 +76,52 @@ public class player{
 		return height;
 	}
 	public void setHeight(double height) {
-		if(height!=0)
-		{
 			this.height = height;
-		}
-		else
-		{
-			return;
-		}
 	}
 	public double getWeight() {
 		return weight;
 	}
 	public void setWeight(double weight) {
-		if(weight!=0)
-		{
+
 			this.weight = weight;
-		}
-		else
-		{
-			return;
-		}
 	}
 	public String getMail() {
 		return mail;
 	}
 	public void setMail(String mail) {
-		if(mail!=null)
-		{
 			this.mail = mail;
-		}
-		else
-		{
-			return;
-		}
+
 	}
 	public int getYellowCard() {
 		return yellowCard;
 	}
 	public void setYellowCard(int yellowCard) {
-		if(yellowCard!=0)
-		{
 			this.yellowCard += yellowCard;
-		}
-		else
-		{
-			return;
-		}
 	}
 	public int getRedCard() {
 		return redCard;
 	}
 	public void setRedCard(int redCard) {
-		if(redCard!=0)
-		{
-			this.redCard += redCard;
-		}
-		else
-		{
-			return;
-		}
+		this.redCard = redCard;
 	}
 	public int getTotalPlayingTime() {
 		return totalPlayingTime;
 	}
 	public void setTotalPlayingTime(int totalPlayingTime) {
-		if(totalPlayingTime!=0)
-		{
+
 			this.totalPlayingTime += totalPlayingTime;
-		}
-		else
-		{
-			return;
-		}
 	}
 	public int getNumOfAssists() {
 		return numOfAssists;
 	}
 	public void setNumOfAssists(int numOfAssists) {
-		if(numOfAssists!=0)
-		{
 			this.numOfAssists += numOfAssists;
-		}
-		else
-		{
-			return;
-		}
 	}
 	public int getGoals() {
 		return goals;
 	}
 	public void setGoals(int goals) {
-		if(goals!=0)
-		{
-			this.goals += goals;
-		}
-		else
-		{
-			return;
-		}
+		this.goals += goals;
 	}
 	public int getIdPlayer() {
 		return idPlayer;
@@ -218,11 +142,8 @@ public class player{
 	public void setMyTeam(team myTeam) {
 		MyTeam = myTeam;
 	}
-	
-	//////////////////////////////
-////////////////////////////////////////////////
+	////////////////////////////////////////////////
 		
-
 	@Override
 	public String toString() {
 		return "player -  [playerName = " + playerName + ", team = " + MyTeam.getTeamName() + ", role = " + role + "\n" + ", age = " + age + ", height = " + height
@@ -252,6 +173,25 @@ public class player{
 	{
 		return setOfGames;
 
+	}
+	
+	///////////////////////////////////////////
+	@Override
+	public String getUserName() {
+		return userName;
+	}
+	@Override
+	public void setUserName(String userName) {
+		this.userName=userName;
+		
+	}
+	@Override
+	public String getPassword() {
+		return password;
+	}
+	@Override
+	public void setPassword(String password) {
+		this.password = password;		
 	}
 
 }

@@ -2,9 +2,10 @@ package model;
 
 import java.util.ArrayList;
 
-public class userList {
+public class userList<T> {
 
 	private ArrayList<user> userList=new ArrayList<user>();
+	private T user;
 	//////////////////////////////
 	
 	public userList() {
@@ -13,6 +14,9 @@ public class userList {
 
 	public ArrayList<user> getUserList() {
 		return  userList;
+	}
+	public T getUser() {
+		return user;
 	}
 	////////////////////////////
 	
@@ -30,7 +34,7 @@ public class userList {
 		}
 		return true;	
 	}
-	public user login(String userName, String password)
+	public void login(String userName, String password)
 	{
 		int i;
 		int flag=0;
@@ -46,10 +50,10 @@ public class userList {
 		if(flag == 0)
 		{
 			 System.out.println("wrong username or password");
-			 return null;
+			 return;
 		}
 		
-		return userList.get(i).getType();		
+		user = (T) userList.get(i).getType();		
 	}
 	
 }

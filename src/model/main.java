@@ -161,8 +161,7 @@ public class main {
 		//
 		// userName && password 
 		//
-	
-		ul.login("morcohen", "123456");
-		System.out.print(ul.getUser());
+
+		System.out.print(ul.login("morcohen", "123456"));
 	}
 }

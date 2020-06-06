@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class userList<T> {
 
 	private ArrayList<user> userList=new ArrayList<user>();
-	private T user;
 	//////////////////////////////
 	
 	public userList() {
@@ -14,9 +13,6 @@ public class userList<T> {
 
 	public ArrayList<user> getUserList() {
 		return  userList;
-	}
-	public T getUser() {
-		return user;
 	}
 	////////////////////////////
 	
@@ -34,26 +30,15 @@ public class userList<T> {
 		}
 		return true;	
 	}
-	public void login(String userName, String password)
+	public user login(String userName, String password)
 	{
-		int i;
-		int flag=0;
-		
-		for(i=0;i<userList.size();i++)
+		for(int i=0;i<userList.size();i++)
 		{
 			if( (userList.get(i).getUserName() == userName) && (userList.get(i).getPassword() == password) ) {
-				flag=1;
-				break;
+				return userList.get(i).getType();
 			}
 		}
-		
-		if(flag == 0)
-		{
-			 System.out.println("wrong username or password");
-			 return;
-		}
-		
-		user = (T) userList.get(i).getType();		
+		return null;
 	}
 	
 }

@@ -1,27 +1,27 @@
 package model;
 
 import java.util.LinkedList;
-import java.util.HashSet;
-import java.util.Set;
 
-public class scout{
+public class scout extends user{
 	
 	private String scoutName;
-	private String password;
 	private int scoutId;
 	private team MyTeam;
 	private LinkedList<player> InterestList = new LinkedList<player>();
 	/////////////////////////////////////
 	
-	public scout() {
-	
-	}
-	public scout(String scoutName, String team, String password, int scoutId) {
-		super();
+	public scout(String scoutName, String team, int scoutId, String userName, String password) {
+		super(userName, password);
 		this.scoutName = scoutName;
-		this.password=password;
 		this.scoutId=scoutId;
 		MyTeam =new team(team);
+	}
+	public scout(String userName, String password)
+	{
+		super(userName, password);	
+	}
+	public scout() {
+		
 	}
 	////////////////////////////////////
 	
@@ -30,12 +30,6 @@ public class scout{
 	}
 	public void setScoutName(String scoutName) {
 		this.scoutName = scoutName;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	public int getScoutId() {
 		return scoutId;
@@ -53,7 +47,7 @@ public class scout{
 	
 	@Override
 	public String toString() {
-		return  "scout - [scoutName = " + scoutName  + ", team = " +  MyTeam.getTeamName() + "." + "\n" + "\n";
+		return  "scout - [scoutName = " + scoutName  + ", team = " +  MyTeam.getTeamName() + "]" + "." + "\n" + "\n";
 	}
 	public player getPlayerInformatin(player p)
 	{
@@ -75,4 +69,9 @@ public class scout{
     public LinkedList<player>showInterestList() {
 		return InterestList;
 		}
+	@Override
+	public scout getType() {
+		return this;
+	}
+
 }

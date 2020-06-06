@@ -4,12 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-//import javax.swing.JLabel;
-//import javax.swing.JPanel;
-//import javax.swing.JTextField;
 
-
-public class Login implements ActionListener{
+public class LoginView extends JFrame{
 	private static JLabel myTitle;
 	private static JLabel userTitle;
 	private static JLabel passwordTitle;
@@ -18,8 +14,8 @@ public class Login implements ActionListener{
 	private static JButton loginButton;
 	private static JLabel successMessage;
 	
-	public static void main(String[] args) {
-		JFrame myFrame = new JFrame();
+	LoginView(){
+//		JFrame myFrame = new JFrame();
 		JPanel panel = new JPanel();
 		myFrame.setSize(400, 400);
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,7 +47,7 @@ public class Login implements ActionListener{
 	
 	
 	myFrame.setVisible(true);
-
+	}
 }
 
 	@Override

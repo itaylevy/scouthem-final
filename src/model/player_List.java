@@ -6,36 +6,34 @@ public class player_List{
 	
 	private ArrayList<player> ArraylistPlayer= new ArrayList<player>();
 	private ArrayList<player> sotrArraylistPlayer= new ArrayList<player>();
-	
 	/////////////////////////////////////////	
 			 
 	public player_List() {
 		super();
 			// TODO Auto-generated constructor stub
 		}
-
-
 	/////////////////////////////////////////
+	
 	public ArrayList<player> getListPlayer() {
 		return ArraylistPlayer;
 	}
 	public void setListPlayer(ArrayList<player> listPlayer) {
 		this.ArraylistPlayer = listPlayer;
 	}
-	
 	/////////////////////////////////////////
 	public ArrayList<player> showListPlayer() {
 		return ArraylistPlayer;
 	}
-	public void addplayer(player p)
+	public void addplayer(user p)
 	{
-		ArraylistPlayer.add(p);	
+		ArraylistPlayer.add((player) p);	
 	}
 	
+	//
 	//design pattern of sorting
 	public <T> void Sort(String x, T y)
 	{
-		//x = role/player name/age/goal/assists/playing time
+		//x = role/player name/age/goal/assists/playing time/team
 		//y = Specific name/Specific role/Specific age
 		//role(Goal keeper, Centre back, Left defender, Right defender, midfield, Centre forward)
 		

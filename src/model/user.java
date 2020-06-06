@@ -2,23 +2,36 @@ package model;
 
 public abstract class user {
 	
-	protected String userName;
-	protected String password;
+	private String userName;
+	private String password;
+	private userList ul;
 	//////////////////////////////
 	
 	public user(String userName, String password) {
-		this.userName = userName;
-		this.password = password;
+		this.setUserName(userName);
+		this.setPassword(password);
 	}
 	public user() {
 
 	}
-	
 	///////////////////////////////
 	
-public abstract String getUserName();
-public abstract void setUserName(String userName);
-public abstract String getPassword();
-public abstract void setPassword(String password);
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		//if(ul.CheckingUsername(userName)){
+			this.userName = userName;
+		//}
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	//////////////////////////////
+	
+    public abstract  user getType();
 
 }

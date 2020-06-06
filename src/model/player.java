@@ -21,8 +21,8 @@ public class player extends user{
 	private Set<game> setOfGames = new HashSet<game>();
 	/////////////////////////////////////////
 	
-	public player(String playerName,String team, String role, int age, double height, double weight, String mail, int idPlayer) {
-		      super();
+	public player(String playerName,String team, String role, int age, double height, double weight, String mail, int idPlayer,String userName, String password) {
+		      super(userName,password);
 		      this.setPlayerName(playerName);
 		      MyTeam= new team(team);
 		      this.setRole(role);
@@ -32,27 +32,23 @@ public class player extends user{
 		      this.setMail(mail);
 		      this.setIdPlayer(idPlayer);		      
 	}
-	public player(String userName, String password) {
-		super(userName,password);
+	public player(String userName, String password)
+	{
+		super(userName, password);	
 	}
-	
+	public player()
+	{
+		
+	}
 	/////////////////////////////////////////
-		public String getPlayerName() {
+	
+	public String getPlayerName() {
 		return playerName;
 	}
 	public void setPlayerName(String playerName) {
-		if(playerName!=null)
-		{
-			this.playerName = playerName;
-		}
-		else
-		{
-			return;
-		}
-		
+			this.playerName = playerName;		
 	}
-	public String getRole() {
-		
+	public String getRole() {	
 		return role;
 	}
 	public void setRole(String role) {
@@ -62,15 +58,7 @@ public class player extends user{
 		return age;
 	}
 	public void setAge(int age) {
-		if(age<=18)
-		{
 			this.age = age;
-		}
-		else
-		{
-			System.out.println("You cannot sign up for the system!");
-			return;
-		}
 	}
 	public double getHeight() {
 		return height;
@@ -149,7 +137,7 @@ public class player extends user{
 		return "player -  [playerName = " + playerName + ", team = " + MyTeam.getTeamName() + ", role = " + role + "\n" + ", age = " + age + ", height = " + height
 				+ ", weight = " + weight + "\n" + ", mail = " + mail + ", yellowCard = " + yellowCard + ", redCard = " + redCard
 				+ "\n" + ", totalPlayingTime = " + totalPlayingTime + ", numOfAssists = " + numOfAssists + ", goals = " + goals + "." + "\n" + "\n";
-	}	
+	}
 	public void editInformation(String name,String team,String role,int age,double height,double weight,String mail)
 	{
 		this.setPlayerName(name);
@@ -160,38 +148,23 @@ public class player extends user{
 		this.setMail(mail);
 		this.MyTeam.setTeamName(team);
 	}
-	public boolean addGame(game g)
+	public void addGame(game g)
 	{
         this.setYellowCard(g.getYellowCard());
         this.setRedCard(g.getRedCard());
         this.setTotalPlayingTime(g.getPlayTimeGame());
         this.setNumOfAssists(g.getNumOfAssists());
         this.setGoals(g.getNumOfGoals());		
-		return setOfGames.add(g);
 	}
 	public Set<game> showListOfGames()
 	{
 		return setOfGames;
 
 	}
-	
 	///////////////////////////////////////////
+	
 	@Override
-	public String getUserName() {
-		return userName;
+	public player getType() {
+		return this;
 	}
-	@Override
-	public void setUserName(String userName) {
-		this.userName=userName;
-		
-	}
-	@Override
-	public String getPassword() {
-		return password;
-	}
-	@Override
-	public void setPassword(String password) {
-		this.password = password;		
-	}
-
 }

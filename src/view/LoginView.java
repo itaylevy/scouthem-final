@@ -13,7 +13,7 @@ public class LoginView extends JFrame{
 	private JButton loginButton;
 	private JLabel successMessage;
 	
-	LoginView(){
+	public LoginView(){
 		JPanel myPanel = new JPanel();
 		this.setSize(400, 400);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,7 +45,7 @@ public class LoginView extends JFrame{
 	}
 
 	public String getUserName(){return userName.getText();}
-	public char[] getPassword(){return password.getPassword();}
+	public String getPassword(){return password.getText();}
 	public void setLoginMessage(Boolean answer) {
 		if (answer) {
 			successMessage.setText("Welcome");
@@ -54,7 +54,7 @@ public class LoginView extends JFrame{
 			successMessage.setText("User doesn't exist!");
 		}
 	}
-	void addLoginListner(ActionListener loginButtonListner) {
+	public void addLoginListner(ActionListener loginButtonListner) {
 		loginButton.addActionListener(loginButtonListner);
 
 	}

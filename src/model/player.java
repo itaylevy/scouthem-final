@@ -163,8 +163,8 @@ public class player extends user{
 	}
 	///////////////////////////////////////////
 	
-	@Override
-	public player getType() {
-		return this;
-	}
+//	public static String getType() {
+//		return "Player";
+//		return this;
+//	}
 }

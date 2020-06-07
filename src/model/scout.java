@@ -69,9 +69,9 @@ public class scout extends user{
     public LinkedList<player>showInterestList() {
 		return InterestList;
 		}
-	@Override
-	public scout getType() {
-		return this;
-	}
+//	@Override
+//	public scout getType() {
+//		return this;
+//	}
 
 }

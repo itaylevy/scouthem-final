@@ -4,7 +4,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class LoginView extends JFrame {
+import model.user;
+import model.player;
+import model.scout;
+
+public class LoginView extends JFrame{
 	private JLabel myTitle;
 	private JLabel userTitle;
 	private JLabel passwordTitle;
@@ -12,13 +16,8 @@ public class LoginView extends JFrame {
 	private JPasswordField password;
 	private JButton loginButton;
 	private JLabel successMessage;
-<<<<<<< Updated upstream
 	
 	public LoginView(){
-=======
-
-	LoginView() {
->>>>>>> Stashed changes
 		JPanel myPanel = new JPanel();
 		this.setSize(400, 400);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,24 +56,24 @@ public class LoginView extends JFrame {
 		return password.getPassword();
 	}
 
-<<<<<<< Updated upstream
 	public String getUserName(){return userName.getText();}
 	public String getPassword(){return password.getText();}
-=======
->>>>>>> Stashed changes
-	public void setLoginMessage(Boolean answer) {
-		if (answer) {
-			successMessage.setText("Welcome");
-		} else {
+	public void setLoginMessage(user user) {
+		if (user instanceof player) {
+			this.setVisible(false);
+			PlayerScreen playerScreen = new PlayerScreen((player) user);
+			playerScreen.setVisible(true);
+		}
+		else if (user instanceof scout) {
+			this.setVisible(false);
+			ScoutScreen scoutScreen = new ScoutScreen();
+			scoutScreen.setVisible(true);
+		}
+		else {
 			successMessage.setText("User doesn't exist!");
 		}
 	}
-<<<<<<< Updated upstream
 	public void addLoginListner(ActionListener loginButtonListner) {
-=======
-
-	void addLoginListner(ActionListener loginButtonListner) {
->>>>>>> Stashed changes
 		loginButton.addActionListener(loginButtonListner);
 
 	}

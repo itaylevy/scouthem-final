@@ -10,7 +10,9 @@ public class userList {
 	
 	public userList() {
 		user s=new scout("oz","hapoel tel aviv", 233465583, "oz", "1");
+		user p = new player("mor","hapoel tel aviv", "Centre-back", 14, 1.75, 69.4, "mor@gmail.com", 207275631,"mor", "1");
 		userList.add(s);
+		userList.add(p);
 	}
 	/////////////////////////////
 
@@ -26,7 +28,17 @@ public class userList {
 	{
 		userList.add(u);		
 	}
-	public boolean login(String userName, String password)
+	public boolean CheckingUserName(String userName)
+	{
+		for(int i=0; i<userList.size(); i++) {
+			if(userList.get(i).getUserName() == userName) {
+				System.out.println("Choose a different username");
+				return false;
+			}
+		}
+		return true;	
+	}
+	public user login(String userName, String password)
 	{
 		for(int i=0;i<userList.size();i++)
 		{
@@ -36,12 +48,12 @@ public class userList {
 			 System.out.println(userList.get(i).getPassword().equals(password));
 			 
 			 if( (userList.get(i).getUserName().equals(userName)) && (userList.get(i).getPassword().equals(password)) ) {
-//					return userList.get(i).getType();
-					return true;
+					return userList.get(i);
+//					return true;
 			 }
 		}
-//		user = null;
-		return false;
+		return null;
+//		return false;
 	}
 	
 }

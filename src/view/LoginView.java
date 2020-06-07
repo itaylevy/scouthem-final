@@ -4,6 +4,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import model.user;
+import model.player;
+import model.scout;
+
 public class LoginView extends JFrame{
 	private JLabel myTitle;
 	private JLabel userTitle;
@@ -37,7 +41,7 @@ public class LoginView extends JFrame{
 		loginButton.setBounds(100, 200, 80, 20);
 		myPanel.add(loginButton);
 		successMessage = new JLabel("");
-		successMessage.setBounds(200, 200, 80, 100);
+		successMessage.setBounds(180, 200, 120, 100);
 		myPanel.add(successMessage);
 		this.add(myPanel);
 		this.setVisible(true);
@@ -46,12 +50,19 @@ public class LoginView extends JFrame{
 
 	public String getUserName(){return userName.getText();}
 	public String getPassword(){return password.getText();}
-	public void setLoginMessage(Boolean answer) {
-		if (answer) {
-			successMessage.setText("Welcome");
+	public void setLoginMessage(user user) {
+		if (user instanceof player) {
+			this.setVisible(false);
+			PlayerScreen playerScreen = new PlayerScreen((player) user);
+			playerScreen.setVisible(true);
+		}
+		else if (user instanceof scout) {
+			this.setVisible(false);
+			ScoutScreen scoutScreen = new ScoutScreen();
+			scoutScreen.setVisible(true);
 		}
 		else {
-			successMessage.setText("User doesn't exist!");
+			successMessage.setText("User doesn't exist");
 		}
 	}
 	public void addLoginListner(ActionListener loginButtonListner) {

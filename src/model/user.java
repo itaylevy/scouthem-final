@@ -29,6 +29,6 @@ public abstract class user {
 	}
 	//////////////////////////////
 	
-    public abstract  user getType();
+//    public abstract String getType();
 
 }

@@ -17,7 +17,7 @@ public class PlayerController {
 	public PlayerController(PlayerScreen theView, player theModel) {
 	        this.theView = theView;
 	        this.theModel = theModel;
-	        this.theView.addGameListener(new LoginListener());
+	        this.theView.addGameListener(new addGameListener());
 
 	    }
 	class addGameListener implements ActionListener{

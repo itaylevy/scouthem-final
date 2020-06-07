@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class LoginView extends JFrame{
+public class LoginView extends JFrame {
 	private JLabel myTitle;
 	private JLabel userTitle;
 	private JLabel passwordTitle;
@@ -12,8 +12,13 @@ public class LoginView extends JFrame{
 	private JPasswordField password;
 	private JButton loginButton;
 	private JLabel successMessage;
+<<<<<<< Updated upstream
 	
 	public LoginView(){
+=======
+
+	LoginView() {
+>>>>>>> Stashed changes
 		JPanel myPanel = new JPanel();
 		this.setSize(400, 400);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,8 +32,8 @@ public class LoginView extends JFrame{
 		passwordTitle = new JLabel("Password:");
 		passwordTitle.setBounds(35, 110, 100, 100);
 		myPanel.add(passwordTitle);
-		userName= new JTextField();
-		password= new JPasswordField();
+		userName = new JTextField();
+		password = new JPasswordField();
 		userName.setBounds(100, 100, 200, 25);
 		password.setBounds(100, 150, 200, 25);
 		myPanel.add(userName);
@@ -41,20 +46,35 @@ public class LoginView extends JFrame{
 		myPanel.add(successMessage);
 		this.add(myPanel);
 		this.setVisible(true);
-		
+
 	}
 
+	public String getUserName() {
+		return userName.getText();
+	}
+
+	public char[] getPassword() {
+		return password.getPassword();
+	}
+
+<<<<<<< Updated upstream
 	public String getUserName(){return userName.getText();}
 	public String getPassword(){return password.getText();}
+=======
+>>>>>>> Stashed changes
 	public void setLoginMessage(Boolean answer) {
 		if (answer) {
 			successMessage.setText("Welcome");
-		}
-		else {
+		} else {
 			successMessage.setText("User doesn't exist!");
 		}
 	}
+<<<<<<< Updated upstream
 	public void addLoginListner(ActionListener loginButtonListner) {
+=======
+
+	void addLoginListner(ActionListener loginButtonListner) {
+>>>>>>> Stashed changes
 		loginButton.addActionListener(loginButtonListner);
 
 	}

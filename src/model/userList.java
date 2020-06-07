@@ -26,16 +26,6 @@ public class userList {
 	{
 		userList.add(u);		
 	}
-	public boolean CheckingUserName(String userName)
-	{
-		for(int i=0; i<userList.size(); i++) {
-			if(userList.get(i).getUserName() == userName) {
-				System.out.println("Choose a different username");
-				return false;
-			}
-		}
-		return true;	
-	}
 	public boolean login(String userName, String password)
 	{
 		for(int i=0;i<userList.size();i++)

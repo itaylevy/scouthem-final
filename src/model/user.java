@@ -4,7 +4,6 @@ public abstract class user {
 	
 	private String userName;
 	private String password;
-	private userList ul;
 	//////////////////////////////
 	
 	public user(String userName, String password) {
@@ -20,9 +19,7 @@ public abstract class user {
 		return userName;
 	}
 	public void setUserName(String userName) {
-		//if(ul.CheckingUsername(userName)){
 			this.userName = userName;
-		//}
 	}
 	public String getPassword() {
 		return password;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class userList<T> {
 
 	private ArrayList<user> userList=new ArrayList<user>();
+	private T user;
 	//////////////////////////////
 	
 	public userList() {
@@ -14,15 +15,18 @@ public class userList<T> {
 	public ArrayList<user> getUserList() {
 		return  userList;
 	}
+	public T getUser() {
+		return user;
+	}
 	////////////////////////////
 	
 	public void addUser(user u)
 	{
 		userList.add(u);		
 	}
-	public boolean CheckingUsername(String userName)
+	public boolean CheckingUserName(String userName)
 	{
-		for(int i=0; i< userList.size(); i++) {
+		for(int i=0; i<userList.size(); i++) {
 			if(userList.get(i).getUserName() == userName) {
 				System.out.println("Choose a different username");
 				return false;
@@ -30,15 +34,17 @@ public class userList<T> {
 		}
 		return true;	
 	}
-	public user login(String userName, String password)
+	public boolean login(String userName, String password)
 	{
 		for(int i=0;i<userList.size();i++)
 		{
 			if( (userList.get(i).getUserName() == userName) && (userList.get(i).getPassword() == password) ) {
-				return userList.get(i).getType();
+				user = (T) userList.get(i).getType();
+				return true;
 			}
 		}
-		return null;
+		user = null;
+		return false;
 	}
 	
 }

@@ -17,104 +17,203 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import java.awt.Window.Type;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Toolkit;
 
 public class PlayerScreen extends JFrame {
 
 	private JPanel contentPane;
-	private AbstractButton logoutButton;
+	private JButton signOutButton;
+	private JButton addGameButton;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					PlayerScreen frame = new PlayerScreen();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the frame.
-	 */
 	public PlayerScreen(player myPlayer) {
+		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
+		setType(Type.UTILITY);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 537, 383);
+		setBounds(0, 0, 799, 568);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Add Game");
-		btnNewButton.setBounds(422, 263, 89, 27);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		contentPane.add(btnNewButton);
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 840, 840);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel playingNum = new JLabel(String.valueOf(myPlayer.getTotalPlayingTime()));
+		playingNum.setForeground(Color.WHITE);
+		playingNum.setFont(new Font("Arial", Font.BOLD, 15));
+		playingNum.setBounds(522, 82, 96, 34);
+		panel.add(playingNum);
+		
+		JLabel heightTitle = new JLabel("Height");
+		heightTitle.setForeground(Color.WHITE);
+		heightTitle.setFont(new Font("Arial", Font.PLAIN, 16));
+		heightTitle.setBounds(38, 188, 66, 35);
+		panel.add(heightTitle);
+		
+		JLabel weightTitle = new JLabel("Weight");
+		weightTitle.setForeground(Color.WHITE);
+		weightTitle.setFont(new Font("Arial", Font.PLAIN, 16));
+		weightTitle.setBounds(38, 170, 66, 23);
+		panel.add(weightTitle);
+		
+		JLabel ageTitle = new JLabel("Age");
+		ageTitle.setForeground(Color.WHITE);
+		ageTitle.setFont(new Font("Arial", Font.PLAIN, 16));
+		ageTitle.setBounds(38, 140, 66, 28);
+		panel.add(ageTitle);
+		
+		JLabel redTitle = new JLabel("Red");
+		redTitle.setForeground(Color.RED);
+		redTitle.setFont(new Font("Arial", Font.PLAIN, 16));
+		redTitle.setBounds(387, 310, 66, 35);
+		panel.add(redTitle);
+		
+		JLabel cardsTitle = new JLabel("Cards");
+		cardsTitle.setForeground(Color.WHITE);
+		cardsTitle.setFont(new Font("Arial", Font.BOLD, 16));
+		cardsTitle.setBounds(387, 251, 66, 35);
+		panel.add(cardsTitle);
+		
+		JLabel yellowCardsTitle = new JLabel("Yellow");
+		yellowCardsTitle.setForeground(Color.YELLOW);
+		yellowCardsTitle.setFont(new Font("Arial", Font.PLAIN, 16));
+		yellowCardsTitle.setBounds(387, 280, 66, 35);
+		panel.add(yellowCardsTitle);
+		
+		JLabel assistsTitle = new JLabel("Assists");
+		assistsTitle.setForeground(Color.WHITE);
+		assistsTitle.setFont(new Font("Arial", Font.PLAIN, 16));
+		assistsTitle.setBounds(387, 186, 66, 35);
+		panel.add(assistsTitle);
+		
+		JLabel goalsTitle = new JLabel("Goals");
+		goalsTitle.setForeground(Color.WHITE);
+		goalsTitle.setFont(new Font("Arial", Font.PLAIN, 16));
+		goalsTitle.setBounds(387, 140, 66, 35);
+		panel.add(goalsTitle);
+		
+		addGameButton = new JButton("");
+		addGameButton.setContentAreaFilled(false);
+		addGameButton.setBorderPainted(false);
+		addGameButton.setBorder(null);
+		addGameButton.setOpaque(false);
+		addGameButton.setBounds(617, 464, 101, 35);
+		panel.add(addGameButton);
+		addGameButton.setIcon(new ImageIcon(PlayerScreen.class.getResource("/view/res/addGameButton.png")));
 		
 		JLabel playerName = new JLabel(myPlayer.getPlayerName());
-		playerName.setBounds(10, 24, 94, 14);
-		contentPane.add(playerName);
+		playerName.setForeground(Color.WHITE);
+		playerName.setFont(new Font("Arial", Font.BOLD, 37));
+		playerName.setBounds(38, 32, 188, 43);
+		panel.add(playerName);
 		
 		JLabel teamName = new JLabel(myPlayer.getMyTeam().getTeamName());
-		teamName.setBounds(10, 46, 55, 14);
-		contentPane.add(teamName);
+		teamName.setForeground(Color.WHITE);
+		teamName.setFont(new Font("Arial", Font.PLAIN, 20));
+		teamName.setBounds(163, 80, 178, 35);
+		panel.add(teamName);
 		
 		JLabel playerAge = new JLabel(String.valueOf(myPlayer.getAge()));
-		playerAge.setBounds(10, 61, 55, 14);
-		contentPane.add(playerAge);
+		playerAge.setForeground(Color.WHITE);
+		playerAge.setFont(new Font("Arial", Font.PLAIN, 17));
+		playerAge.setBounds(117, 150, 55, 14);
+		panel.add(playerAge);
 		
 		JLabel gameStats = new JLabel("Game Statistics");
-		gameStats.setFont(new Font("HelvLight", Font.BOLD, 11));
-		gameStats.setBounds(10, 110, 94, 27);
-		contentPane.add(gameStats);
+		gameStats.setForeground(Color.WHITE);
+		gameStats.setBounds(387, 32, 196, 43);
+		panel.add(gameStats);
+		gameStats.setFont(new Font("Arial", Font.BOLD, 25));
 		
-		JButton logoutButton = new JButton("LOGOUT");
-		logoutButton.setBounds(422, 310, 89, 23);
-		contentPane.add(logoutButton);
+		signOutButton = new JButton("");
+		signOutButton.setContentAreaFilled(false);
+		signOutButton.setBorderPainted(false);
+		signOutButton.setBorder(null);
+		signOutButton.setOpaque(false);
+		signOutButton.setIcon(new ImageIcon(PlayerScreen.class.getResource("/view/res/signOutButton.png")));
+		signOutButton.setBounds(624, 13, 107, 47);
+		signOutButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setWindowVisible(false);
+				new LoginView().setVisible(true);
+			}
+		});
+		panel.add(signOutButton);
 		
 		JLabel totalPlayingTime = new JLabel("Total playing time");
-		totalPlayingTime.setBounds(10, 137, 94, 14);
-		contentPane.add(totalPlayingTime);
+		totalPlayingTime.setFont(new Font("Arial", Font.PLAIN, 16));
+		totalPlayingTime.setForeground(Color.WHITE);
+		totalPlayingTime.setBounds(387, 86, 146, 35);
+		panel.add(totalPlayingTime);
 		
 		JLabel goalsNum = new JLabel(String.valueOf(myPlayer.getGoals()));
-		goalsNum.setBounds(10, 162, 81, 14);
-		contentPane.add(goalsNum);
+		goalsNum.setFont(new Font("Arial", Font.BOLD, 15));
+		goalsNum.setForeground(Color.WHITE);
+		goalsNum.setBounds(463, 141, 96, 34);
+		panel.add(goalsNum);
 		
 		JLabel yellowCards = new JLabel(String.valueOf(myPlayer.getYellowCard()));
-		yellowCards.setBounds(10, 190, 46, 14);
-		contentPane.add(yellowCards);
+		yellowCards.setForeground(Color.WHITE);
+		yellowCards.setFont(new Font("Arial", Font.BOLD, 15));
+		yellowCards.setBounds(463, 288, 55, 23);
+		panel.add(yellowCards);
 		
 		JLabel redCards = new JLabel(String.valueOf(myPlayer.getRedCard()));
-		redCards.setBounds(10, 218, 46, 14);
-		contentPane.add(redCards);
+		redCards.setFont(new Font("Arial", Font.BOLD, 15));
+		redCards.setForeground(Color.WHITE);
+		redCards.setBounds(463, 320, 46, 14);
+		panel.add(redCards);
 		
 		JLabel assistsCount = new JLabel(String.valueOf(myPlayer.getNumOfAssists()));
-		assistsCount.setBounds(96, 162, 46, 14);
-		contentPane.add(assistsCount);
+		assistsCount.setFont(new Font("Arial", Font.BOLD, 15));
+		assistsCount.setForeground(Color.WHITE);
+		assistsCount.setBounds(463, 186, 96, 41);
+		panel.add(assistsCount);
 		
 		JLabel playerHeight = new JLabel(String.valueOf(myPlayer.getHeight()));
-		playerHeight.setBounds(10, 86, 46, 14);
-		contentPane.add(playerHeight);
+		playerHeight.setForeground(Color.WHITE);
+		playerHeight.setFont(new Font("Arial", Font.PLAIN, 17));
+		playerHeight.setBounds(117, 198, 46, 14);
+		panel.add(playerHeight);
 		
 		JLabel playerWeight = new JLabel(String.valueOf(myPlayer.getWeight()));
-		playerWeight.setBounds(74, 86, 46, 14);
-		contentPane.add(playerWeight);
+		playerWeight.setForeground(Color.WHITE);
+		playerWeight.setFont(new Font("Arial", Font.PLAIN, 17));
+		playerWeight.setBounds(117, 175, 46, 14);
+		panel.add(playerWeight);
 		
 		JLabel playerPosition = new JLabel(myPlayer.getRole());
-		playerPosition.setBounds(96, 46, 46, 14);
-		contentPane.add(playerPosition);
+		playerPosition.setFont(new Font("Arial", Font.PLAIN, 20));
+		playerPosition.setForeground(Color.WHITE);
+		playerPosition.setBounds(38, 86, 115, 23);
+		panel.add(playerPosition);
 		
-		JLabel nameTitle = new JLabel("Name:");
-		nameTitle.setFont(new Font("Tahoma", Font.BOLD, 14));
-		nameTitle.setBounds(10, 11, 46, 14);
-		contentPane.add(nameTitle);
+		JLabel rightSideBg = new JLabel("");
+		rightSideBg.setIcon(new ImageIcon(PlayerScreen.class.getResource("/view/res/basicRightBG.png")));
+		rightSideBg.setBounds(340, 0, 420, 532);
+		panel.add(rightSideBg);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(0, 0, 412, 534);
+		panel.add(lblNewLabel);
+		lblNewLabel.setIcon(new ImageIcon(PlayerScreen.class.getResource("/view/res/basicLeftBG.png")));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		addGameButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setWindowVisible(false);
+				addGame addGameScreen = new addGame(myPlayer);
+				addGameScreen.setVisible(true);
+			}
+		});
+	}
+	public void setWindowVisible(boolean flag) {
+		this.setVisible(flag);
 	}
 }

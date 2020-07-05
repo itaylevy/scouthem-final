@@ -37,8 +37,10 @@ public class LoginController {
 //    			
     		}
     		else if (myUser instanceof scout) {
-//    			this.setVisible(false);
-//    			new ScoutScreen((scout) user).setVisible(true);
+    			theView.setVisible(false);
+    			ScoutScreen scoutScreen= new ScoutScreen((scout) myUser);
+    			scoutScreen.setVisible(true);
+    			ScoutController scoutControl = new ScoutController(scoutScreen, (scout) myUser);
     		}
     		else {
               theView.setLoginMessage();

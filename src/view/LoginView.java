@@ -24,6 +24,9 @@ import javax.swing.JTextField;
 import javax.swing.JSeparator;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusAdapter;
 public class LoginView extends JFrame {
 
 	private JPanel contentPane;
@@ -109,6 +112,12 @@ public class LoginView extends JFrame {
 		password.setForeground(Color.LIGHT_GRAY);
 		password.setFont(new Font("Arial", Font.PLAIN, 11));
 		password.setBounds(395, 320, 325, 34);
+		password.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				password.setText("");
+			}
+		});
 		panel.add(password);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -120,6 +129,12 @@ public class LoginView extends JFrame {
 		panel.add(separator);
 		
 		userName = new JTextField();
+		userName.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				userName.setText("");
+			}
+		});
 		userName.setBorder(null);
 		userName.setOpaque(false);
 		userName.setForeground(Color.LIGHT_GRAY);

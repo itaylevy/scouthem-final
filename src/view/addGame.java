@@ -33,6 +33,11 @@ public class addGame extends JFrame {
 	private JPanel contentPane;
 	private JButton addButton; 
 	private JButton backButton;
+	private JSpinner goalsValue;
+	private JSpinner assistsValue;
+	private JSpinner totalPlayingTimeValue;
+	private JCheckBox redCardValue;
+	private JCheckBox yellowCardValue;
 
 	public addGame(player myPlayer) {
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
@@ -50,30 +55,31 @@ public class addGame extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JSpinner assistsValue = new JSpinner();
+		assistsValue = new JSpinner();
+		assistsValue.setModel(new SpinnerNumberModel(0, 0, 100, 1));
 		assistsValue.setBorder(null);
 		assistsValue.setBounds(527, 186, 45, 23);
 		panel.add(assistsValue);
 		
-		JSpinner goalsValue = new JSpinner();
+		goalsValue = new JSpinner();
 		goalsValue.setModel(new SpinnerNumberModel(0, 0, 90, 1));
 		goalsValue.setBorder(null);
 		goalsValue.setBounds(527, 149, 45, 23);
 		panel.add(goalsValue);
 		
-		JCheckBox redCardValue = new JCheckBox("");
+		redCardValue = new JCheckBox("");
 		redCardValue.setContentAreaFilled(false);
 		redCardValue.setBorder(null);
 		redCardValue.setBounds(539, 322, 20, 23);
 		panel.add(redCardValue);
 		
-		JCheckBox yellowCardValue = new JCheckBox("");
+		yellowCardValue = new JCheckBox("");
 		yellowCardValue.setBorder(null);
 		yellowCardValue.setContentAreaFilled(false);
 		yellowCardValue.setBounds(539, 288, 20, 23);
 		panel.add(yellowCardValue);
 		
-		JSpinner totalPlayingTimeValue = new JSpinner();
+		totalPlayingTimeValue = new JSpinner();
 		totalPlayingTimeValue.setBorder(null);
 		totalPlayingTimeValue.setModel(new SpinnerNumberModel(1, 1, 90, 1));
 		totalPlayingTimeValue.setBounds(539, 86, 45, 23);
@@ -161,6 +167,27 @@ public class addGame extends JFrame {
 		panel.add(leftSideBG);
 		leftSideBG.setIcon(new ImageIcon(addGame.class.getResource("/view/res/basicLeftBG.png")));
 		leftSideBG.setHorizontalAlignment(SwingConstants.CENTER);
+	}
+	public int getGoalsCount() {
+		return (Integer)goalsValue.getValue();
+	}
+	public int getAssistsCount() {
+		return (Integer)assistsValue.getValue();
+	}
+	public int gettotalPlayingTimeValue() {
+		return (Integer)totalPlayingTimeValue.getValue();
+	}
+	public int getYellowCardCount() {
+		if (yellowCardValue.isSelected()) {
+			return 1;
+		}
+		return 0;
+	}
+	public int getRedCardCount() {
+		if (redCardValue.isSelected()) {
+			return 1;
+		}
+		return 0;
 	}
 	public void setWindowVisible(boolean flag) {
 		this.setVisible(flag);

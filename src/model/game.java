@@ -1,6 +1,8 @@
 package model;
 
-public class game{
+import java.io.Serializable;
+
+public class game implements Serializable{
 	
 	private String date;
 	private int yellowCard;
@@ -68,7 +70,7 @@ public class game{
 	public void setNumOfGoals(int numOfGoals) {
 		this.numOfGoals = numOfGoals;
 	}
-		///////////////////////////////////////
+    ///////////////////////////////////////
 	
 	@Override
 	public String toString() {
@@ -77,5 +79,4 @@ public class game{
 				+ numOfGoals + "." + "\n";
 		
 	}
-
 }

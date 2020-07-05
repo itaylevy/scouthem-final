@@ -1,9 +1,19 @@
 package model;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class player extends user{
+public class player extends user implements Serializable{
+	
+	private final String FILENAME = "games";
 	
 	private String playerName;
 	private String role;
@@ -18,7 +28,7 @@ public class player extends user{
 	private int goals;
 	private int idPlayer;
 	private team MyTeam;
-	private Set<game> setOfGames = new HashSet<game>();
+	private ArrayList<game> ArrayListGames = new ArrayList<game>();
 	/////////////////////////////////////////
 	
 	public player(String playerName,String team, String role, int age, double height, double weight, String mail, int idPlayer,String userName, String password) {
@@ -30,11 +40,7 @@ public class player extends user{
 		      this.setHeight(height);
 		      this.setWeight(weight);
 		      this.setMail(mail);
-		      this.setIdPlayer(idPlayer);		      
-	}
-	public player(String userName, String password)
-	{
-		super(userName, password);	
+		      this.setIdPlayer(idPlayer);
 	}
 	public player()
 	{
@@ -78,7 +84,6 @@ public class player extends user{
 	}
 	public void setMail(String mail) {
 			this.mail = mail;
-
 	}
 	public int getYellowCard() {
 		return yellowCard;
@@ -117,13 +122,6 @@ public class player extends user{
 	public void setIdPlayer(int idPlayer) {
 		this.idPlayer = idPlayer;
 	}
-	public Set<game> getSetOfGames(player p) {
-		System.out.println(p.playerName+" games: ");
-		return setOfGames;
-	}
-	public void setSetOfGames(Set<game> setOfGames) {
-		this.setOfGames = setOfGames;
-	}
 	public team getMyTeam() {
 		return MyTeam;
 	}
@@ -138,33 +136,20 @@ public class player extends user{
 				+ ", weight = " + weight + "\n" + ", mail = " + mail + ", yellowCard = " + yellowCard + ", redCard = " + redCard
 				+ "\n" + ", totalPlayingTime = " + totalPlayingTime + ", numOfAssists = " + numOfAssists + ", goals = " + goals + "." + "\n" + "\n";
 	}
-	public void editInformation(String name,String team,String role,int age,double height,double weight,String mail)
-	{
-		this.setPlayerName(name);
-		this.setRole(role);
-		this.setAge(age);
-		this.setHeight(height);
-		this.setWeight(weight);
-		this.setMail(mail);
-		this.MyTeam.setTeamName(team);
-	}
 	public void addGame(game g)
 	{
-        this.setYellowCard(g.getYellowCard());
-        this.setRedCard(g.getRedCard());
-        this.setTotalPlayingTime(g.getPlayTimeGame());
-        this.setNumOfAssists(g.getNumOfAssists());
-        this.setGoals(g.getNumOfGoals());		
+		
+		setYellowCard(g.getYellowCard());
+		setRedCard(g.getRedCard());
+		setTotalPlayingTime(g.getPlayTimeGame());
+		setNumOfAssists(g.getNumOfAssists());
+		setGoals(g.getNumOfGoals());
+		
+		ArrayListGames.add(g);		
 	}
-	public Set<game> showListOfGames()
+	public ArrayList<game> getSetGames()
 	{
-		return setOfGames;
-
+		return ArrayListGames;
 	}
-	///////////////////////////////////////////
-	
-//	public static String getType() {
-//		return "Player";
-//		return this;
-//	}
+
 }

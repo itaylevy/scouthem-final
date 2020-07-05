@@ -1,128 +1,112 @@
 package model;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class player_List{
 	
+	private final String FILENAME = "players";
 	private ArrayList<player> ArraylistPlayer= new ArrayList<player>();
-	private ArrayList<player> sotrArraylistPlayer= new ArrayList<player>();
 	/////////////////////////////////////////	
 			 
 	public player_List() {
-		super();
-			// TODO Auto-generated constructor stub
+		readFile();
 		}
 	/////////////////////////////////////////
 	
-	public ArrayList<player> getListPlayer() {
+	public ArrayList<player> getArraylistPlayer() {
 		return ArraylistPlayer;
 	}
-	public void setListPlayer(ArrayList<player> listPlayer) {
-		this.ArraylistPlayer = listPlayer;
-	}
-	/////////////////////////////////////////
-	public ArrayList<player> showListPlayer() {
-		return ArraylistPlayer;
-	}
-	public void addplayer(user p)
-	{
-		ArraylistPlayer.add((player) p);	
-	}
+	////////////////////////////////////////
 	
-	//
 	//design pattern of sorting
-	public <T> void Sort(String x, T y)
-	{
-		//x = role/player name/age/goal/assists/playing time/team
-		//y = Specific name/Specific role/Specific age
-		//role(Goal keeper, Centre back, Left defender, Right defender, midfield, Centre forward)
-		
+	public player[] SortByInt(String x){
+		// sorting -> goal/assists/playing time.
 		switch(x) {
-		 case "role":
-			 sortByRole(x, y);
-			 break;
-		 case "player name":
-			 sortByplayerName(x, y);
-			 break;
-		 case "age":
-			 sortByAge(x, y);
-			 break;
-		 case "team":
-			 sortByTeam(x, y);
-			 break;
 		 case "goal":
-			 sortByX(x);
-			 break;
+			 return sortByX(x);
 		 case "assists":
-			 sortByX(x);
-			 break;
+			 return sortByX(x);
 		 case "playing time":
-			 sortByX(x);
-			 break;
+			 return sortByX(x);
 		  default:
 		   break;
 		}
+		return null;
 	}
-	
-	private void sortByX(String x) {
-		// sort by: total playing time||assists||goal...
-		 int n=ArraylistPlayer.size();
-		 player[] sortByPlayingTime = new player[n];
+	private player[] sortByX(String x) {
+		// sort by: total playing time||assists||goal
+		 player[] sortByPlayingTime = new player[ArraylistPlayer.size()];
+		 
 		 copylist(ArraylistPlayer, sortByPlayingTime);
 		 mergeSort(sortByPlayingTime, sortByPlayingTime.length, x);
-		 print(sortByPlayingTime, x);
+		 return sortByPlayingTime;
 		}
-	private <T>void sortByRole(String x, T y)
+
+	public player[] sortByString(String x, String y) {
+		// sorting -> role/player name/team.
+		switch(x) {
+		 case "role":
+			 return sortByRole(x, y);
+		 case "player name":
+			 return sortByplayerName(x, y);
+		 case "team":
+			 return sortByTeam(x, y);
+		 default:
+			 break;			 
+		}
+		return null;
+	}
+	private player[] sortByRole(String x, String y)
 	{
-		 int n=ArraylistPlayer.size();
-		 player[] sortByRole = new player[n];
+		 player[] sortByRole = new player[ArraylistPlayer.size()];
 		 int j=0;
-		 for (int i = 0; i < n; i++) 
-				if(ArraylistPlayer.get(i).getRole() == y)
+		 for (int i = 0; i < ArraylistPlayer.size(); i++) 
+				if(ArraylistPlayer.get(i).getRole().contentEquals(y))
 					sortByRole[j++] = ArraylistPlayer.get(i);
-		 print(sortByRole, x);		
+		return sortByRole;		
 	}
-	private <T>void sortByplayerName(String x, T y)
+	private player[] sortByplayerName(String x, String y)
 	{
-		 int n=ArraylistPlayer.size();
-		 player[] sortByplayerName = new player[n];
-		 
+		 player[] sortByplayerName = new player[ArraylistPlayer.size()];
 		 int j=0;
-		 for (int i = 0; i < n; i++) 
-				if(ArraylistPlayer.get(i).getPlayerName() == y)
+		 for (int i = 0; i < ArraylistPlayer.size(); i++) 
+				if(ArraylistPlayer.get(i).getPlayerName().contentEquals(y))
 					sortByplayerName[j++] = ArraylistPlayer.get(i);
-			
-		 print(sortByplayerName, x);
-		
+		return sortByplayerName;
 	}	
-	private <T>void sortByAge(String x, T y)
+	private player[] sortByTeam(String x, String y)
 	{
-		 int n=ArraylistPlayer.size();
-		 player[] sortByAge = new player[n];
-		 for (int i = 0; i < n; i++) 
-				if(ArraylistPlayer.get(i).getAge() == (int)y)
-					sortByAge[i] = ArraylistPlayer.get(i);
-		print(sortByAge, x);
-		
-	}
-	private <T>void sortByTeam(String x, T y)
-	{
-		 int n=ArraylistPlayer.size();
-		 player[] sortByTeam = new player[n];
-		 for (int i = 0; i < n; i++) 
-				if(ArraylistPlayer.get(i).getMyTeam().getTeamName() == y)
+		 player[] sortByTeam = new player[ArraylistPlayer.size()];
+		 for (int i = 0; i < ArraylistPlayer.size(); i++) 
+				if(ArraylistPlayer.get(i).getMyTeam().getTeamName().contentEquals(y))
 					sortByTeam[i] = ArraylistPlayer.get(i);
-		print(sortByTeam, x);
-		
+		return sortByTeam;		
 	}
 	
-	private void copylist(ArrayList<player> arraylistPlayer, player[] sortByGoal) {
+	
+	public player[] sortByAge(int y)
+	{
+		 player[] sortByAge = new player[ArraylistPlayer.size()];
+		 for (int i = 0; i < ArraylistPlayer.size(); i++) 
+				if(ArraylistPlayer.get(i).getAge() == y)
+					sortByAge[i] = ArraylistPlayer.get(i);
+		return sortByAge;
+	}
+	
+	
+	public void copylist(ArrayList<player> arraylistPlayer, player[] sortByGoal) {
 		for(int i=0; i<arraylistPlayer.size();i++)
 		{
 			sortByGoal[i]=arraylistPlayer.get(i);
 		}
 	}
-	public static void mergeSort(player[] a, int n, String x) {
+	public void mergeSort(player[] a, int n, String x) {
 	    if (n < 2) {
 	        return;
 	    }
@@ -142,7 +126,7 @@ public class player_List{
 	    
 	    merge(a, l, r, mid, n - mid, x);	    
 	}
-	public static void merge(player[] a, player[] l, player[] r, int left, int right, String x) {
+	public void merge(player[] a, player[] l, player[] r, int left, int right, String x) {
 			  
 			    int i = 0, j = 0, k = 0;
 			    while (i < left && j < right) {
@@ -170,7 +154,7 @@ public class player_List{
 					            a[k++] = r[j++];
 			    	}
 			    	else if (x == "playing time")
-			    	{	        if (l[i].getGoals() <= r[j].getGoals()) 
+			    	{	        if (l[i].getTotalPlayingTime() >= r[j].getTotalPlayingTime()) 
 						            a[k++] = l[i++];
 						        else 
 						            a[k++] = r[j++];
@@ -184,16 +168,12 @@ public class player_List{
 			        a[k++] = r[j++];
 			    }	
 	}
-	private void print(player[] print, String x) {
-		 System.out.println("sort by "+ x + ":");
-		for(int i=0; i<print.length;i++)
-		{
-			if(print[i] != null)
-			{
-				System.out.println(print[i]);
-			}
-			
-		}		
-	}
 	
+	void readFile() {
+		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) {
+			  ArraylistPlayer = (ArrayList<player>) input.readObject();
+		  } catch (Exception e) {
+			     e.printStackTrace();
+			  }	
+	}
 }

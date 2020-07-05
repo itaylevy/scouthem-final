@@ -1,6 +1,8 @@
 package model;
 
-public class team{
+import java.io.Serializable;
+
+public class team implements Serializable{
 	
 	private String teamName;
 	private game MyGame;

@@ -1,7 +1,9 @@
 package model;
 
-public abstract class user {
-	
+import java.io.Serializable;
+
+public abstract class user implements Serializable {
+
 	private String userName;
 	private String password;
 	//////////////////////////////
@@ -27,8 +29,4 @@ public abstract class user {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	//////////////////////////////
-	
-//    public abstract String getType();
-
 }

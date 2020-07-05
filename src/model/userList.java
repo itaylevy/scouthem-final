@@ -1,59 +1,88 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class userList {
-
-	private ArrayList<user> userList=new ArrayList<user>();
-//	private T user;
+public class userList implements Serializable {
+	
+	private final String FILENAME = "users";
+	private List<user> userList = new ArrayList<user>();
+	private final String FILENAME1 = "players";
+	private List<user> ArraylistPlayer= new ArrayList<user>();
 	//////////////////////////////
 	
 	public userList() {
-		user s=new scout("oz","hapoel tel aviv", 233465583, "oz", "1");
-		user p = new player("mor","hapoel tel aviv", "Centre-back", 14, 1.75, 69.4, "mor@gmail.com", 207275631,"mor", "1");
-		userList.add(s);
-		userList.add(p);
+		
 	}
 	/////////////////////////////
 
-	public ArrayList<user> getUserList() {
+	public List<user> getUserList() {
 		return  userList;
 	}
-//	public T getUser() {
-//		return user;
-//	}
 	////////////////////////////
 	
 	public void addUser(user u)
 	{
 		userList.add(u);		
 	}
-	public boolean CheckingUserName(String userName)
-	{
-		for(int i=0; i<userList.size(); i++) {
-			if(userList.get(i).getUserName() == userName) {
-				System.out.println("Choose a different username");
-				return false;
-			}
-		}
-		return true;	
+	public user login(String userName, String password) 
+	{	
+
+		
+		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) {
+			  userList = (List<user>) input.readObject();
+			  
+				for(int i=0;i<userList.size();i++)
+	    		{
+	    			 if( (userList.get(i).getUserName().equals(userName)) && (userList.get(i).getPassword().equals(password)) ) {
+	    					return userList.get(i);
+	                        //return true;
+	    			 }
+	    		}
+	    		return null;
+	            //return false;
+		  } catch (Exception e) {
+			     e.printStackTrace();
+			  }
+			return null;	  
 	}
-	public user login(String userName, String password)
+	public void singUpPlayer(String playerName,String team, String role, int age, double height, double weight, String mail, int idPlayer,String userName, String password)
 	{
-		for(int i=0;i<userList.size();i++)
-		{
-			 System.out.println(userList.get(i).getUserName());
-			 System.out.println(userList.get(i).getPassword());
-			 System.out.println(userName);
-			 System.out.println(userList.get(i).getPassword().equals(password));
-			 
-			 if( (userList.get(i).getUserName().equals(userName)) && (userList.get(i).getPassword().equals(password)) ) {
-					return userList.get(i);
-//					return true;
-			 }
+		user P = new player(playerName, team, role, age, height, weight, mail, idPlayer, userName, password);
+		userList.add(P);
+		ArraylistPlayer.add(P);
+		
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME))){
+			objectOutputStream.writeObject(userList);
+		}catch(IOException e) {
+			e.printStackTrace();		
 		}
-		return null;
-//		return false;
+		
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME1))){
+			objectOutputStream.writeObject(ArraylistPlayer);
+		}catch(IOException e) {
+			e.printStackTrace();		
+		}
+		
 	}
+	public void singUpScout(String scoutName, String team, int scoutId, String userName, String password)
+	{	
+		user U = new scout(scoutName, team, scoutId, userName,password);
+		userList.add(U);
 	
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME))){
+			objectOutputStream.writeObject(userList);
+		}catch(IOException e) {
+			e.printStackTrace();		
+		}
+
+	}
+		
 }

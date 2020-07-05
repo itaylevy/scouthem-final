@@ -1,8 +1,17 @@
 package model;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.LinkedList;
+import java.util.Set;
 
-public class scout extends user{
+public class scout extends user implements Serializable{
+	
+	private final String FILENAME = "InterestList";
 	
 	private String scoutName;
 	private int scoutId;
@@ -15,10 +24,6 @@ public class scout extends user{
 		this.scoutName = scoutName;
 		this.scoutId=scoutId;
 		MyTeam =new team(team);
-	}
-	public scout(String userName, String password)
-	{
-		super(userName, password);	
 	}
 	public scout() {
 		
@@ -37,6 +42,12 @@ public class scout extends user{
 	public void setScoutId(int scoutId) {
 		this.scoutId = scoutId;
 	}
+	public team getMyTeam() {
+		return MyTeam;
+	}
+	public void setMyTeam(team myTeam) {
+		MyTeam = myTeam;
+	}
 	public LinkedList<player> getInterestList() {
 		return InterestList;
 	}
@@ -49,29 +60,34 @@ public class scout extends user{
 	public String toString() {
 		return  "scout - [scoutName = " + scoutName  + ", team = " +  MyTeam.getTeamName() + "]" + "." + "\n" + "\n";
 	}
-	public player getPlayerInformatin(player p)
+	public void addInterestingPlayer(player p)
 	{
+		InterestList.add(p);
 		
-		return p;
-		
-	}
-	public void addPlayer(player p)
-	{
-		this.InterestList.add(p);
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME))){
+			objectOutputStream.writeObject(InterestList);
+		}catch(IOException e) {
+			e.printStackTrace();		
+		}
 		System.out.println("player - " +  p.getPlayerName() + " added to the list");
 	}
-	public void removePlayer(player p)
+	public void removeInterestingPlayer(player p)
 	{
 		InterestList.remove(p);
 		System.out.println("player - " +  p.getPlayerName() + " remove from the list");
-		
 	}
     public LinkedList<player>showInterestList() {
+    
+		if(InterestList.isEmpty())
+		{
+			return null;
+		}
+		
+		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) {
+			  InterestList = (LinkedList<player>) input.readObject();
+		  } catch (Exception e) {
+			     e.printStackTrace();
+			  }		
 		return InterestList;
 		}
-//	@Override
-//	public scout getType() {
-//		return this;
-//	}
-
 }

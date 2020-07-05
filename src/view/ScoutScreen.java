@@ -7,6 +7,7 @@ import java.awt.Dialog.ModalExclusionType;
 import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,12 +16,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import model.player;
 import model.scout;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class ScoutScreen extends JFrame {
 
 	private JPanel contentPane;
 	private JButton signOutButton;
+	private JTable table;
 
 	/**
 	 * Create the frame.
@@ -56,6 +61,25 @@ public class ScoutScreen extends JFrame {
 			}
 
 		});
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Position", "Name"
+			}
+		));
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.addRow(new Object[]{"itay", "hapoel"});
+		// maybe get amount of players and then decide on the width and height of the table
+//		LinkedList<player> players = myScouter.getInterestList();
+//		for (player i: players) {
+//			model.addRow(new Object[]{i.getPlayerName(), i.getMyTeam().getTeamName()});
+//
+//		}
+		table.setBounds(389, 134, 303, 243);
+		panel.add(table);
 		panel.add(signOutButton);
 		
 		JLabel scoutName = new JLabel(myScouter.getScoutName());

@@ -1,9 +1,6 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Dialog.ModalExclusionType;
-import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,18 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-
 import model.player;
 
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JList;
-import javax.swing.ListSelectionModel;
-import javax.swing.AbstractListModel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JCheckBox;
@@ -143,13 +133,13 @@ public class addGame extends JFrame {
 		backButton.setOpaque(false);
 		backButton.setIcon(new ImageIcon(addGame.class.getResource("/view/res/backButton.png")));
 		backButton.setBounds(25, 475, 118, 35);
-		backButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setWindowVisible(false);
-				PlayerScreen playerScreen = new PlayerScreen(myPlayer);
-				playerScreen.setVisible(true);
-			}
-		});
+//		backButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				setWindowVisible(false);
+//				PlayerScreen playerScreen = new PlayerScreen(myPlayer);
+//				playerScreen.setVisible(true);
+//			}
+//		});
 		panel.add(backButton);
 		
 		JLabel addGameTitle = new JLabel("Add Game");
@@ -194,11 +184,10 @@ public class addGame extends JFrame {
 	}
 	public void addAddGameListner(ActionListener addGameListner) {
 		addButton.addActionListener(addGameListner);
-
 	}
-	public void moveBackToPlayerScreen(player myPlayer) {
-		setWindowVisible(false);
-		PlayerScreen playerScreen = new PlayerScreen(myPlayer);
-		playerScreen.setVisible(true);
-	}
+//	public void moveBackToPlayerScreen(player myPlayer) {
+//		setWindowVisible(false);
+//		PlayerScreen playerScreen = new PlayerScreen(myPlayer);
+//		playerScreen.setVisible(true);
+//	}
 }

@@ -1,12 +1,9 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import model.player;
 import model.scout;
 import model.user;
@@ -15,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import java.awt.Window.Type;
 import java.awt.event.ActionListener;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Color;
@@ -24,9 +20,10 @@ import javax.swing.JTextField;
 import javax.swing.JSeparator;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
-import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusAdapter;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 public class LoginView extends JFrame {
 
 	private JPanel contentPane;
@@ -34,6 +31,7 @@ public class LoginView extends JFrame {
 	private JPasswordField password;
 	private JLabel successMessage;
 	private JButton loginButton;
+	private JButton signUpButton;
 
 
 	/**
@@ -71,7 +69,7 @@ public class LoginView extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JButton signUpButton = new JButton("");
+		signUpButton = new JButton("");
 		signUpButton.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/SIGNUP.png")));
 		signUpButton.setContentAreaFilled(false);
 		signUpButton.setBorderPainted(false);
@@ -172,24 +170,18 @@ public class LoginView extends JFrame {
 	}
 	public String getUserName(){return userName.getText();}
 	public String getPassword(){return password.getText();}
-	public void setLoginMessage(user user) {
-		if (user instanceof player) {
-			this.setVisible(false);
-//			PlayerScreen playerScreen = new PlayerScreen((player) user);
-			new PlayerScreen((player) user).setVisible(true);
-//			playerScreen.setVisible(true);
-		}
-		else if (user instanceof scout) {
-			this.setVisible(false);
-			ScoutScreen scoutScreen = new ScoutScreen((scout) user);
-			scoutScreen.setVisible(true);
-		}
-		else {
+	public void setLoginMessage() {
 			successMessage.setText("User doesn't exist");
-		}
 	}
 	public void addLoginListner(ActionListener loginButtonListner) {
 		loginButton.addActionListener(loginButtonListner);
 
+	}
+	public void addSignUpListner(ActionListener signUpButtonListner) {
+		signUpButton.addActionListener(signUpButtonListner);
+
+	}
+	public void setWindowVisible(boolean flag) {
+		this.setVisible(flag);
 	}
 }

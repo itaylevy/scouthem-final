@@ -5,10 +5,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class player_List{
+public class player_List implements Serializable{
 	
 	private final String FILENAME = "players";
 	private ArrayList<player> ArraylistPlayer= new ArrayList<player>();

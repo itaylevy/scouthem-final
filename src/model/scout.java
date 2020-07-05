@@ -64,7 +64,8 @@ public class scout extends user implements Serializable{
 	{
 		InterestList.add(p);
 		
-		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME))){
+		String fileName = FILENAME + scoutId;
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))){
 			objectOutputStream.writeObject(InterestList);
 		}catch(IOException e) {
 			e.printStackTrace();		

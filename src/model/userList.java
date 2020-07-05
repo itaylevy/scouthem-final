@@ -13,13 +13,13 @@ import java.io.Serializable;
 public class userList implements Serializable {
 	
 	private final String FILENAME = "users";
-	private List<user> userList = new ArrayList<user>();
+	private List<user> userList;
 	private final String FILENAME1 = "players";
-	private List<user> ArraylistPlayer= new ArrayList<user>();
+	private List<user> ArraylistPlayer;
 	//////////////////////////////
 	
 	public userList() {
-		
+
 	}
 	/////////////////////////////
 
@@ -35,7 +35,6 @@ public class userList implements Serializable {
 	public user login(String userName, String password) 
 	{	
 
-		
 		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) {
 			  userList = (List<user>) input.readObject();
 			  

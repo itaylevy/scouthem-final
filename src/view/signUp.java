@@ -1,11 +1,8 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Dialog.ModalExclusionType;
-import java.awt.Window.Type;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
@@ -16,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerListModel;
@@ -32,25 +28,6 @@ public class signUp extends JFrame {
 	private JButton signUpButtonMenu;
 	private JButton signUpButtonAction;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					signUp frame = new signUp();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public signUp() {
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setType(Type.UTILITY);

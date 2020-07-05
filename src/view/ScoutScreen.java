@@ -1,22 +1,15 @@
 package view;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Dialog.ModalExclusionType;
-import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-
-import model.player;
 import model.scout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -27,10 +20,6 @@ public class ScoutScreen extends JFrame {
 	private JButton signOutButton;
 	private JTable table;
 
-	/**
-	 * Create the frame.
-	 * @param myScouter 
-	 */
 	public ScoutScreen(scout myScouter) {
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setType(Type.UTILITY);

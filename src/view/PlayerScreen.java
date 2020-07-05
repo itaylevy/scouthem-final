@@ -1,27 +1,18 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import model.player;
 
 import javax.swing.JLabel;
 import java.awt.Color;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
-import java.awt.Window.Type;
 import java.awt.Dialog.ModalExclusionType;
-import java.awt.Toolkit;
 
 public class PlayerScreen extends JFrame {
 

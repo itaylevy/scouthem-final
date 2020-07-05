@@ -19,7 +19,16 @@ public class userList implements Serializable {
 	//////////////////////////////
 	
 	public userList() {
-
+		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) {
+			  userList = (List<user>) input.readObject();
+		  } catch (Exception e) {
+			  userList = new ArrayList<user>();
+			  }
+		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME1))) {
+			  ArraylistPlayer = (List<user>) input.readObject();
+		  } catch (Exception e) {
+			  ArraylistPlayer= new ArrayList<user>();
+			  }	
 	}
 	/////////////////////////////
 

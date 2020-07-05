@@ -3,10 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controller.LoginController.LoginListener;
 import model.player;
-import model.userList;
-import view.LoginView;
 import view.PlayerScreen;
 
 public class PlayerController {

@@ -1,13 +1,7 @@
 package view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import model.player;
-import model.scout;
-import model.user;
-
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
@@ -22,8 +16,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusAdapter;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 public class LoginView extends JFrame {
 
 	private JPanel contentPane;

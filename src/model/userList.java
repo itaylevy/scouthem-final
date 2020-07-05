@@ -12,30 +12,35 @@ import java.util.List;
 
 public class userList implements Serializable{
 	
-	private final String FILENAME = "users";
+	private final String FILENAME = "users.txt";
 	private List<user> userList; 
-	private final String FILENAME1 = "players";
+	private final String FILENAME1 = "players.txt";
 	private List<player> ArraylistPlayer;
-	//////////////////////////////
 	
 	public userList() {
-		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) {
+		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) 
+		  {
 			  userList = (List<user>) input.readObject();
-		  } catch (Exception e) {
+		  }
+		  catch (Exception e) 
+		  {
 			  userList = new ArrayList<user>();
-			  }
-		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME1))) {
+			  writeToUserListFile(userList);
+		  }
+		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME1))) 
+		  {
 			  ArraylistPlayer = (List<player>) input.readObject();
-		  } catch (Exception e) {
+		  } 
+		  catch (Exception e) 
+		  {
 			  ArraylistPlayer= new ArrayList<player>();
-			  }	
+			  writeToListPlayersFie(ArraylistPlayer);
+		  }	
 	}
-	/////////////////////////////
 
 	public List<user> getUserList() {
 		return  userList;
 	}
-	////////////////////////////
 	
 	public void addUser(user u)
 	{
@@ -43,54 +48,50 @@ public class userList implements Serializable{
 	}
 	public user login(String userName, String password) 
 	{	
-		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) {
-			  userList = (List<user>) input.readObject();
-			  System.out.println("hapoel");
-				for(int i=0;i<userList.size();i++)
-	    		{
-	    			 if( (userList.get(i).getUserName().equals(userName)) && (userList.get(i).getPassword().equals(password)) ) {
-	    					return userList.get(i);
-	                        //return true;
-	    			 }
-	    		}
-	    		return null;
-	            //return false;
-		  } catch (Exception e) {
-			     e.printStackTrace();
-			  }
-			return null;	  
+		for(int i=0;i<userList.size();i++)
+		{
+			 if((userList.get(i).getUserName().equals(userName)) && (userList.get(i).getPassword().equals(password))) 
+			 {
+					return userList.get(i);
+			 }
+		}
+		return null;
 	}
-	public void singUpPlayer(String playerName ,String team, String role, int age, double height, double weight, String mail, int idPlayer,String userName, String password)
+	public void signUpPlayer(String playerName ,String team, String role, int age, double height, double weight, String mail, int idPlayer,String userName, String password)
 	{
 		user P = new player(playerName, team, role, age, height, weight, mail, idPlayer, userName, password);
-		System.out.println();
 		userList.add(P);
 		ArraylistPlayer.add((player) P);
-		
-		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME))){
-			objectOutputStream.writeObject(userList);
-		}catch(IOException e) {
-			e.printStackTrace();		
-		}
-		
-		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME1))){
-			objectOutputStream.writeObject(ArraylistPlayer);
-		}catch(IOException e) {
-			e.printStackTrace();		
-		}
-		
+		writeToUserListFile(userList);
+		writeToListPlayersFie(ArraylistPlayer);
 	}
-	public void singUpScout(String scoutName, String team, int scoutId, String userName, String password)
+	public void signUpScout(String scoutName, String team, int scoutId, String userName, String password)
 	{	
 		user U = new scout(scoutName, team, scoutId, userName,password);
 		userList.add(U);
-	
-		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME))){
-			objectOutputStream.writeObject(userList);
-		}catch(IOException e) {
-			e.printStackTrace();		
-		}
+		writeToUserListFile(userList);
 
+	}
+	public void writeToUserListFile(List<user> userList) {
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME)))
+		{
+			objectOutputStream.writeObject(userList);
+		}
+		catch(IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+		
+	public void writeToListPlayersFie(List<player> ArraylistPlayer) {
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME1)))
+		{
+			objectOutputStream.writeObject(ArraylistPlayer);
+		}
+		catch(IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 		
 }

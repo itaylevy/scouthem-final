@@ -11,7 +11,7 @@ public class ScoutController {
 	public ScoutController(ScoutScreen theView, scout theModel) {
 	        this.theView = theView;
 	        this.theModel = theModel;
-	        this.theView.addLoginListner(new LoginListener());
+//	        this.theView.addLoginListner(new LoginListener());
 
 	    }
 	

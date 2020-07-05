@@ -65,7 +65,7 @@ public class scout extends user implements Serializable{
 		InterestList.add(p);
 		
 		String fileName = FILENAME + scoutId;
-		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))){
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME))){
 			objectOutputStream.writeObject(InterestList);
 		}catch(IOException e) {
 			e.printStackTrace();		
@@ -75,6 +75,12 @@ public class scout extends user implements Serializable{
 	public void removeInterestingPlayer(player p)
 	{
 		InterestList.remove(p);
+		
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME))){
+			objectOutputStream.writeObject(InterestList);
+		}catch(IOException e) {
+			e.printStackTrace();		
+		}
 		System.out.println("player - " +  p.getPlayerName() + " remove from the list");
 	}
     public LinkedList<player>showInterestList() {

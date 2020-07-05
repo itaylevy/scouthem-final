@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public abstract class user implements Serializable {
+public abstract class user implements Serializable{
 
 	private String userName;
 	private String password;

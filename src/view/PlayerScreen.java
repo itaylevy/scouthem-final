@@ -139,12 +139,6 @@ public class PlayerScreen extends JFrame {
 		signOutButton.setOpaque(false);
 		signOutButton.setIcon(new ImageIcon(PlayerScreen.class.getResource("/view/res/signOutButton.png")));
 		signOutButton.setBounds(624, 13, 107, 47);
-		signOutButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setWindowVisible(false);
-				new LoginView().setVisible(true);
-			}
-		});
 		panel.add(signOutButton);
 		
 		JLabel totalPlayingTime = new JLabel("Total playing time");
@@ -205,15 +199,14 @@ public class PlayerScreen extends JFrame {
 		panel.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(PlayerScreen.class.getResource("/view/res/basicLeftBG.png")));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		addGameButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setWindowVisible(false);
-				addGame addGameScreen = new addGame(myPlayer);
-				addGameScreen.setVisible(true);
-			}
-		});
 	}
 	public void setWindowVisible(boolean flag) {
 		this.setVisible(flag);
+	}
+	public void addSignOutListener(ActionListener signOutButtonListner) {
+		signOutButton.addActionListener(signOutButtonListner);
+	}
+	public void addGameListener(ActionListener addGameButtonListner) {
+		addGameButton.addActionListener(addGameButtonListner);
 	}
 }

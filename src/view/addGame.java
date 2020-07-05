@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Dialog.ModalExclusionType;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
@@ -133,13 +132,6 @@ public class addGame extends JFrame {
 		backButton.setOpaque(false);
 		backButton.setIcon(new ImageIcon(addGame.class.getResource("/view/res/backButton.png")));
 		backButton.setBounds(25, 475, 118, 35);
-//		backButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				setWindowVisible(false);
-//				PlayerScreen playerScreen = new PlayerScreen(myPlayer);
-//				playerScreen.setVisible(true);
-//			}
-//		});
 		panel.add(backButton);
 		
 		JLabel addGameTitle = new JLabel("Add Game");
@@ -185,9 +177,7 @@ public class addGame extends JFrame {
 	public void addAddGameListner(ActionListener addGameListner) {
 		addButton.addActionListener(addGameListner);
 	}
-//	public void moveBackToPlayerScreen(player myPlayer) {
-//		setWindowVisible(false);
-//		PlayerScreen playerScreen = new PlayerScreen(myPlayer);
-//		playerScreen.setVisible(true);
-//	}
+	public void addBackButtonListner(ActionListener backButtonListner) {
+		backButton.addActionListener(backButtonListner);
+	}
 }

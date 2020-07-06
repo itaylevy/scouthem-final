@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 import model.player;
@@ -28,21 +29,24 @@ public class LoginController {
 	    public void actionPerformed(ActionEvent e) {
             String userName = theView.getUserName();
             String password = theView.getPassword();
-            user myUser = theModel.login(userName, password);
-            if (myUser instanceof player) {
+            user myUser = null;
+            myUser = theModel.login(userName, password);
+            if (myUser instanceof player) 
+            {
             	theView.setVisible(false);
             	PlayerScreen playerScreen = new PlayerScreen((player) myUser);
             	playerScreen.setVisible(true);
             	PlayerController playersControl = new PlayerController(playerScreen, (player) myUser);
-//    			
     		}
-    		else if (myUser instanceof scout) {
+    		else if (myUser instanceof scout) 
+    		{
     			theView.setVisible(false);
     			ScoutScreen scoutScreen= new ScoutScreen((scout) myUser);
     			scoutScreen.setVisible(true);
     			ScoutController scoutControl = new ScoutController(scoutScreen, (scout) myUser);
     		}
-    		else {
+    		else 
+    		{
               theView.setLoginMessage();
     		}
 		}

@@ -1,6 +1,7 @@
 package model;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -17,28 +18,13 @@ public class userList implements Serializable{
 	private final String FILENAME1 = "players.txt";
 	private List<player> ArraylistPlayer;
 	
-	public userList() {
-		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) 
-		  {
-			  userList = (List<user>) input.readObject();
-		  }
-		  catch (Exception e) 
-		  {
-			  userList = new ArrayList<user>();
-			  writeToUserListFile(userList);
-		  }
-		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME1))) 
-		  {
-			  ArraylistPlayer = (List<player>) input.readObject();
-		  } 
-		  catch (Exception e) 
-		  {
-			  ArraylistPlayer= new ArrayList<player>();
-			  writeToListPlayersFie(ArraylistPlayer);
-		  }	
+	public userList(){
+		  readUsersFile();
+		  readPlayersFile();
 	}
 
-	public List<user> getUserList() {
+	public List<user> getUserList() throws IOException {
+		readUsersFile();
 		return  userList;
 	}
 	
@@ -46,7 +32,7 @@ public class userList implements Serializable{
 	{
 		userList.add(u);		
 	}
-	public user login(String userName, String password) 
+	public user login(String userName, String password)
 	{	
 		for(int i=0;i<userList.size();i++)
 		{
@@ -76,6 +62,8 @@ public class userList implements Serializable{
 		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME)))
 		{
 			objectOutputStream.writeObject(userList);
+			objectOutputStream.flush();
+			objectOutputStream.close();
 		}
 		catch(IOException e) 
 		{
@@ -87,11 +75,36 @@ public class userList implements Serializable{
 		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME1)))
 		{
 			objectOutputStream.writeObject(ArraylistPlayer);
+			objectOutputStream.flush();
+			objectOutputStream.close();
 		}
 		catch(IOException e) 
 		{
 			e.printStackTrace();
 		}
+	}
+	public void readUsersFile(){
+		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) 
+		  {
+			  userList = (List<user>) input.readObject();
+			  input.close();
+		  }
+		catch (Exception e) 
+		  {
+			  userList = new ArrayList<user>();
+		  }
+	}
+	public void readPlayersFile() {
+		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME1))) 
+		  {
+			  ArraylistPlayer = (List<player>) input.readObject();
+			  input.close();
+
+		  } 
+		  catch (Exception e) 
+		  {
+			  ArraylistPlayer= new ArrayList<player>();
+		  }	
 	}
 		
 }

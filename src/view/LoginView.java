@@ -127,7 +127,7 @@ public class LoginView extends JFrame {
 		
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBackground(UIManager.getColor("window"));
+//		lblNewLabel_1.setBackground(UIManager.getColor("window"));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/loginRightSidee.png")));
 		lblNewLabel_1.setBounds(340, 0, 420, 543);

@@ -43,14 +43,6 @@ public class ScoutScreen extends JFrame {
 		signOutButton.setOpaque(false);
 		signOutButton.setIcon(new ImageIcon(ScoutScreen.class.getResource("/view/res/signOutButton.png")));
 		signOutButton.setBounds(624, 13, 107, 47);
-		signOutButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setWindowVisible(false);
-				new LoginView().setVisible(true);
-			}
-
-		});
-		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -61,6 +53,24 @@ public class ScoutScreen extends JFrame {
 		));
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.addRow(new Object[]{"itay", "hapoel"});
+		
+		JButton showPlayersButton = new JButton("");
+		showPlayersButton.setIcon(new ImageIcon(ScoutScreen.class.getResource("/view/res/showPlayersButton.png")));
+		showPlayersButton.setOpaque(false);
+		showPlayersButton.setContentAreaFilled(false);
+		showPlayersButton.setBorderPainted(false);
+		showPlayersButton.setBorder(null);
+		showPlayersButton.setBounds(624, 453, 107, 47);
+		panel.add(showPlayersButton);
+		
+		JButton findPlayersButton = new JButton("");
+		findPlayersButton.setIcon(new ImageIcon(ScoutScreen.class.getResource("/view/res/findPlayersButton.png")));
+		findPlayersButton.setOpaque(false);
+		findPlayersButton.setContentAreaFilled(false);
+		findPlayersButton.setBorderPainted(false);
+		findPlayersButton.setBorder(null);
+		findPlayersButton.setBounds(624, 418, 107, 47);
+		panel.add(findPlayersButton);
 		// maybe get amount of players and then decide on the width and height of the table
 //		LinkedList<player> players = myScouter.getInterestList();
 //		for (player i: players) {
@@ -77,11 +87,11 @@ public class ScoutScreen extends JFrame {
 		scoutName.setBounds(38, 32, 188, 43);
 		panel.add(scoutName);
 		
-//		JLabel teamName = new JLabel(myScouter.getMyTeam().getTeamName());
-//		teamName.setForeground(Color.WHITE);
-//		teamName.setFont(new Font("Arial", Font.PLAIN, 20));
-//		teamName.setBounds(163, 80, 178, 35);
-//		panel.add(teamName);
+		JLabel teamName = new JLabel(myScouter.getMyTeam().getTeamName());
+		teamName.setForeground(Color.WHITE);
+		teamName.setFont(new Font("Arial", Font.PLAIN, 20));
+		teamName.setBounds(28, 86, 178, 35);
+		panel.add(teamName);
 		
 		JLabel rightSideBg = new JLabel("");
 		rightSideBg.setIcon(new ImageIcon(ScoutScreen.class.getResource("/view/res/basicRightBG.png")));
@@ -96,5 +106,8 @@ public class ScoutScreen extends JFrame {
 	}
 	public void setWindowVisible(boolean flag) {
 		this.setVisible(flag);
+	}
+	public void addSignOutListener(ActionListener signOutButtonListner) {
+		signOutButton.addActionListener(signOutButtonListner);
 	}
 }

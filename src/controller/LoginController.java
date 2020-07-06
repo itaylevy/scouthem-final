@@ -11,7 +11,7 @@ import model.userList;
 import view.LoginView;
 import view.PlayerScreen;
 import view.ScoutScreen;
-import view.signUp;
+import view.SignUp;
 
 public class LoginController {
 	private LoginView theView;
@@ -40,10 +40,10 @@ public class LoginController {
     		}
     		else if (myUser instanceof scout) 
     		{
+    			ScoutScreen newView= new ScoutScreen((scout) myUser);
     			theView.setVisible(false);
-    			ScoutScreen scoutScreen= new ScoutScreen((scout) myUser);
-    			scoutScreen.setVisible(true);
-    			ScoutController scoutControl = new ScoutController(scoutScreen, (scout) myUser);
+    			newView.setVisible(true);
+    			ScoutController scoutControl = new ScoutController(newView, (scout) myUser);
     		}
     		else 
     		{
@@ -53,8 +53,11 @@ public class LoginController {
 	}
 	class signUpListener implements ActionListener{
 	    public void actionPerformed(ActionEvent e) {
-            theView.setWindowVisible(false);
-            new signUp().setVisible(true);
+            theView.setVisible(false);
+            SignUp newView = new SignUp();
+			userList newModel = new userList();
+			SignUpController signUpControl = new SignUpController(newView,newModel);
+		    newView.setVisible(true);
 		}
 	}
 }

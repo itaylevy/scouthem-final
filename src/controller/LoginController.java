@@ -43,7 +43,7 @@ public class LoginController {
     			ScoutScreen newView= new ScoutScreen((scout) myUser);
     			theView.setVisible(false);
     			newView.setVisible(true);
-    			ScoutController scoutControl = new ScoutController(newView, (scout) myUser);
+    			ScoutController scoutControl = new ScoutController(newView, (scout) myUser, theModel);
     		}
     		else 
     		{

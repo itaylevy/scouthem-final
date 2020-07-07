@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-import model.player;
 import model.scout;
 import model.user;
 import model.userList;

@@ -154,7 +154,7 @@ public class ScoutScreen extends JFrame {
 		findPlayersModel = new DefaultTableModel();
 		findPlayersTable = new JTable(findPlayersModel);
 		findPlayersTable.setBackground(new Color(51, 204, 204));
-		findPlayersTable.setForeground(Color.WHITE);
+		findPlayersTable.setForeground(Color.BLACK);
 		findPlayersModel.addColumn("Name");
 		findPlayersModel.addColumn("Team");
 		findPlayersModel.addColumn("Role");
@@ -169,7 +169,7 @@ public class ScoutScreen extends JFrame {
 		interestPlayersModel = new DefaultTableModel();
 		interestTable = new JTable(interestPlayersModel);
 		interestTable.setBackground(new Color(51, 204, 204));
-		interestTable.setForeground(Color.WHITE);
+		interestTable.setForeground(Color.BLACK);
 		interestTable.setBorder(null);
 		interestPlayersModel.addColumn("Name");
 		interestPlayersModel.addColumn("Team");

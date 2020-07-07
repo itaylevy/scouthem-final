@@ -1,7 +1,6 @@
 package model;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -34,7 +33,8 @@ public class userList implements Serializable{
 	
 	public void addUser(user u)
 	{
-		userList.add(u);		
+		userList.add(u);
+		writeToUserListFile(userList);
 	}
 	public user login(String userName, String password)
 	{
@@ -46,6 +46,7 @@ public class userList implements Serializable{
 			 }
 		}
 		
+
 		for(int i=0;i<userList.size();i++)
 		{
 			 if((userList.get(i).getUserName().equals(userName)) && (userList.get(i).getPassword().equals(password))) 

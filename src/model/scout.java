@@ -78,6 +78,7 @@ public class scout extends user implements Serializable{
 		// FILENAME1 = InterestListscoutId.txt
 		readPlayersFile();
 		readInterestingPlayerFile();
+		System.out.print("Inside add player");
 		for(int i=0; i<players.size(); i++) {
 			if(players.get(i).getIdPlayer() == idPlayer) {
 				InterestList.add(players.get(i));

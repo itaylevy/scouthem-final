@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class scout extends user implements Serializable{
 	
@@ -15,7 +17,7 @@ public class scout extends user implements Serializable{
 	private String scoutName;
 	private int scoutId;
 	private team MyTeam;
-	private LinkedList<player> InterestList = new LinkedList<player>();
+	private ArrayList<player> InterestList;
 	/////////////////////////////////////
 	
 	public scout(String scoutName, String team, int scoutId, String userName, String password) {
@@ -23,6 +25,7 @@ public class scout extends user implements Serializable{
 		this.scoutName = scoutName;
 		this.scoutId=scoutId;
 		MyTeam =new team(team);
+		InterestList = new ArrayList<player>();
 	}
 	public scout() {
 		
@@ -47,10 +50,12 @@ public class scout extends user implements Serializable{
 	public void setMyTeam(team myTeam) {
 		MyTeam = myTeam;
 	}
-	public LinkedList<player> getInterestList() {
+	public List<player> getInterestList() {
+		String fileName = FILENAME +  this.scoutId + ".txt";
+		readInterestPlayersFile(fileName);
 		return InterestList;
 	}
-	public void setInterestList(LinkedList<player> InterestList) {
+	public void setInterestList(ArrayList<player> InterestList) {
 		this.InterestList = InterestList;
 	}
 	///////////////////////////////////
@@ -61,39 +66,45 @@ public class scout extends user implements Serializable{
 	}
 	public void addInterestingPlayer(player p)
 	{
+		String fileName = FILENAME +  this.scoutId + ".txt";
+		readInterestPlayersFile(fileName);
 		InterestList.add(p);
-		
-		String fileName = FILENAME + scoutId;
-		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME))){
-			objectOutputStream.writeObject(InterestList);
-		}catch(IOException e) {
-			e.printStackTrace();		
-		}
-		System.out.println("player - " +  p.getPlayerName() + " added to the list");
+		writeToInterestListPlayersFile(InterestList);
 	}
 	public void removeInterestingPlayer(player p)
 	{
-		InterestList.remove(p);
+		String fileName = FILENAME +  this.scoutId + ".txt";
+		readInterestPlayersFile(fileName);
 		
-		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME))){
+		for(int i=0; i<InterestList.size(); i++)
+		{
+			if(InterestList.get(i).getIdPlayer() == p.getIdPlayer()) {
+				InterestList.remove(i);	
+				}
+		}
+		
+		writeToInterestListPlayersFile(InterestList);
+	}
+	
+	public void readInterestPlayersFile(String fileName) {
+		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName))) 
+		  {
+			InterestList = (ArrayList<player>) input.readObject();
+		  } 
+		  catch (Exception e) 
+		  {
+			  InterestList = new ArrayList<player>();
+		  }	
+	}
+	public void writeToInterestListPlayersFile(List<player> InterestList)
+	{
+		String fileName = FILENAME +  this.scoutId + ".txt";
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))){
 			objectOutputStream.writeObject(InterestList);
+			objectOutputStream.flush();
+			objectOutputStream.close();
 		}catch(IOException e) {
 			e.printStackTrace();		
 		}
-		System.out.println("player - " +  p.getPlayerName() + " remove from the list");
 	}
-    public LinkedList<player>showInterestList() {
-    
-		if(InterestList.isEmpty())
-		{
-			return null;
-		}
-		
-		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) {
-			  InterestList = (LinkedList<player>) input.readObject();
-		  } catch (Exception e) {
-			     e.printStackTrace();
-			  }		
-		return InterestList;
-		}
 }

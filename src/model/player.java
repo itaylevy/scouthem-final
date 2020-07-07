@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class player extends user implements Serializable{
 	
-	private final String FILENAME = "games";
+	private final String FILENAME1 = "players.txt";
 	
 	private String playerName;
 	private String role;
@@ -26,13 +26,13 @@ public class player extends user implements Serializable{
 	private int totalPlayingTime;
 	private int numOfAssists;
 	private int goals;
-	private int idPlayer;
 	private team MyTeam;
-	private ArrayList<game> ArrayListGames = new ArrayList<game>();
+	private int idPlayer;
+	private List<player> ArraylistPlayer;
 	/////////////////////////////////////////
 	
 	public player(String playerName,String team, String role, int age, double height, double weight, String mail, int idPlayer,String userName, String password) {
-		      super(userName,password);
+		      super(userName, password);
 		      this.setPlayerName(playerName);
 		      MyTeam= new team(team);
 		      this.setRole(role);
@@ -116,17 +116,17 @@ public class player extends user implements Serializable{
 	public void setGoals(int goals) {
 		this.goals += goals;
 	}
-	public int getIdPlayer() {
-		return idPlayer;
-	}
-	public void setIdPlayer(int idPlayer) {
-		this.idPlayer = idPlayer;
-	}
 	public team getMyTeam() {
 		return MyTeam;
 	}
 	public void setMyTeam(team myTeam) {
 		MyTeam = myTeam;
+	}
+	public int getIdPlayer() {
+		return idPlayer;
+	}
+	public void setIdPlayer(int idPlayer) {
+		this.idPlayer = idPlayer;
 	}
 	////////////////////////////////////////////////
 		
@@ -138,18 +138,53 @@ public class player extends user implements Serializable{
 	}
 	public void addGame(game g)
 	{
+		readPlayersFile();
 		
-		setYellowCard(g.getYellowCard());
-		setRedCard(g.getRedCard());
-		setTotalPlayingTime(g.getPlayTimeGame());
-		setNumOfAssists(g.getNumOfAssists());
-		setGoals(g.getNumOfGoals());
+		for(int i=0; i<ArraylistPlayer.size(); i++)
+		{	
+			if(ArraylistPlayer.get(i).getIdPlayer() == this.getIdPlayer()) {
+				
+				ArraylistPlayer.get(i).setYellowCard(g.getYellowCard());
+				ArraylistPlayer.get(i).setRedCard(g.getRedCard());
+				ArraylistPlayer.get(i).setTotalPlayingTime(g.getPlayTimeGame());
+				ArraylistPlayer.get(i).setNumOfAssists(g.getNumOfAssists());
+				ArraylistPlayer.get(i).setGoals(g.getNumOfGoals());
+				
+				setYellowCard(g.getYellowCard());
+				setRedCard(g.getRedCard());
+				setTotalPlayingTime(g.getPlayTimeGame());
+				setNumOfAssists(g.getNumOfAssists());
+				setGoals(g.getNumOfGoals());
+				
+				break;
+			}
+		}
 		
-		ArrayListGames.add(g);		
+			writeToListPlayersFie(ArraylistPlayer);		
 	}
-	public ArrayList<game> getSetGames()
-	{
-		return ArrayListGames;
+	public void writeToListPlayersFie(List<player> ArraylistPlayer) {
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME1)))
+		{
+			objectOutputStream.writeObject(ArraylistPlayer);
+			objectOutputStream.flush();
+			objectOutputStream.close();
+		}
+		catch(IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	public void readPlayersFile() {
+		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME1))) 
+		  {
+			  ArraylistPlayer = (List<player>) input.readObject();
+			  input.close();
+
+		  } 
+		  catch (Exception e) 
+		  {
+			  ArraylistPlayer= new ArrayList<player>();
+		  }	
 	}
 
 }

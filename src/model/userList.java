@@ -23,7 +23,7 @@ public class userList implements Serializable{
 		  readPlayersFile();
 	}
 
-	public List<user> getUserList() throws IOException {
+	public List<user> getUserList(){
 		readUsersFile();
 		return  userList;
 	}
@@ -33,7 +33,15 @@ public class userList implements Serializable{
 		userList.add(u);		
 	}
 	public user login(String userName, String password)
-	{	
+	{
+		for(int i=0;i<ArraylistPlayer.size();i++)
+		{
+			 if((ArraylistPlayer.get(i).getUserName().equals(userName)) && (ArraylistPlayer.get(i).getPassword().equals(password))) 
+			 {
+					return ArraylistPlayer.get(i);
+			 }
+		}
+		
 		for(int i=0;i<userList.size();i++)
 		{
 			 if((userList.get(i).getUserName().equals(userName)) && (userList.get(i).getPassword().equals(password))) 
@@ -105,6 +113,7 @@ public class userList implements Serializable{
 		  {
 			  ArraylistPlayer= new ArrayList<player>();
 		  }	
+	
 	}
 		
 }

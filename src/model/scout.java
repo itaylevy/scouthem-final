@@ -7,7 +7,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class scout extends user implements Serializable{
@@ -60,6 +59,7 @@ public class scout extends user implements Serializable{
 		this.InterestList = InterestList;
 	}
 	public ArrayList<player> getPlayers() {
+		readPlayersFile();
 		return players;
 	}
 	public void setPlayers(ArrayList<player> players) {
@@ -81,6 +81,7 @@ public class scout extends user implements Serializable{
 		for(int i=0; i<players.size(); i++) {
 			if(players.get(i).getIdPlayer() == idPlayer) {
 				InterestList.add(players.get(i));
+				System.out.print("Found");
 				break;
 			}
 		}

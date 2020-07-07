@@ -2,11 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
 import java.util.List;
 
-import controller.LoginController.LoginListener;
-import controller.PlayerController.signOutButtonListner;
 import model.player;
 import model.scout;
 import model.userList;
@@ -34,8 +31,8 @@ public class ScoutController {
 		   public void actionPerformed(ActionEvent e) 
 		   {
 			   	int row = theView.getSelectedRowInInterestTable();
-			   	Object oj = theView.getValueFromInterestTable(row, 2);
-			   	System.out.print(oj); 
+			   	Object id = theView.getValueFromInterestTable(row, 2);
+			   	theModel.removeInterestingPlayer((int) id);
 		   }
 	}
 	class addPlayerListner implements ActionListener
@@ -43,8 +40,9 @@ public class ScoutController {
 		   public void actionPerformed(ActionEvent e) 
 		   {
 			   	int row = theView.getSelectedRowInFindPlayersTable();
-			   	Object oj = theView.getValueFromFindPlayersTable(row, 6);
-			   	System.out.print(oj); 
+			   	Object id = theView.getValueFromFindPlayersTable(row, 6);
+			   	theModel.addInterestingPlayer((int) id);
+			   	System.out.print(id); 
 		   }
 	}
 	class signOutButtonListner implements ActionListener
@@ -64,7 +62,7 @@ public class ScoutController {
 		   {
 			   	theView.initFindPlayersTable();
 			   	theView.showFindPlayersTable();
-			   	List<player> findPlayersList = userList.getPlayersList();
+			   	List<player> findPlayersList = theModel.getPlayers();
 			   	for (player i: findPlayersList) {
 			   		theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
 			   	}
@@ -76,7 +74,7 @@ public class ScoutController {
 		   {
 			   	theView.initInterestTable();
 			   	theView.showInterestTable();
-			   	LinkedList<player> InterestList = theModel.getInterestList();
+			   	List<player> InterestList = theModel.getInterestList();
 			   	for (player i: InterestList) {
 			   		theView.addItemToInterestTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getIdPlayer());
 			   	}

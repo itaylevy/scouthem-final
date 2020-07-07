@@ -19,15 +19,10 @@ import javax.swing.SpinnerListModel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeListener;
-import java.text.ParseException;
-import java.beans.PropertyChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class SignUp extends JFrame {
 

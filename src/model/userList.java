@@ -16,7 +16,7 @@ public class userList implements Serializable{
 	private final String FILENAME = "users.txt";
 	private List<user> userList; 
 	private final String FILENAME1 = "players.txt";
-	private List<player> ArraylistPlayer;
+	private List<player> playersList;
 	
 	public userList(){
 		  readUsersFile();
@@ -27,6 +27,10 @@ public class userList implements Serializable{
 		readUsersFile();
 		return  userList;
 	}
+	public List<player> getPlayerList(){
+		readPlayersFile();
+		return  playersList;
+	}
 	
 	public void addUser(user u)
 	{
@@ -34,11 +38,11 @@ public class userList implements Serializable{
 	}
 	public user login(String userName, String password)
 	{
-		for(int i=0;i<ArraylistPlayer.size();i++)
+		for(int i=0;i<playersList.size();i++)
 		{
-			 if((ArraylistPlayer.get(i).getUserName().equals(userName)) && (ArraylistPlayer.get(i).getPassword().equals(password))) 
+			 if((playersList.get(i).getUserName().equals(userName)) && (playersList.get(i).getPassword().equals(password))) 
 			 {
-					return ArraylistPlayer.get(i);
+					return playersList.get(i);
 			 }
 		}
 		
@@ -55,9 +59,9 @@ public class userList implements Serializable{
 	{
 		user P = new player(playerName, team, role, age, height, weight, mail, idPlayer, userName, password);
 		userList.add(P);
-		ArraylistPlayer.add((player) P);
+		playersList.add((player) P);
 		writeToUserListFile(userList);
-		writeToListPlayersFie(ArraylistPlayer);
+		writeToListPlayersFie(playersList);
 	}
 	public void signUpScout(String scoutName, String team, int scoutId, String userName, String password)
 	{	
@@ -105,13 +109,13 @@ public class userList implements Serializable{
 	public void readPlayersFile() {
 		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME1))) 
 		  {
-			  ArraylistPlayer = (List<player>) input.readObject();
+			  playersList = (List<player>) input.readObject();
 			  input.close();
 
 		  } 
 		  catch (Exception e) 
 		  {
-			  ArraylistPlayer= new ArrayList<player>();
+			  playersList= new ArrayList<player>();
 		  }	
 	
 	}

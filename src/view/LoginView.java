@@ -5,7 +5,6 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Color;

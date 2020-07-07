@@ -43,6 +43,7 @@ public class SignUp extends JFrame {
 	private JTextField playerNameValue;
 	private JTextField playerIdValue;
 	private JTextField playerTeamNameValue;
+	private JLabel errorMessage;
 	private JSpinner userTypeValue;
 	private JSpinner playerAgeSpinner;
 	private JSpinner heightSpinner;
@@ -64,6 +65,12 @@ public class SignUp extends JFrame {
 		panel.setBounds(0, 0, 840, 840);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		errorMessage = new JLabel("");
+		errorMessage.setForeground(Color.RED);
+		errorMessage.setFont(new Font("Arial", Font.PLAIN, 20));
+		errorMessage.setBounds(395, 417, 279, 47);
+		panel.add(errorMessage);
 		
 		signUpButtonMenu = new JButton("");
 		signUpButtonMenu.setIcon(new ImageIcon(SignUp.class.getResource("/view/res/signUpSelected.png")));
@@ -416,5 +423,7 @@ public class SignUp extends JFrame {
 	public void addSignInActionListner(ActionListener signInActionListner) {
 		signInButton.addActionListener(signInActionListner);
 	}
-	
+	public void setErrorMessage(String messageToDisplay) {
+		errorMessage.setText(messageToDisplay);
+	}
 }

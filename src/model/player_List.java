@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class player_List implements Serializable{
 	
-	private final String FILENAME = "players";
+	private final String FILENAME = "players.txt";
 	private ArrayList<player> ArraylistPlayer= new ArrayList<player>();
 	/////////////////////////////////////////	
 			 

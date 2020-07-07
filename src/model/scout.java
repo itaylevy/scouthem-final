@@ -12,11 +12,13 @@ import java.util.List;
 
 public class scout extends user implements Serializable{
 	
-	private final String FILENAME = "InterestList";
+	private final String FILENAME = "players.txt";
+	private final String FILENAME1 = "InterestList";
 	
 	private String scoutName;
 	private int scoutId;
 	private team MyTeam;
+	private ArrayList<player> players;
 	private ArrayList<player> InterestList;
 	/////////////////////////////////////
 	
@@ -51,12 +53,17 @@ public class scout extends user implements Serializable{
 		MyTeam = myTeam;
 	}
 	public List<player> getInterestList() {
-		String fileName = FILENAME +  this.scoutId + ".txt";
-		readInterestPlayersFile(fileName);
+		readInterestingPlayerFile();
 		return InterestList;
 	}
 	public void setInterestList(ArrayList<player> InterestList) {
 		this.InterestList = InterestList;
+	}
+	public ArrayList<player> getPlayers() {
+		return players;
+	}
+	public void setPlayers(ArrayList<player> players) {
+		this.players = players;
 	}
 	///////////////////////////////////
 	
@@ -64,21 +71,29 @@ public class scout extends user implements Serializable{
 	public String toString() {
 		return  "scout - [scoutName = " + scoutName  + ", team = " +  MyTeam.getTeamName() + "]" + "." + "\n" + "\n";
 	}
-	public void addInterestingPlayer(player p)
+	
+	public void addInterestingPlayer(int idPlayer)
 	{
-		String fileName = FILENAME +  this.scoutId + ".txt";
-		readInterestPlayersFile(fileName);
-		InterestList.add(p);
+		// FILENAME = player.txt
+		// FILENAME1 = InterestListscoutId.txt
+		readPlayersFile();
+		readInterestingPlayerFile();
+		for(int i=0; i<players.size(); i++) {
+			if(players.get(i).getIdPlayer() == idPlayer) {
+				InterestList.add(players.get(i));
+				break;
+			}
+		}
 		writeToInterestListPlayersFile(InterestList);
 	}
-	public void removeInterestingPlayer(player p)
+	public void removeInterestingPlayer(int idPlayer)
 	{
-		String fileName = FILENAME +  this.scoutId + ".txt";
-		readInterestPlayersFile(fileName);
+		// FILENAME1 = InterestListscoutId.txt
+		readInterestingPlayerFile();
 		
 		for(int i=0; i<InterestList.size(); i++)
 		{
-			if(InterestList.get(i).getIdPlayer() == p.getIdPlayer()) {
+			if(InterestList.get(i).getIdPlayer() == idPlayer) {
 				InterestList.remove(i);	
 				}
 		}
@@ -86,7 +101,20 @@ public class scout extends user implements Serializable{
 		writeToInterestListPlayersFile(InterestList);
 	}
 	
-	public void readInterestPlayersFile(String fileName) {
+	public void readPlayersFile() {
+		// FILENAME = player.txt
+		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) 
+		  {
+			players = (ArrayList<player>) input.readObject();
+		  } 
+		  catch (Exception e) 
+		  {
+			  players = new ArrayList<player>();
+		  }	
+	}
+	public void readInterestingPlayerFile() {
+		// FILENAME1 = InterestListscoutId.txt
+		String fileName = FILENAME1 +  this.scoutId + ".txt";
 		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName))) 
 		  {
 			InterestList = (ArrayList<player>) input.readObject();
@@ -96,9 +124,11 @@ public class scout extends user implements Serializable{
 			  InterestList = new ArrayList<player>();
 		  }	
 	}
+
 	public void writeToInterestListPlayersFile(List<player> InterestList)
 	{
-		String fileName = FILENAME +  this.scoutId + ".txt";
+		// FILENAME1 = InterestListscoutId.txt
+		String fileName = FILENAME1 +  this.scoutId + ".txt";
 		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))){
 			objectOutputStream.writeObject(InterestList);
 			objectOutputStream.flush();
@@ -107,4 +137,5 @@ public class scout extends user implements Serializable{
 			e.printStackTrace();		
 		}
 	}
+
 }

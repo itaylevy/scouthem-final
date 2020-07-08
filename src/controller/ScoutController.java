@@ -52,7 +52,11 @@ public class ScoutController {
 				   theView.initFindPlayersTable();
 				   	theView.showFindPlayersTable();
 					for (player i: listOfPlayers) {
-				   		theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
+						if(i != null)
+						{
+							theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
+				   		
+						}
 				   	}
 			   }
 		   }

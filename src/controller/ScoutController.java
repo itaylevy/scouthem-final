@@ -55,7 +55,7 @@ public class ScoutController {
 					{
 						if(i != null)
 						{
-							theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
+							theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getYellowCard(), i.getRedCard(), i.getAge(), i.getIdPlayer());
 				   		
 						}
 				   	}
@@ -78,7 +78,7 @@ public class ScoutController {
 					{
 						if(i != null)
 						{
-							theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
+							theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getYellowCard(), i.getRedCard(), i.getAge(), i.getIdPlayer());
 				   		
 						}
 				   	}
@@ -95,7 +95,7 @@ public class ScoutController {
 			   	theView.initFindPlayersTable();
 			   	theView.showFindPlayersTable();
 			   	for (player i: listOfPlayers) {
-			   		theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
+			   		theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getYellowCard(), i.getRedCard(), i.getAge(), i.getIdPlayer());
 			   	}
 			   
 		   }
@@ -109,7 +109,7 @@ public class ScoutController {
 			   	theView.initFindPlayersTable();
 			   	theView.showFindPlayersTable();
 			   	for (player i: listOfPlayers) {
-			   		theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
+			   		theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getYellowCard(), i.getRedCard(), i.getAge(), i.getIdPlayer());
 			   	}
 			   
 		   }
@@ -123,7 +123,7 @@ public class ScoutController {
 			   	theView.initFindPlayersTable();
 			   	theView.showFindPlayersTable();
 			   	for (player i: listOfPlayers) {
-			   		theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
+			   		theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getYellowCard(), i.getRedCard(), i.getAge(), i.getIdPlayer());
 			   	}
 			   
 		   }
@@ -133,13 +133,13 @@ public class ScoutController {
 		   public void actionPerformed(ActionEvent e) 
 		   {
 			   	int row = theView.getSelectedRowInInterestTable();
-			   	Object id = theView.getValueFromInterestTable(row, 2);
+			   	Object id = theView.getValueFromInterestTable(row, 9);
 			   	theModel.removeInterestingPlayer((int) id);
 			   	theView.initInterestTable();
 			   	theView.showInterestTable();
 			   	List<player> InterestList = theModel.getInterestList();
 			   	for (player i: InterestList) {
-			   		theView.addItemToInterestTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getIdPlayer());
+			   		theView.addItemToInterestTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getYellowCard(), i.getRedCard(), i.getAge(), i.getIdPlayer());
 			   	}
 			   	theView.setMessage("Player removed");
 		   }
@@ -149,7 +149,7 @@ public class ScoutController {
 		   public void actionPerformed(ActionEvent e) 
 		   {
 			   	int row = theView.getSelectedRowInFindPlayersTable();
-			   	Object id = theView.getValueFromFindPlayersTable(row, 6);
+			   	Object id = theView.getValueFromFindPlayersTable(row, 9);
 			   	theModel.addInterestingPlayer((int) id);
 			   	theView.setMessage("Player added");
 		   }
@@ -158,6 +158,7 @@ public class ScoutController {
 	{
 		   public void actionPerformed(ActionEvent e) 
 		   {
+			   System.out.println("ScoutController: Sign out action listner");
 			   	LoginView newView = new LoginView();
 				userList newModel = new userList();
 		    	LoginController theController = new LoginController(newView,newModel);
@@ -174,7 +175,7 @@ public class ScoutController {
 			   	ArrayList<player> findPlayersList = theModel.getPlayers();
 			   	
 			   	for (player i: findPlayersList) {
-			   		theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
+			   		theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getYellowCard(), i.getRedCard(), i.getAge(), i.getIdPlayer());
 			   	}
 		   }
 	}
@@ -185,8 +186,12 @@ public class ScoutController {
 			   	theView.initInterestTable();
 			   	theView.showInterestTable();
 			   	List<player> InterestList = theModel.getInterestList();
+			   	if (InterestList.isEmpty())
+			   	{
+			   		theView.setMessage("Interest list is empty");
+			   	}
 			   	for (player i: InterestList) {
-			   		theView.addItemToInterestTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getIdPlayer());
+			   		theView.addItemToInterestTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getYellowCard(), i.getRedCard(), i.getAge(), i.getIdPlayer());
 			   	}
 		   }
 	}

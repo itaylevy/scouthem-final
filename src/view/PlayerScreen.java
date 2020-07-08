@@ -21,8 +21,7 @@ public class PlayerScreen extends JFrame {
 	private JButton addGameButton;
 
 	public PlayerScreen(player myPlayer) {
-		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-		setType(Type.UTILITY);
+		System.out.println("Created player screen");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 799, 568);

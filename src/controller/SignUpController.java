@@ -147,9 +147,10 @@ public class SignUpController {
 	{
 		   public void actionPerformed(ActionEvent e) 
 		   {
-			   theView.setVisible(false);
+			   System.out.println("SignUpController: Sign in action listner");
 			   LoginView newView = new LoginView();
 			   LoginController theController = new LoginController(newView,theModel);
+			   theView.setVisible(false);
 		       newView.setVisible(true);
 		   }
 	}

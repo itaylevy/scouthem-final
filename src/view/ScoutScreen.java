@@ -14,8 +14,10 @@ import javax.swing.JSpinner;
 import model.scout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import javax.swing.JTextField;
 import javax.swing.SpinnerListModel;
+import javax.swing.SwingConstants;
 
 public class ScoutScreen extends JFrame {
 
@@ -40,10 +42,19 @@ public class ScoutScreen extends JFrame {
 	private JLabel filterTitle;
 	private	JLabel sortTitle;
 	private JLabel messageArea;
+	private JLabel nameColumn;
+	private JLabel teamColumn;
+	private JLabel roleColumn;
+	private JLabel goalsColumn;
+	private JLabel assistColumn;
+	private JLabel playingTimeColumn;
+	private JLabel idColumn;
+	private JLabel yellowCards;
+	private JLabel redCards;
+	private JLabel ageColumn;
 
 	public ScoutScreen(scout myScouter) {
-		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-		setType(Type.UTILITY);
+		System.out.println("Created scout screen");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 799, 568);
@@ -65,7 +76,78 @@ public class ScoutScreen extends JFrame {
 		signOutButton.setIcon(new ImageIcon(ScoutScreen.class.getResource("/view/res/signOutButton.png")));
 		signOutButton.setBounds(677, 11, 107, 47);
 		
+		ageColumn = new JLabel("Age");
+		ageColumn.setFont(new Font("Arial", Font.PLAIN, 12));
+		ageColumn.setHorizontalAlignment(SwingConstants.CENTER);
+		ageColumn.setForeground(Color.WHITE);
+		ageColumn.setBounds(670, 168, 46, 14);
+		ageColumn.setVisible(false);
+		panel.add(ageColumn);
+		
+		redCards = new JLabel("Red");
+		redCards.setHorizontalAlignment(SwingConstants.CENTER);
+		redCards.setForeground(Color.RED);
+		redCards.setFont(new Font("Arial", Font.PLAIN, 12));
+		redCards.setBounds(615, 168, 46, 14);
+		panel.add(redCards);
+		
+		yellowCards = new JLabel("Yellow");
+		yellowCards.setHorizontalAlignment(SwingConstants.CENTER);
+		yellowCards.setForeground(Color.YELLOW);
+		yellowCards.setFont(new Font("Arial", Font.PLAIN, 12));
+		yellowCards.setBounds(558, 168, 46, 14);
+		panel.add(yellowCards);
+		
+		idColumn = new JLabel("ID");
+		idColumn.setHorizontalTextPosition(SwingConstants.CENTER);
+		idColumn.setHorizontalAlignment(SwingConstants.CENTER);
+		idColumn.setForeground(Color.WHITE);
+		idColumn.setFont(new Font("Arial", Font.PLAIN, 12));
+		idColumn.setBounds(720, 168, 61, 14);
+		panel.add(idColumn);
+		
+		playingTimeColumn = new JLabel("Play time");
+		playingTimeColumn.setVerticalAlignment(SwingConstants.TOP);
+		playingTimeColumn.setHorizontalTextPosition(SwingConstants.CENTER);
+		playingTimeColumn.setHorizontalAlignment(SwingConstants.CENTER);
+		playingTimeColumn.setForeground(Color.WHITE);
+		playingTimeColumn.setFont(new Font("Arial", Font.PLAIN, 12));
+		playingTimeColumn.setBounds(484, 168, 75, 20);
+		panel.add(playingTimeColumn);
+		
+		assistColumn = new JLabel("Assists");
+		assistColumn.setForeground(Color.WHITE);
+		assistColumn.setFont(new Font("Arial", Font.PLAIN, 12));
+		assistColumn.setBounds(438, 168, 46, 14);
+		panel.add(assistColumn);
+		
+		goalsColumn = new JLabel("Goals");
+		goalsColumn.setForeground(Color.WHITE);
+		goalsColumn.setFont(new Font("Arial", Font.PLAIN, 12));
+		goalsColumn.setBounds(386, 168, 46, 14);
+		panel.add(goalsColumn);
+		
+		roleColumn = new JLabel("Role");
+		roleColumn.setForeground(Color.WHITE);
+		roleColumn.setFont(new Font("Arial", Font.PLAIN, 12));
+		roleColumn.setBounds(330, 168, 46, 14);
+		panel.add(roleColumn);
+		
+		teamColumn = new JLabel("Team");
+		teamColumn.setForeground(Color.WHITE);
+		teamColumn.setFont(new Font("Arial", Font.PLAIN, 12));
+		teamColumn.setBounds(270, 168, 46, 14);
+		panel.add(teamColumn);
+		
+		nameColumn = new JLabel("Name");
+		nameColumn.setFont(new Font("Arial", Font.PLAIN, 12));
+		nameColumn.setForeground(Color.WHITE);
+		nameColumn.setBounds(210, 168, 46, 14);
+		panel.add(nameColumn);
+		
 		messageArea = new JLabel("");
+		messageArea.setHorizontalTextPosition(SwingConstants.CENTER);
+		messageArea.setHorizontalAlignment(SwingConstants.CENTER);
 		messageArea.setForeground(Color.WHITE);
 		messageArea.setFont(new Font("Arial", Font.PLAIN, 16));
 		messageArea.setBounds(370, 423, 268, 43);
@@ -78,6 +160,7 @@ public class ScoutScreen extends JFrame {
 		filterByRoleButton.setIcon(new ImageIcon(ScoutScreen.class.getResource("/view/res/filterByRole.png")));
 		filterByRoleButton.setBounds(622, 103, 107, 43);
 		panel.add(filterByRoleButton);
+		filterByRoleButton.setVisible(false);
 		
 		filterByTeamButton = new JButton("");
 		filterByTeamButton.setIcon(new ImageIcon(ScoutScreen.class.getResource("/view/res/filterByTeamButton.png")));
@@ -154,7 +237,7 @@ public class ScoutScreen extends JFrame {
 		removePlayerButton.setContentAreaFilled(false);
 		removePlayerButton.setBorderPainted(false);
 		removePlayerButton.setBorder(null);
-		removePlayerButton.setBounds(224, 408, 107, 47);
+		removePlayerButton.setBounds(224, 430, 107, 47);
 		panel.add(removePlayerButton);
 		removePlayerButton.setVisible(false);
 		
@@ -164,7 +247,7 @@ public class ScoutScreen extends JFrame {
 		addPlayerButton.setContentAreaFilled(false);
 		addPlayerButton.setBorderPainted(false);
 		addPlayerButton.setBorder(null);
-		addPlayerButton.setBounds(662, 408, 107, 47);
+		addPlayerButton.setBounds(662, 430, 107, 47);
 		panel.add(addPlayerButton);
 		addPlayerButton.setVisible(false);
 		findPlayersModel = new DefaultTableModel();
@@ -177,7 +260,7 @@ public class ScoutScreen extends JFrame {
                 return false;               
             };
 		};
-		findPlayersTable.setSelectionBackground(Color.RED);
+		findPlayersTable.setSelectionBackground(Color.GREEN);
 		findPlayersTable.setBackground(new Color(51, 204, 204));
 		findPlayersTable.setForeground(Color.BLACK);
 		findPlayersModel.addColumn("Name");
@@ -186,6 +269,9 @@ public class ScoutScreen extends JFrame {
 		findPlayersModel.addColumn("Goals");
 		findPlayersModel.addColumn("Assists");
 		findPlayersModel.addColumn("Playing time");
+		findPlayersModel.addColumn("Yellow cards");
+		findPlayersModel.addColumn("Red cards");
+		findPlayersModel.addColumn("Age");
 		findPlayersModel.addColumn("ID");
 		findPlayersTable.setBorder(null);
 		panel.add(findPlayersTable);		
@@ -207,6 +293,13 @@ public class ScoutScreen extends JFrame {
 		interestTable.setBorder(null);
 		interestPlayersModel.addColumn("Name");
 		interestPlayersModel.addColumn("Team");
+		interestPlayersModel.addColumn("Role");
+		interestPlayersModel.addColumn("Goals");
+		interestPlayersModel.addColumn("Assists");
+		interestPlayersModel.addColumn("Playing time");
+		interestPlayersModel.addColumn("Yellow cards");
+		interestPlayersModel.addColumn("Red cards");
+		interestPlayersModel.addColumn("Age");
 		interestPlayersModel.addColumn("ID");
 
 		panel.add(interestTable);
@@ -229,10 +322,19 @@ public class ScoutScreen extends JFrame {
 		findPlayersButton.setBorder(null);
 		findPlayersButton.setBounds(224, 466, 107, 47);
 		panel.add(findPlayersButton);
-		findPlayersTable.setBounds(224, 154, 545, 243);
-		interestTable.setBounds(397, 154, 303, 243);
+		findPlayersTable.setBounds(200, 186, 581, 243);
+		interestTable.setBounds(200, 186, 581, 243);
 
 		panel.add(signOutButton);
+		nameColumn.setVisible(false);
+		teamColumn.setVisible(false);
+		roleColumn.setVisible(false);
+		goalsColumn.setVisible(false);
+		assistColumn.setVisible(false);
+		playingTimeColumn.setVisible(false);
+		idColumn.setVisible(false);
+		yellowCards.setVisible(false);
+		redCards.setVisible(false);
 		
 		JLabel scoutName = new JLabel(myScouter.getScoutName());
 		scoutName.setForeground(Color.WHITE);
@@ -247,14 +349,15 @@ public class ScoutScreen extends JFrame {
 		panel.add(teamName);
 		
 		JLabel rightSideBg = new JLabel("");
+		rightSideBg.setFont(new Font("Arial", Font.PLAIN, 11));
 		rightSideBg.setIcon(new ImageIcon(ScoutScreen.class.getResource("/view/res/scoutRightBackground.png")));
 		rightSideBg.setBounds(177, 0, 637, 532);
 		panel.add(rightSideBg);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(0, 0, 412, 534);
-		panel.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon(ScoutScreen.class.getResource("/view/res/basicLeftBG.png")));
+		JLabel leftBackground = new JLabel("");
+		leftBackground.setBounds(0, 0, 412, 534);
+		panel.add(leftBackground);
+		leftBackground.setIcon(new ImageIcon(ScoutScreen.class.getResource("/view/res/basicLeftBG.png")));
 
 	}
 	public void setWindowVisible(boolean flag) {
@@ -275,6 +378,16 @@ public class ScoutScreen extends JFrame {
 		addPlayerButton.setVisible(true);
 		removePlayerButton.setVisible(false);
 		messageArea.setVisible(false);
+		nameColumn.setVisible(true);
+		teamColumn.setVisible(true);
+		roleColumn.setVisible(true);
+		goalsColumn.setVisible(true);
+		assistColumn.setVisible(true);
+		playingTimeColumn.setVisible(true);
+		idColumn.setVisible(true);
+		yellowCards.setVisible(true);
+		redCards.setVisible(true);
+		ageColumn.setVisible(true);
 	}
 	public void showInterestTable() {
 		interestTable.setVisible(true);
@@ -291,12 +404,23 @@ public class ScoutScreen extends JFrame {
 		addPlayerButton.setVisible(false);
 		removePlayerButton.setVisible(true);
 		messageArea.setVisible(false);
+		teamColumn.setVisible(true);
+		roleColumn.setVisible(true);
+		goalsColumn.setVisible(true);
+		assistColumn.setVisible(true);
+		playingTimeColumn.setVisible(true);
+		idColumn.setVisible(true);
+		yellowCards.setVisible(true);
+		redCards.setVisible(true);
+		ageColumn.setVisible(true);
+		nameColumn.setVisible(true);
+
 	}
-	public void addItemToFindPlayersTable(String name, String team, String role, int goals, int assists, int playingTime, int id) {
-		findPlayersModel.insertRow(0, new Object[] {name, team, role, goals, assists, playingTime, id});
+	public void addItemToFindPlayersTable(String name, String team, String role, int goals, int assists, int playingTime, int yellowCards, int redCards,int age, int id) {
+		findPlayersModel.insertRow(0, new Object[] {name, team, role, goals, assists, playingTime,yellowCards, redCards, age, id});
 	}
-	public void addItemToInterestTable(String name, String team, int id) {
-		interestPlayersModel.insertRow(0, new Object[] {name, team, id});
+	public void addItemToInterestTable(String name, String team, String role, int goals, int assists, int playingTime, int yellowCards, int redCards, int age, int id) {
+		interestPlayersModel.insertRow(0, new Object[] {name, team, role, goals, assists, playingTime, yellowCards, redCards, age, id});
 	}
 	public int getSelectedRowInFindPlayersTable() {
 		return findPlayersTable.getSelectedRow();

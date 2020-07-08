@@ -47,8 +47,8 @@ public class SignUp extends JFrame {
 	private JTextField mailValue;
 
 	public SignUp() {
-		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-		setType(Type.UTILITY);
+		System.out.println("Created sign up screen");
+		setAlwaysOnTop(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 799, 568);

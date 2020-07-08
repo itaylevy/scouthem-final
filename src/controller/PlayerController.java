@@ -25,21 +25,22 @@ public class PlayerController {
 	{
 		   public void actionPerformed(ActionEvent e) 
 		   {
-			   	theView.setVisible(false);
 	            addGame newView = new addGame(theModel);
 	            GameController gameControl = new GameController(newView,theModel);
-	            newView.setVisible(true);
+	            theView.setVisible(false);
+			    newView.setVisible(true);		   
 		   }
 	}
 	class signOutButtonListner implements ActionListener
 	{
 		   public void actionPerformed(ActionEvent e) 
 		   {
+			    System.out.println("PlayerController: Sign out action listner");
 			   	LoginView newView = new LoginView();
 				userList newModel = new userList();
 		    	LoginController theController = new LoginController(newView,newModel);
-		        theView.setVisible(false);
-		        newView.setVisible(true);
+		    	theView.setVisible(false);
+			    newView.setVisible(true);
 		   }
 	}
 }

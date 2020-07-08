@@ -41,6 +41,7 @@ public class GameController {
 	{
 		   public void actionPerformed(ActionEvent e) 
 		   {
+			   System.out.println("GameController: Back button action listner");
 			   theView.setVisible(false);
 			   PlayerScreen playerScreen = new PlayerScreen((player) theModel);
 			   playerScreen.setVisible(true);

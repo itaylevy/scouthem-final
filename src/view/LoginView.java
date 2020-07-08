@@ -25,8 +25,8 @@ public class LoginView extends JFrame {
 	private JButton signUpButton;
 
 	public LoginView() {
-		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-		setType(Type.UTILITY);
+		System.out.println("Created login screen");
+		setAlwaysOnTop(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 799, 568);

@@ -28,21 +28,21 @@ public class ScoutController {
 	        this.theView.addAddPlayerListener(new addPlayerListner());
 	        this.theView.addRemovePlayerListener(new removePlayerListner());
 	        this.theView.addSortByGoalsListener(new sortByGoalsListner());
-	        this.theView.addFilterByTeamOrRoleListener(new filterByTeamOrRoleListner());
+	        this.theView.addFilterByTeamListener(new filterByTeamListner());
+	        this.theView.addFilterByRoleListener(new filterByRoleListner());
 	        this.theView.addSortByAssistsListener(new sortByAssistsListner());
 	        this.theView.addSortByPlayingTimeListener(new sortByPlayingTimeListner());
 	}
-	class filterByTeamOrRoleListner implements ActionListener
+	class filterByTeamListner implements ActionListener
 	{
 		   public void actionPerformed(ActionEvent e) 
 		   {
 			   player_List players = new player_List();
 			   String teamName = theView.getTeamName();
-			   String role = theView.getPlayerRole();
 			   player[] listOfPlayers = null;
-			   if (teamName.equals("Team")) 
+			   if (teamName.equals("Team") ) 
 			   {
-				   listOfPlayers = players.sortByString("role", role);
+				   theView.setMessage("Enter valid team name");
 			   }
 			   else 
 			   {
@@ -50,8 +50,9 @@ public class ScoutController {
 			   }
 			   if (listOfPlayers != null) {
 				   theView.initFindPlayersTable();
-				   	theView.showFindPlayersTable();
-					for (player i: listOfPlayers) {
+				   theView.showFindPlayersTable();
+					for (player i: listOfPlayers) 
+					{
 						if(i != null)
 						{
 							theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
@@ -61,6 +62,30 @@ public class ScoutController {
 			   }
 		   }
 	}
+	class filterByRoleListner implements ActionListener
+	{
+		   public void actionPerformed(ActionEvent e) 
+		   {
+			   player_List players = new player_List();
+			   String role = theView.getPlayerRole();
+			   player[] listOfPlayers = null;
+			   listOfPlayers = players.sortByString("role", role);
+			   if (listOfPlayers != null) 
+			   {
+				   theView.initFindPlayersTable();
+				   theView.showFindPlayersTable();
+					for (player i: listOfPlayers) 
+					{
+						if(i != null)
+						{
+							theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
+				   		
+						}
+				   	}
+			   }
+		   }
+	}
+
 	class sortByPlayingTimeListner implements ActionListener
 	{
 		   public void actionPerformed(ActionEvent e) 
@@ -116,6 +141,7 @@ public class ScoutController {
 			   	for (player i: InterestList) {
 			   		theView.addItemToInterestTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getIdPlayer());
 			   	}
+			   	theView.setMessage("Player removed");
 		   }
 	}
 	class addPlayerListner implements ActionListener
@@ -125,6 +151,7 @@ public class ScoutController {
 			   	int row = theView.getSelectedRowInFindPlayersTable();
 			   	Object id = theView.getValueFromFindPlayersTable(row, 6);
 			   	theModel.addInterestingPlayer((int) id);
+			   	theView.setMessage("Player added");
 		   }
 	}
 	class signOutButtonListner implements ActionListener

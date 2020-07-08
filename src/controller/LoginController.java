@@ -54,8 +54,7 @@ public class LoginController {
 	    public void actionPerformed(ActionEvent e) {
             theView.setVisible(false);
             SignUp newView = new SignUp();
-			userList newModel = new userList();
-			SignUpController signUpControl = new SignUpController(newView,newModel);
+			SignUpController signUpControl = new SignUpController(newView,theModel);
 		    newView.setVisible(true);
 		}
 	}

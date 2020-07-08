@@ -14,7 +14,6 @@ public class MVCCLogin {
 		userList theModel = new userList();
     	LoginController theController = new LoginController(theView,theModel);
         theView.setVisible(true);
-
 	}
 
 }

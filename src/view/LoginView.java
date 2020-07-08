@@ -125,18 +125,18 @@ public class LoginView extends JFrame {
 		panel.add(lblNewLabel_4);
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/basicRightBG.png")));
-		lblNewLabel_1.setBounds(340, 0, 420, 543);
-		panel.add(lblNewLabel_1);
+		JLabel rightBackground = new JLabel("");
+		rightBackground.setHorizontalAlignment(SwingConstants.CENTER);
+		rightBackground.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/basicRightBG.png")));
+		rightBackground.setBounds(340, 0, 420, 543);
+		panel.add(rightBackground);
 		
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/leftSideLogin.png")));
-		lblNewLabel.setBounds(0, 0, 420, 543);
-		panel.add(lblNewLabel);
+		JLabel leftBackground = new JLabel("");
+		leftBackground.setHorizontalAlignment(SwingConstants.CENTER);
+		leftBackground.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/leftSideLogin.png")));
+		leftBackground.setBounds(0, 0, 420, 543);
+		panel.add(leftBackground);
 	}
 	public String getUserName(){return userName.getText();}
 	public String getPassword(){return password.getText();}

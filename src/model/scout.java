@@ -119,6 +119,7 @@ public class scout extends user implements Serializable{
 		String fileName = FILENAME1 +  this.scoutId + ".txt";
 		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName))) 
 		  {
+			InterestList = new ArrayList<player>();
 			InterestList = (ArrayList<player>) input.readObject();
 		  } 
 		  catch (Exception e) 

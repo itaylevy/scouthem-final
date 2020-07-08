@@ -1,9 +1,13 @@
 package model;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class player_List implements Serializable{
 	
@@ -170,7 +174,7 @@ public class player_List implements Serializable{
 		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) {
 			  ArraylistPlayer = (ArrayList<player>) input.readObject();
 		  } catch (Exception e) {
-			     e.printStackTrace();
+			  ArraylistPlayer = new ArrayList<player>();
 			  }	
 	}
 }

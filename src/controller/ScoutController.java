@@ -140,7 +140,8 @@ public class ScoutController {
 		   {
 			   	theView.initFindPlayersTable();
 			   	theView.showFindPlayersTable();
-			   	List<player> findPlayersList = theModel.getPlayers();
+			   	ArrayList<player> findPlayersList = theModel.getPlayers();
+			   	
 			   	for (player i: findPlayersList) {
 			   		theView.addItemToFindPlayersTable(i.getPlayerName(), i.getMyTeam().getTeamName(), i.getRole(), i.getGoals(), i.getNumOfAssists(), i.getTotalPlayingTime(), i.getIdPlayer());
 			   	}

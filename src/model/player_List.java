@@ -141,7 +141,7 @@ public class player_List implements Serializable{
 			    	else if (x == "assists")
 			    	{
 					        if (l[i].getNumOfAssists() <= r[j].getNumOfAssists()) {
-					        	if(l[i].getNumOfAssists() == r[j].getNumOfAssists() && l[i].getGoals() <= r[j].getGoals())
+					        	if(l[i].getNumOfAssists() == r[j].getNumOfAssists() && l[i].getGoals() >= r[j].getGoals())
 					        	{
 					        		a[k++] = r[j++];
 					        	}

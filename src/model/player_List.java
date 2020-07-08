@@ -84,9 +84,12 @@ public class player_List implements Serializable{
 	private player[] sortByTeam(String x, String y)
 	{
 		 player[] sortByTeam = new player[ArraylistPlayer.size()];
+		 int j=0;
 		 for (int i = 0; i < ArraylistPlayer.size(); i++) 
 				if(ArraylistPlayer.get(i).getMyTeam().getTeamName().contentEquals(y))
-					sortByTeam[i] = ArraylistPlayer.get(i);
+				{
+					sortByTeam[j++] = ArraylistPlayer.get(i);
+				}
 		return sortByTeam;		
 	}
 	

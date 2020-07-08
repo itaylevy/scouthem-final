@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
-import java.awt.Dialog.ModalExclusionType;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -15,7 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusAdapter;
-public class LoginView extends JFrame {
+public class LoginView extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField userName;

@@ -24,7 +24,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.SpinnerNumberModel;
 import java.awt.event.ActionListener;
 
-public class SignUp extends JFrame {
+public class SignUp extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField userName;
@@ -77,13 +77,6 @@ public class SignUp extends JFrame {
 		panel.add(signUpButtonMenu);
 		
 		signInButton = new JButton("");
-		signInButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				setWindowVisible(false);
-				new LoginView().setVisible(true);
-			}
-		});
 		signInButton.setOpaque(false);
 		signInButton.setContentAreaFilled(false);
 		signInButton.setBorderPainted(false);

@@ -133,14 +133,14 @@ public class player_List implements Serializable{
 			    while (i < left && j < right) {
 			    	if (x == "goal")
 			    	{
-					        if (l[i].getGoals() >= r[j].getGoals()) 
+					        if (l[i].getGoals() <= r[j].getGoals()) 
 					            a[k++] = l[i++];
 					        else 
 					            a[k++] = r[j++];
 			    	}
 			    	else if (x == "assists")
 			    	{
-					        if (l[i].getNumOfAssists() >= r[j].getNumOfAssists()) {
+					        if (l[i].getNumOfAssists() <= r[j].getNumOfAssists()) {
 					        	if(l[i].getNumOfAssists() == r[j].getNumOfAssists() && l[i].getGoals() <= r[j].getGoals())
 					        	{
 					        		a[k++] = r[j++];
@@ -155,7 +155,7 @@ public class player_List implements Serializable{
 					            a[k++] = r[j++];
 			    	}
 			    	else if (x == "playing time")
-			    	{	        if (l[i].getTotalPlayingTime() >= r[j].getTotalPlayingTime()) 
+			    	{	        if (l[i].getTotalPlayingTime() <= r[j].getTotalPlayingTime()) 
 						            a[k++] = l[i++];
 						        else 
 						            a[k++] = r[j++];

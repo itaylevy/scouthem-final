@@ -6,7 +6,6 @@ public abstract class User implements Serializable{
 
 	private String userName;
 	private String password;
-	//////////////////////////////
 	
 	public User(String userName, String password) {
 		this.setUserName(userName);
@@ -15,7 +14,6 @@ public abstract class User implements Serializable{
 	public User() {
 
 	}
-	///////////////////////////////
 	
 	public String getUserName() {
 		return userName;

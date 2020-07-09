@@ -51,21 +51,7 @@ public class testPlayer {
 			assertEquals("when adding 1 assist , number of assist should be 1!",1 ,playerListplayer.get(0).getNumOfAssists());
 			assertEquals("when adding 2 goals , number of goals should be 2!",2 ,playerListplayer.get(0).getGoals());
 	}
-	
-//	@Test
-//	public void removePlayerFromInterestingListTest()
-//	{
-//		t.testSignUpPlayer("mor", "hapoel tel aviv", "center back", 15, 1.83, 76.5, "mor@gmail.com", 123456789, "mor", "1");
-//		InterestListplayer = (ArrayList<user>) t.getUserList();
-//		int n = InterestListplayer.size();
-//		assertEquals("when adding new player , number of Interest players should be 1!",1 ,n);
-//		assertNotNull("After adding player the Interest List players will return and not NULL",InterestListplayer);
-//		t.removeInterestingPlayer(123456789);
-//		InterestListplayer = (ArrayList<user>) t.getUserList();
-//		n = InterestListplayer.size();
-//		assertEquals("when adding new player , number of Interest players should be 1!",0 ,n);
-//	}
-	
+		
 	@After
 	public void tearDown() {
 		 File myObj = new File("testUers.txt");

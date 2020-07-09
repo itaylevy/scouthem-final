@@ -11,7 +11,6 @@ public class Game implements Serializable{
 	private String rivalTeam;
 	private int numOfAssists;
 	private int numOfGoals;
-	/////////////////////////////////
 	
 	public Game() {
 	
@@ -26,7 +25,6 @@ public class Game implements Serializable{
 		this.numOfAssists = numOfAssists;
 		this.numOfGoals = numOfGoals;
 	}
-	/////////////////////////////////
 	
 	public String getDate() {
 		return date;
@@ -70,7 +68,6 @@ public class Game implements Serializable{
 	public void setNumOfGoals(int numOfGoals) {
 		this.numOfGoals = numOfGoals;
 	}
-    ///////////////////////////////////////
 	
 	@Override
 	public String toString() {

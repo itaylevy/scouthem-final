@@ -19,7 +19,6 @@ public class Scout extends User implements Serializable{
 	private Team MyTeam;
 	private ArrayList<Player> players;
 	private ArrayList<Player> InterestList;
-	/////////////////////////////////////
 	
 	public Scout(String scoutName, String team, int scoutId, String userName, String password) {
 		super(userName, password);
@@ -31,7 +30,6 @@ public class Scout extends User implements Serializable{
 	public Scout() {
 		
 	}
-	////////////////////////////////////
 	
 	public String getScoutName() {
 		return scoutName;
@@ -65,7 +63,6 @@ public class Scout extends User implements Serializable{
 	public void setPlayers(ArrayList<Player> players) {
 		this.players = players;
 	}
-	///////////////////////////////////
 	
 	@Override
 	public String toString() {
@@ -76,8 +73,6 @@ public class Scout extends User implements Serializable{
 	
 	public void addInterestingPlayer(int idPlayer)
 	{
-		// FILENAME = player.txt
-		// FILENAME1 = InterestListscoutId.txt
 		readPlayersFile();
 		readInterestingPlayerFile();
 		System.out.print("Inside add player");
@@ -92,7 +87,6 @@ public class Scout extends User implements Serializable{
 	}
 	public void removeInterestingPlayer(int idPlayer)
 	{
-		// FILENAME1 = InterestListscoutId.txt
 		readInterestingPlayerFile();
 		
 		for(int i=0; i<InterestList.size(); i++)
@@ -106,7 +100,6 @@ public class Scout extends User implements Serializable{
 	}
 	
 	public void readPlayersFile() {
-		// FILENAME = player.txt
 		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(playersFileName))) 
 		  {
 			players = (ArrayList<Player>) input.readObject();
@@ -117,7 +110,6 @@ public class Scout extends User implements Serializable{
 		  }	
 	}
 	public void readInterestingPlayerFile() {
-		// FILENAME1 = InterestListscoutId.txt
 		String fileName = interestListFileName +  this.scoutId + ".txt";
 		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName))) 
 		  {
@@ -132,7 +124,6 @@ public class Scout extends User implements Serializable{
 
 	public void writeToInterestListPlayersFile(List<Player> InterestList)
 	{
-		// FILENAME1 = InterestListscoutId.txt
 		String fileName = interestListFileName +  this.scoutId + ".txt";
 		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))){
 			objectOutputStream.writeObject(InterestList);

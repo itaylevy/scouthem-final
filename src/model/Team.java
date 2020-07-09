@@ -13,7 +13,6 @@ public class Team implements Serializable{
 	public Team(String teamName) {
 		this.teamName = teamName;
 	}
-	//////////////////////////////////////
 
 	public String getTeamName() {
 		return teamName;

@@ -101,13 +101,13 @@ public class PlayerScreen extends JFrame {
 		JLabel playerName = new JLabel(myPlayer.getPlayerName());
 		playerName.setForeground(Color.WHITE);
 		playerName.setFont(new Font("Arial", Font.BOLD, 37));
-		playerName.setBounds(38, 32, 188, 43);
+		playerName.setBounds(38, 32, 292, 43);
 		panel.add(playerName);
 		
 		JLabel teamName = new JLabel(myPlayer.getMyTeam().getTeamName());
 		teamName.setForeground(Color.WHITE);
 		teamName.setFont(new Font("Arial", Font.PLAIN, 20));
-		teamName.setBounds(163, 80, 178, 35);
+		teamName.setBounds(35, 109, 226, 35);
 		panel.add(teamName);
 		
 		JLabel playerAge = new JLabel(String.valueOf(myPlayer.getAge()));
@@ -176,7 +176,7 @@ public class PlayerScreen extends JFrame {
 		JLabel playerPosition = new JLabel(myPlayer.getRole());
 		playerPosition.setFont(new Font("Arial", Font.PLAIN, 20));
 		playerPosition.setForeground(Color.WHITE);
-		playerPosition.setBounds(38, 86, 115, 23);
+		playerPosition.setBounds(38, 86, 196, 23);
 		panel.add(playerPosition);
 		
 		JLabel rightSideBg = new JLabel("");

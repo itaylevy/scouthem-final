@@ -82,6 +82,12 @@ public class ScoutScreen extends JFrame {
 		ageColumn.setForeground(Color.WHITE);
 		ageColumn.setBounds(670, 168, 46, 14);
 		ageColumn.setVisible(false);
+		
+		JLabel scoutTitle = new JLabel("Scout");
+		scoutTitle.setForeground(Color.WHITE);
+		scoutTitle.setFont(new Font("Arial", Font.BOLD, 18));
+		scoutTitle.setBounds(29, 32, 153, 43);
+		panel.add(scoutTitle);
 		panel.add(ageColumn);
 		
 		redCards = new JLabel("Red");
@@ -338,14 +344,14 @@ public class ScoutScreen extends JFrame {
 		
 		JLabel scoutName = new JLabel(myScouter.getScoutName());
 		scoutName.setForeground(Color.WHITE);
-		scoutName.setFont(new Font("Arial", Font.BOLD, 25));
-		scoutName.setBounds(28, 32, 188, 43);
+		scoutName.setFont(new Font("Arial", Font.BOLD, 18));
+		scoutName.setBounds(28, 59, 153, 43);
 		panel.add(scoutName);
 		
 		JLabel teamName = new JLabel(myScouter.getMyTeam().getTeamName());
 		teamName.setForeground(Color.WHITE);
-		teamName.setFont(new Font("Arial", Font.PLAIN, 18));
-		teamName.setBounds(28, 72, 178, 35);
+		teamName.setFont(new Font("Arial", Font.PLAIN, 15));
+		teamName.setBounds(28, 99, 178, 35);
 		panel.add(teamName);
 		
 		JLabel rightSideBg = new JLabel("");

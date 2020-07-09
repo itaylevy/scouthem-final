@@ -13,9 +13,9 @@ import java.util.List;
 public class userList implements Serializable{
 	
 	private final String FILENAME = "users.txt";
-	private List<user> userList; 
+	private List<user> userList = null; 
 	private final String FILENAME1 = "players.txt";
-	private List<player> playersList;
+	private List<player> playersList = null;
 	
 	public userList(){
 		  readUsersFile();
@@ -30,7 +30,6 @@ public class userList implements Serializable{
 		readPlayersFile();
 		return  playersList;
 	}
-	
 	public void addUser(user u)
 	{
 		userList.add(u);
@@ -38,6 +37,13 @@ public class userList implements Serializable{
 	}
 	public user login(String userName, String password)
 	{
+		for(int i=0;i<userList.size();i++)
+		{
+			 if((userList.get(i).getUserName().equals(userName)) && (userList.get(i).getPassword().equals(password))) 
+			 {
+					return userList.get(i);
+			 }
+		}
 		for(int i=0;i<playersList.size();i++)
 		{
 			 if((playersList.get(i).getUserName().equals(userName)) && (playersList.get(i).getPassword().equals(password))) 
@@ -46,14 +52,6 @@ public class userList implements Serializable{
 			 }
 		}
 		
-
-		for(int i=0;i<userList.size();i++)
-		{
-			 if((userList.get(i).getUserName().equals(userName)) && (userList.get(i).getPassword().equals(password))) 
-			 {
-					return userList.get(i);
-			 }
-		}
 		return null;
 	}
 	public void signUpPlayer(String playerName ,String team, String role, int age, double height, double weight, String mail, int idPlayer,String userName, String password)
@@ -77,6 +75,7 @@ public class userList implements Serializable{
 			objectOutputStream.writeObject(userList);
 			objectOutputStream.flush();
 			objectOutputStream.close();
+			System.out.println("Write to users file succeed");
 		}
 		catch(IOException e) 
 		{
@@ -90,6 +89,7 @@ public class userList implements Serializable{
 			objectOutputStream.writeObject(ArraylistPlayer);
 			objectOutputStream.flush();
 			objectOutputStream.close();
+			System.out.println("Write to players file succeed");
 		}
 		catch(IOException e) 
 		{
@@ -101,10 +101,18 @@ public class userList implements Serializable{
 		  {
 			  userList = (List<user>) input.readObject();
 			  input.close();
+			  System.out.println("Read users file succeed");
+			  System.out.println("Userlist value is:" + userList);
+
 		  }
 		catch (Exception e) 
 		  {
-			  userList = new ArrayList<user>();
+			System.out.println("Userlist value is:" + userList);
+			if (userList == null) {
+				 userList = new ArrayList<user>();
+				 System.out.println("Created users list");
+			}
+			  
 		  }
 	}
 	public void readPlayersFile() {
@@ -112,11 +120,17 @@ public class userList implements Serializable{
 		  {
 			  playersList = (List<player>) input.readObject();
 			  input.close();
-
+			  System.out.println("Read players file succeed");
+			  System.out.println("playerslist value is:" + playersList);
 		  } 
 		  catch (Exception e) 
 		  {
+			System.out.println("playerslist value is:" + playersList);
+			if (playersList == null) 
+			{
 			  playersList= new ArrayList<player>();
+			  System.out.println("Created players list");
+			}
 		  }	
 	
 	}

@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class player extends user implements Serializable{
-	
-	private final String FILENAME1 = "players.txt";
-	
+
+	private final String FILENAME1 = "players.txt";	
 	private String playerName;
 	private String role;
 	private String mail;
@@ -130,7 +129,9 @@ public class player extends user implements Serializable{
 		
 	@Override
 	public String toString() {
-		return "player -  [playerName = " + playerName + ", team = " + MyTeam.getTeamName() + ", role = " + role + "\n" + ", age = " + age + ", height = " + height
+		return "Username:" + this.getUserName() + "\n" +
+				"Password:" + this.getPassword() + "\n" +
+				"player -  [playerName = " + playerName + ", team = " + MyTeam.getTeamName() + ", role = " + role + "\n" + ", age = " + age + ", height = " + height
 				+ ", weight = " + weight + "\n" + ", mail = " + mail + ", yellowCard = " + yellowCard + ", redCard = " + redCard
 				+ "\n" + ", totalPlayingTime = " + totalPlayingTime + ", numOfAssists = " + numOfAssists + ", goals = " + goals + "." + "\n" + "\n";
 	}

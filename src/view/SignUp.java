@@ -24,7 +24,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.SpinnerNumberModel;
 import java.awt.event.ActionListener;
 
-public class SignUp extends JFrame {
+public class SignUp extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField userName;
@@ -44,10 +44,11 @@ public class SignUp extends JFrame {
 	private JSpinner heightSpinner;
 	private JSpinner weightSpinner;
 	private JSpinner roleSpinner;
+	private JTextField mailValue;
 
 	public SignUp() {
-		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-		setType(Type.UTILITY);
+		System.out.println("Created sign up screen");
+		setAlwaysOnTop(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 799, 568);
@@ -64,7 +65,7 @@ public class SignUp extends JFrame {
 		errorMessage = new JLabel("");
 		errorMessage.setForeground(Color.RED);
 		errorMessage.setFont(new Font("Arial", Font.PLAIN, 20));
-		errorMessage.setBounds(395, 417, 279, 47);
+		errorMessage.setBounds(394, 458, 279, 47);
 		panel.add(errorMessage);
 		
 		signUpButtonMenu = new JButton("");
@@ -76,13 +77,6 @@ public class SignUp extends JFrame {
 		panel.add(signUpButtonMenu);
 		
 		signInButton = new JButton("");
-		signInButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				setWindowVisible(false);
-				new LoginView().setVisible(true);
-			}
-		});
 		signInButton.setOpaque(false);
 		signInButton.setContentAreaFilled(false);
 		signInButton.setBorderPainted(false);
@@ -105,7 +99,7 @@ public class SignUp extends JFrame {
 		signUpButtonAction.setBorderPainted(false);
 		signUpButtonAction.setBorder(null);
 		signUpButtonAction.setIcon(new ImageIcon(SignUp.class.getResource("/view/res/SIGNUP.png")));
-		signUpButtonAction.setBounds(395, 372, 105, 34);
+		signUpButtonAction.setBounds(384, 411, 105, 34);
 		panel.add(signUpButtonAction);
 		userName.setBorder(null);
 		userName.setOpaque(false);
@@ -139,7 +133,7 @@ public class SignUp extends JFrame {
 		JPanel playerPanel = new JPanel();
 		playerPanel.setBackground(new Color(51, 204, 204));
 		playerPanel.setForeground(Color.LIGHT_GRAY);
-		playerPanel.setBounds(523, 118, 210, 282);
+		playerPanel.setBounds(523, 118, 210, 327);
 		panel.add(playerPanel);
 		playerPanel.setLayout(null);
 		playerPanel.setVisible(false);
@@ -214,7 +208,7 @@ public class SignUp extends JFrame {
 		JLabel playerTeamTitle = new JLabel("Team");
 		playerTeamTitle.setForeground(Color.WHITE);
 		playerTeamTitle.setFont(new Font("Arial", Font.PLAIN, 20));
-		playerTeamTitle.setBounds(10, 123, 61, 24);
+		playerTeamTitle.setBounds(10, 150, 61, 24);
 		playerPanel.add(playerTeamTitle);
 		
 		JLabel ageTitle = new JLabel("Age");
@@ -226,25 +220,25 @@ public class SignUp extends JFrame {
 		JLabel heightTitle = new JLabel("Height");
 		heightTitle.setForeground(Color.WHITE);
 		heightTitle.setFont(new Font("Arial", Font.PLAIN, 20));
-		heightTitle.setBounds(10, 212, 71, 24);
+		heightTitle.setBounds(10, 257, 71, 24);
 		playerPanel.add(heightTitle);
 		
 		JLabel weightTitle = new JLabel("Weight");
 		weightTitle.setForeground(Color.WHITE);
 		weightTitle.setFont(new Font("Arial", Font.PLAIN, 20));
-		weightTitle.setBounds(10, 247, 71, 24);
+		weightTitle.setBounds(10, 292, 71, 24);
 		playerPanel.add(weightTitle);
 		
 		heightSpinner = new JSpinner();
 		heightSpinner.setModel(new SpinnerNumberModel(100, 100, 200, 1));
 		heightSpinner.setBorder(null);
-		heightSpinner.setBounds(90, 217, 105, 20);
+		heightSpinner.setBounds(90, 257, 105, 20);
 		playerPanel.add(heightSpinner);
 		
 		weightSpinner = new JSpinner();
 		weightSpinner.setModel(new SpinnerNumberModel(35, 35, 100, 1));
 		weightSpinner.setBorder(null);
-		weightSpinner.setBounds(89, 252, 107, 20);
+		weightSpinner.setBounds(88, 292, 107, 20);
 		playerPanel.add(weightSpinner);
 		
 		JLabel idTitle = new JLabel("ID");
@@ -262,13 +256,13 @@ public class SignUp extends JFrame {
 		JLabel roleTitle = new JLabel("Role");
 		roleTitle.setForeground(Color.WHITE);
 		roleTitle.setFont(new Font("Arial", Font.PLAIN, 20));
-		roleTitle.setBounds(10, 158, 61, 24);
+		roleTitle.setBounds(10, 185, 61, 24);
 		playerPanel.add(roleTitle);
 		
 		roleSpinner = new JSpinner();
 		roleSpinner.setModel(new SpinnerListModel(new String[] {"Goalkeeper", "Centre-back", "Sweeper", "Full-back", "Wing-back", "Centre midfield", "Defensive midfield", "Attacking midfield", "Wide midfield", "Centre forward", "Second striker", "Winger"}));
 		roleSpinner.setBorder(null);
-		roleSpinner.setBounds(66, 163, 129, 20);
+		roleSpinner.setBounds(64, 185, 129, 20);
 		playerPanel.add(roleSpinner);
 		
 		playerNameValue = new JTextField();
@@ -298,11 +292,30 @@ public class SignUp extends JFrame {
 		});
 		
 		playerTeamNameValue = new JTextField();
-		playerTeamNameValue.setText("Enter Team Name");
+		playerTeamNameValue.setText("Enter Team name");
 		playerTeamNameValue.setColumns(10);
 		playerTeamNameValue.setBorder(null);
-		playerTeamNameValue.setBounds(71, 128, 124, 20);
+		playerTeamNameValue.setBounds(71, 154, 124, 20);
 		playerPanel.add(playerTeamNameValue);
+		
+		JLabel mailTitle = new JLabel("E-Mail");
+		mailTitle.setForeground(Color.WHITE);
+		mailTitle.setFont(new Font("Arial", Font.PLAIN, 20));
+		mailTitle.setBounds(10, 114, 61, 24);
+		playerPanel.add(mailTitle);
+		
+		mailValue = new JTextField();
+		mailValue.setText("Enter E-Mail");
+		mailValue.setColumns(10);
+		mailValue.setBorder(null);
+		mailValue.setBounds(74, 115, 121, 20);
+		playerPanel.add(mailValue);
+		mailValue.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				mailValue.setText("");
+			}
+		});
 		playerTeamNameValue.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -373,6 +386,9 @@ public class SignUp extends JFrame {
 	public void setWindowVisible(boolean flag) {
 		this.setVisible(flag);
 	}
+	public String getPlayerEmail() {
+		return mailValue.getText();
+	}
 	public String getUserType() {
 		return (String) userTypeValue.getValue();
 	}
@@ -388,11 +404,11 @@ public class SignUp extends JFrame {
 	public String getScoutName() {
 		return scoutNameValue.getText();
 	}
-	public int getPlayerId() {
-		return Integer.parseInt(playerIdValue.getText());
+	public String getPlayerId() {
+		return playerIdValue.getText();
 	}
-	public int getScoutId() {
-		return Integer.parseInt(scoutIdValue.getText());
+	public String getScoutId() {
+		return scoutIdValue.getText();
 	}
 	public String getPlayerTeamName(){
 		return playerTeamNameValue.getText();

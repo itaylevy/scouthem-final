@@ -1,6 +1,9 @@
 package controller;
 
 import java.awt.event.ActionListener;
+
+import javax.swing.text.View;
+
 import java.awt.event.ActionEvent;
 
 import model.player;
@@ -32,10 +35,10 @@ public class LoginController {
             myUser = theModel.login(userName, password);
             if (myUser instanceof player) 
             {
-            	theView.setVisible(false);
             	PlayerScreen playerScreen = new PlayerScreen((player) myUser);
-            	playerScreen.setVisible(true);
             	PlayerController playersControl = new PlayerController(playerScreen, (player) myUser);
+            	theView.setVisible(false);
+            	playerScreen.setVisible(true);
     		}
     		else if (myUser instanceof scout) 
     		{
@@ -52,10 +55,10 @@ public class LoginController {
 	}
 	class signUpListener implements ActionListener{
 	    public void actionPerformed(ActionEvent e) {
-            theView.setVisible(false);
+	    	System.out.println("LoginController: Sign up action listner");
             SignUp newView = new SignUp();
-			userList newModel = new userList();
-			SignUpController signUpControl = new SignUpController(newView,newModel);
+			SignUpController signUpControl = new SignUpController(newView,theModel);
+			theView.setVisible(false);
 		    newView.setVisible(true);
 		}
 	}

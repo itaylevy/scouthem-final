@@ -69,7 +69,9 @@ public class scout extends user implements Serializable{
 	
 	@Override
 	public String toString() {
-		return  "scout - [scoutName = " + scoutName  + ", team = " +  MyTeam.getTeamName() + "]" + "." + "\n" + "\n";
+		return  "Username:" + this.getUserName() + "\n" +
+				"Password:" + this.getPassword() + "\n" +
+				"scout - [scoutName = " + scoutName  + ", team = " +  MyTeam.getTeamName() + "]" + "." + "\n" + "\n";
 	}
 	
 	public void addInterestingPlayer(int idPlayer)

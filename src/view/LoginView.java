@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
-import java.awt.Dialog.ModalExclusionType;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -15,7 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusAdapter;
-public class LoginView extends JFrame {
+public class LoginView extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField userName;
@@ -25,8 +24,8 @@ public class LoginView extends JFrame {
 	private JButton signUpButton;
 
 	public LoginView() {
-		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-		setType(Type.UTILITY);
+		System.out.println("Created login screen");
+		setAlwaysOnTop(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 799, 568);
@@ -125,18 +124,18 @@ public class LoginView extends JFrame {
 		panel.add(lblNewLabel_4);
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/basicRightBG.png")));
-		lblNewLabel_1.setBounds(340, 0, 420, 543);
-		panel.add(lblNewLabel_1);
+		JLabel rightBackground = new JLabel("");
+		rightBackground.setHorizontalAlignment(SwingConstants.CENTER);
+		rightBackground.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/basicRightBG.png")));
+		rightBackground.setBounds(340, 0, 420, 543);
+		panel.add(rightBackground);
 		
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/leftSideLogin.png")));
-		lblNewLabel.setBounds(0, 0, 420, 543);
-		panel.add(lblNewLabel);
+		JLabel leftBackground = new JLabel("");
+		leftBackground.setHorizontalAlignment(SwingConstants.CENTER);
+		leftBackground.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/leftSideLogin.png")));
+		leftBackground.setBounds(0, 0, 420, 543);
+		panel.add(leftBackground);
 	}
 	public String getUserName(){return userName.getText();}
 	public String getPassword(){return password.getText();}

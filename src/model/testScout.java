@@ -13,21 +13,21 @@ import org.junit.Test;
 public class testScout {
 	
 	private test t;
-	private scout s;
-	private ArrayList<user> InterestListplayer;
+	private Scout s;
+	private ArrayList<User> InterestListplayer;
 	
 	@Before
 	public void setUp() {
 		t = new test();	
-		s = new scout();
-		InterestListplayer = new ArrayList<user>();
+		s = new Scout();
+		InterestListplayer = new ArrayList<User>();
 	}
 	
 	@Test
 	public void addPlayerToInterestingListTest()
 	{
 		t.testSignUpPlayer("mor", "hapoel tel aviv", "center back", 15, 1.83, 76.5, "mor@gmail.com", 123456789, "mor", "1");
-		InterestListplayer = (ArrayList<user>) t.getUserList();
+		InterestListplayer = (ArrayList<User>) t.getUserList();
 		int n = InterestListplayer.size();
 		assertEquals("when adding new player , number of Interest players should be 1!",1 ,n);
 		assertNotNull("After adding player the Interest List players will return and not NULL",InterestListplayer);	
@@ -37,24 +37,24 @@ public class testScout {
 	public void removePlayerFromInterestingListTest()
 	{
 		t.testSignUpPlayer("mor", "hapoel tel aviv", "center back", 15, 1.83, 76.5, "mor@gmail.com", 123456789, "mor", "1");
-		InterestListplayer = (ArrayList<user>) t.getUserList();
+		InterestListplayer = (ArrayList<User>) t.getUserList();
 		int n = InterestListplayer.size();
 		assertEquals("when adding new player , number of Interest players should be 1!",1 ,n);
 			
-		int idPlayer = ((player) InterestListplayer.get(0)).getIdPlayer();
+		int idPlayer = ((Player) InterestListplayer.get(0)).getIdPlayer();
 		
 		t.testReadUsersFile();
 
 		for(int i=0; i<InterestListplayer.size(); i++)
 		{
-			if(((player) InterestListplayer.get(i)).getIdPlayer() == idPlayer) {
+			if(((Player) InterestListplayer.get(i)).getIdPlayer() == idPlayer) {
 				InterestListplayer.remove(i);	
 				}
 		}
 		
 		t.testWriteToUserListFile(InterestListplayer);
 		
-		InterestListplayer = (ArrayList<user>) t.getUserList();
+		InterestListplayer = (ArrayList<User>) t.getUserList();
 		n = InterestListplayer.size();
 		assertEquals("when adding new player , number of Interest players should be 1!",0 ,n);
 	}

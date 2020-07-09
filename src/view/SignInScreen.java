@@ -14,7 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusAdapter;
-public class LoginView extends JFrame{
+public class SignInScreen extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField userName;
@@ -23,7 +23,7 @@ public class LoginView extends JFrame{
 	private JButton loginButton;
 	private JButton signUpButton;
 
-	public LoginView() {
+	public SignInScreen() {
 		System.out.println("Created login screen");
 		setAlwaysOnTop(true);
 		setResizable(false);
@@ -40,7 +40,7 @@ public class LoginView extends JFrame{
 		panel.setLayout(null);
 		
 		signUpButton = new JButton("");
-		signUpButton.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/SIGNUP.png")));
+		signUpButton.setIcon(new ImageIcon(SignInScreen.class.getResource("/view/res/SIGNUP.png")));
 		signUpButton.setContentAreaFilled(false);
 		signUpButton.setBorderPainted(false);
 		signUpButton.setBorder(null);
@@ -52,7 +52,7 @@ public class LoginView extends JFrame{
 		signInButton.setContentAreaFilled(false);
 		signInButton.setBorderPainted(false);
 		signInButton.setBorder(null);
-		signInButton.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/SIGNIN.png")));
+		signInButton.setIcon(new ImageIcon(SignInScreen.class.getResource("/view/res/SIGNIN.png")));
 		signInButton.setBounds(542, 33, 112, 47);
 		panel.add(signInButton);
 		
@@ -61,7 +61,7 @@ public class LoginView extends JFrame{
 		loginButton.setContentAreaFilled(false);
 		loginButton.setForeground(Color.WHITE);
 		loginButton.setOpaque(false);
-		loginButton.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/SIGNIN1.png")));
+		loginButton.setIcon(new ImageIcon(SignInScreen.class.getResource("/view/res/SIGNIN1.png")));
 		loginButton.setBorderPainted(false);
 		loginButton.setBorder(null);
 		loginButton.setBounds(376, 415, 135, 41);
@@ -126,14 +126,14 @@ public class LoginView extends JFrame{
 		
 		JLabel rightBackground = new JLabel("");
 		rightBackground.setHorizontalAlignment(SwingConstants.CENTER);
-		rightBackground.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/basicRightBG.png")));
+		rightBackground.setIcon(new ImageIcon(SignInScreen.class.getResource("/view/res/basicRightBG.png")));
 		rightBackground.setBounds(340, 0, 420, 543);
 		panel.add(rightBackground);
 		
 
 		JLabel leftBackground = new JLabel("");
 		leftBackground.setHorizontalAlignment(SwingConstants.CENTER);
-		leftBackground.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/leftSideLogin.png")));
+		leftBackground.setIcon(new ImageIcon(SignInScreen.class.getResource("/view/res/leftSideLogin.png")));
 		leftBackground.setBounds(0, 0, 420, 543);
 		panel.add(leftBackground);
 	}

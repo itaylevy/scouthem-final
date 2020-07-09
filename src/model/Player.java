@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class player extends user implements Serializable{
+public class Player extends User implements Serializable{
 
-	private final String FILENAME1 = "players.txt";	
+	private final String playersFileName = "players.txt";	
 	private String playerName;
 	private String role;
 	private String mail;
@@ -23,15 +23,15 @@ public class player extends user implements Serializable{
 	private int totalPlayingTime;
 	private int numOfAssists;
 	private int goals;
-	private team MyTeam;
+	private Team MyTeam;
 	private int idPlayer;
-	private List<player> ArraylistPlayer;
+	private List<Player> ArraylistPlayer;
 	/////////////////////////////////////////
 	
-	public player(String playerName,String team, String role, int age, double height, double weight, String mail, int idPlayer,String userName, String password) {
+	public Player(String playerName,String team, String role, int age, double height, double weight, String mail, int idPlayer,String userName, String password) {
 		      super(userName, password);
 		      this.setPlayerName(playerName);
-		      MyTeam= new team(team);
+		      MyTeam= new Team(team);
 		      this.setRole(role);
 		      this.setAge(age);
 		      this.setHeight(height);
@@ -39,7 +39,7 @@ public class player extends user implements Serializable{
 		      this.setMail(mail);
 		      this.setIdPlayer(idPlayer);
 	}
-	public player()
+	public Player()
 	{
 		
 	}
@@ -113,10 +113,10 @@ public class player extends user implements Serializable{
 	public void setGoals(int goals) {
 		this.goals += goals;
 	}
-	public team getMyTeam() {
+	public Team getMyTeam() {
 		return MyTeam;
 	}
-	public void setMyTeam(team myTeam) {
+	public void setMyTeam(Team myTeam) {
 		MyTeam = myTeam;
 	}
 	public int getIdPlayer() {
@@ -135,7 +135,7 @@ public class player extends user implements Serializable{
 				+ ", weight = " + weight + "\n" + ", mail = " + mail + ", yellowCard = " + yellowCard + ", redCard = " + redCard
 				+ "\n" + ", totalPlayingTime = " + totalPlayingTime + ", numOfAssists = " + numOfAssists + ", goals = " + goals + "." + "\n" + "\n";
 	}
-	public void addGame(game g)
+	public void addGame(Game g)
 	{
 		readPlayersFile();
 		
@@ -161,8 +161,8 @@ public class player extends user implements Serializable{
 		
 			writeToListPlayersFie(ArraylistPlayer);		
 	}
-	public void writeToListPlayersFie(List<player> ArraylistPlayer) {
-		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME1)))
+	public void writeToListPlayersFie(List<Player> ArraylistPlayer) {
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(playersFileName)))
 		{
 			objectOutputStream.writeObject(ArraylistPlayer);
 			objectOutputStream.flush();
@@ -174,15 +174,15 @@ public class player extends user implements Serializable{
 		}
 	}
 	public void readPlayersFile() {
-		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME1))) 
+		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(playersFileName))) 
 		  {
-			  ArraylistPlayer = (List<player>) input.readObject();
+			  ArraylistPlayer = (List<Player>) input.readObject();
 			  input.close();
 
 		  } 
 		  catch (Exception e) 
 		  {
-			  ArraylistPlayer= new ArrayList<player>();
+			  ArraylistPlayer= new ArrayList<Player>();
 		  }	
 	}
 

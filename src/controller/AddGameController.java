@@ -3,16 +3,16 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.game;
-import model.player;
+import model.Game;
+import model.Player;
 import view.PlayerScreen;
-import view.addGame;
+import view.AddGameScreen;
 
-public class GameController {
-	private addGame theView;
-	private player theModel;
+public class AddGameController {
+	private AddGameScreen theView;
+	private Player theModel;
 	
-	public GameController(addGame theView, player theModel) {
+	public AddGameController(AddGameScreen theView, Player theModel) {
 	        this.theView = theView;
 	        this.theModel = theModel;
 	        this.theView.addAddGameListner(new addAddGameListner());
@@ -28,13 +28,13 @@ public class GameController {
 			   int totalPlayingTime = theView.gettotalPlayingTimeValue();
 			   int redCard = theView.getRedCardCount();
 			   int yellowCard = theView.getYellowCardCount();
-			   game gameToAdd = new game("10.10.2020", yellowCard, redCard, totalPlayingTime, "Maccabi" ,numOfAssists,
+			   Game gameToAdd = new Game("10.10.2020", yellowCard, redCard, totalPlayingTime, "Maccabi" ,numOfAssists,
 						goalsCount);
 			   theModel.addGame(gameToAdd);
 			   theView.setVisible(false);
-			   PlayerScreen playerScreen = new PlayerScreen((player) theModel);
+			   PlayerScreen playerScreen = new PlayerScreen((Player) theModel);
 			   playerScreen.setVisible(true);
-			   PlayerController playersControl = new PlayerController(playerScreen, (player) theModel);
+			   PlayerController playersControl = new PlayerController(playerScreen, (Player) theModel);
 		   }
 	}
 	class backButtonListner implements ActionListener
@@ -43,9 +43,9 @@ public class GameController {
 		   {
 			   System.out.println("GameController: Back button action listner");
 			   theView.setVisible(false);
-			   PlayerScreen playerScreen = new PlayerScreen((player) theModel);
+			   PlayerScreen playerScreen = new PlayerScreen((Player) theModel);
 			   playerScreen.setVisible(true);
-			   PlayerController playersControl = new PlayerController(playerScreen, (player) theModel);
+			   PlayerController playersControl = new PlayerController(playerScreen, (Player) theModel);
 		   }
 	}
 }

@@ -9,26 +9,26 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class scout extends user implements Serializable{
+public class Scout extends User implements Serializable{
 	
-	private final String FILENAME = "players.txt";
-	private final String FILENAME1 = "InterestList";
+	private final String playersFileName = "players.txt";
+	private final String interestListFileName = "InterestList";
 	
 	private String scoutName;
 	private int scoutId;
-	private team MyTeam;
-	private ArrayList<player> players;
-	private ArrayList<player> InterestList;
+	private Team MyTeam;
+	private ArrayList<Player> players;
+	private ArrayList<Player> InterestList;
 	/////////////////////////////////////
 	
-	public scout(String scoutName, String team, int scoutId, String userName, String password) {
+	public Scout(String scoutName, String team, int scoutId, String userName, String password) {
 		super(userName, password);
 		this.scoutName = scoutName;
 		this.scoutId=scoutId;
-		MyTeam =new team(team);
-		InterestList = new ArrayList<player>();
+		MyTeam =new Team(team);
+		InterestList = new ArrayList<Player>();
 	}
-	public scout() {
+	public Scout() {
 		
 	}
 	////////////////////////////////////
@@ -45,24 +45,24 @@ public class scout extends user implements Serializable{
 	public void setScoutId(int scoutId) {
 		this.scoutId = scoutId;
 	}
-	public team getMyTeam() {
+	public Team getMyTeam() {
 		return MyTeam;
 	}
-	public void setMyTeam(team myTeam) {
+	public void setMyTeam(Team myTeam) {
 		MyTeam = myTeam;
 	}
-	public List<player> getInterestList() {
+	public List<Player> getInterestList() {
 		readInterestingPlayerFile();
 		return InterestList;
 	}
-	public void setInterestList(ArrayList<player> InterestList) {
+	public void setInterestList(ArrayList<Player> InterestList) {
 		this.InterestList = InterestList;
 	}
-	public ArrayList<player> getPlayers() {
+	public ArrayList<Player> getPlayers() {
 		readPlayersFile();
 		return players;
 	}
-	public void setPlayers(ArrayList<player> players) {
+	public void setPlayers(ArrayList<Player> players) {
 		this.players = players;
 	}
 	///////////////////////////////////
@@ -107,33 +107,33 @@ public class scout extends user implements Serializable{
 	
 	public void readPlayersFile() {
 		// FILENAME = player.txt
-		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) 
+		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(playersFileName))) 
 		  {
-			players = (ArrayList<player>) input.readObject();
+			players = (ArrayList<Player>) input.readObject();
 		  } 
 		  catch (Exception e) 
 		  {
-			  players = new ArrayList<player>();
+			  players = new ArrayList<Player>();
 		  }	
 	}
 	public void readInterestingPlayerFile() {
 		// FILENAME1 = InterestListscoutId.txt
-		String fileName = FILENAME1 +  this.scoutId + ".txt";
+		String fileName = interestListFileName +  this.scoutId + ".txt";
 		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName))) 
 		  {
-			InterestList = new ArrayList<player>();
-			InterestList = (ArrayList<player>) input.readObject();
+			InterestList = new ArrayList<Player>();
+			InterestList = (ArrayList<Player>) input.readObject();
 		  } 
 		  catch (Exception e) 
 		  {
-			  InterestList = new ArrayList<player>();
+			  InterestList = new ArrayList<Player>();
 		  }	
 	}
 
-	public void writeToInterestListPlayersFile(List<player> InterestList)
+	public void writeToInterestListPlayersFile(List<Player> InterestList)
 	{
 		// FILENAME1 = InterestListscoutId.txt
-		String fileName = FILENAME1 +  this.scoutId + ".txt";
+		String fileName = interestListFileName +  this.scoutId + ".txt";
 		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))){
 			objectOutputStream.writeObject(InterestList);
 			objectOutputStream.flush();

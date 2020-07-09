@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import model.player;
+import model.Player;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -17,7 +17,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JCheckBox;
 
-public class addGame extends JFrame {
+public class AddGameScreen extends JFrame {
 
 	private JPanel contentPane;
 	private JButton addButton; 
@@ -28,7 +28,7 @@ public class addGame extends JFrame {
 	private JCheckBox redCardValue;
 	private JCheckBox yellowCardValue;
 
-	public addGame(player myPlayer) {
+	public AddGameScreen(Player myPlayer) {
 		System.out.println("Created add game screen");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -116,7 +116,7 @@ public class addGame extends JFrame {
 		panel.add(goalsTitle);
 		
 		addButton = new JButton("");
-		addButton.setIcon(new ImageIcon(addGame.class.getResource("/view/res/addButton.png")));
+		addButton.setIcon(new ImageIcon(AddGameScreen.class.getResource("/view/res/addButton.png")));
 		addButton.setOpaque(false);
 		addButton.setContentAreaFilled(false);
 		addButton.setBorderPainted(false);
@@ -129,7 +129,7 @@ public class addGame extends JFrame {
 		backButton.setBorder(null);
 		backButton.setBorderPainted(false);
 		backButton.setOpaque(false);
-		backButton.setIcon(new ImageIcon(addGame.class.getResource("/view/res/backButton.png")));
+		backButton.setIcon(new ImageIcon(AddGameScreen.class.getResource("/view/res/backButton.png")));
 		backButton.setBounds(25, 475, 118, 35);
 		panel.add(backButton);
 		
@@ -139,14 +139,14 @@ public class addGame extends JFrame {
 		addGameTitle.setBounds(53, 54, 194, 35);
 		panel.add(addGameTitle);
 		JLabel rightSideBG = new JLabel("");
-		rightSideBG.setIcon(new ImageIcon(addGame.class.getResource("/view/res/basicRightBG.png")));
+		rightSideBG.setIcon(new ImageIcon(AddGameScreen.class.getResource("/view/res/basicRightBG.png")));
 		rightSideBG.setBounds(340, 0, 420, 532);
 		panel.add(rightSideBG);
 		
 		JLabel leftSideBG = new JLabel("");
 		leftSideBG.setBounds(0, 0, 412, 534);
 		panel.add(leftSideBG);
-		leftSideBG.setIcon(new ImageIcon(addGame.class.getResource("/view/res/basicLeftBG.png")));
+		leftSideBG.setIcon(new ImageIcon(AddGameScreen.class.getResource("/view/res/basicLeftBG.png")));
 		leftSideBG.setHorizontalAlignment(SwingConstants.CENTER);
 	}
 	public int getGoalsCount() {

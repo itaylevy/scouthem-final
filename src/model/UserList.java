@@ -10,32 +10,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class userList implements Serializable{
+public class UserList implements Serializable{
 	
-	private final String FILENAME = "users.txt";
-	private List<user> userList = null; 
-	private final String FILENAME1 = "players.txt";
-	private List<player> playersList = null;
+	private final String usersFileName = "users.txt";
+	private List<User> userList = null; 
+	private final String playersFileName = "players.txt";
+	private List<Player> playersList = null;
 	
-	public userList(){
+	public UserList(){
 		  readUsersFile();
 		  readPlayersFile();
 	}
 
-	public List<user> getUserList(){
+	public List<User> getUserList(){
 		readUsersFile();
 		return  userList;
 	}
-	public List<player> getPlayerList(){
+	public List<Player> getPlayerList(){
 		readPlayersFile();
 		return  playersList;
 	}
-	public void addUser(user u)
+	public void addUser(User u)
 	{
 		userList.add(u);
 		writeToUserListFile(userList);
 	}
-	public user login(String userName, String password)
+	public User login(String userName, String password)
 	{
 		for(int i=0;i<userList.size();i++)
 		{
@@ -56,21 +56,21 @@ public class userList implements Serializable{
 	}
 	public void signUpPlayer(String playerName ,String team, String role, int age, double height, double weight, String mail, int idPlayer,String userName, String password)
 	{
-		user P = new player(playerName, team, role, age, height, weight, mail, idPlayer, userName, password);
+		User P = new Player(playerName, team, role, age, height, weight, mail, idPlayer, userName, password);
 		userList.add(P);
-		playersList.add((player) P);
+		playersList.add((Player) P);
 		writeToUserListFile(userList);
 		writeToListPlayersFie(playersList);
 	}
 	public void signUpScout(String scoutName, String team, int scoutId, String userName, String password)
 	{	
-		user U = new scout(scoutName, team, scoutId, userName,password);
+		User U = new Scout(scoutName, team, scoutId, userName,password);
 		userList.add(U);
 		writeToUserListFile(userList);
 
 	}
-	public void writeToUserListFile(List<user> userList) {
-		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME)))
+	public void writeToUserListFile(List<User> userList) {
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(usersFileName)))
 		{
 			objectOutputStream.writeObject(userList);
 			objectOutputStream.flush();
@@ -83,8 +83,8 @@ public class userList implements Serializable{
 		}
 	}
 		
-	public void writeToListPlayersFie(List<player> ArraylistPlayer) {
-		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILENAME1)))
+	public void writeToListPlayersFie(List<Player> ArraylistPlayer) {
+		try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(playersFileName)))
 		{
 			objectOutputStream.writeObject(ArraylistPlayer);
 			objectOutputStream.flush();
@@ -97,9 +97,9 @@ public class userList implements Serializable{
 		}
 	}
 	public void readUsersFile(){
-		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) 
+		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(usersFileName))) 
 		  {
-			  userList = (List<user>) input.readObject();
+			  userList = (List<User>) input.readObject();
 			  input.close();
 			  System.out.println("Read users file succeed");
 			  System.out.println("Userlist value is:" + userList);
@@ -109,16 +109,16 @@ public class userList implements Serializable{
 		  {
 			System.out.println("Userlist value is:" + userList);
 			if (userList == null) {
-				 userList = new ArrayList<user>();
+				 userList = new ArrayList<User>();
 				 System.out.println("Created users list");
 			}
 			  
 		  }
 	}
 	public void readPlayersFile() {
-		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME1))) 
+		try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(playersFileName))) 
 		  {
-			  playersList = (List<player>) input.readObject();
+			  playersList = (List<Player>) input.readObject();
 			  input.close();
 			  System.out.println("Read players file succeed");
 			  System.out.println("playerslist value is:" + playersList);
@@ -128,7 +128,7 @@ public class userList implements Serializable{
 			System.out.println("playerslist value is:" + playersList);
 			if (playersList == null) 
 			{
-			  playersList= new ArrayList<player>();
+			  playersList= new ArrayList<Player>();
 			  System.out.println("Created players list");
 			}
 		  }	

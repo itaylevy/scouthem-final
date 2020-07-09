@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 
-import model.scout;
+import model.Scout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -53,7 +53,7 @@ public class ScoutScreen extends JFrame {
 	private JLabel redCards;
 	private JLabel ageColumn;
 
-	public ScoutScreen(scout myScouter) {
+	public ScoutScreen(Scout myScouter) {
 		System.out.println("Created scout screen");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -429,7 +429,17 @@ public class ScoutScreen extends JFrame {
 		return findPlayersTable.getSelectedColumn();
 	}
 	public Object getValueFromFindPlayersTable(int row, int column) {
-		return findPlayersTable.getValueAt(row, column);
+		try 
+		{
+			return findPlayersTable.getValueAt(row, column);
+		}
+		catch(Exception e)
+		{
+			return null;
+		}
+		finally {
+			System.out.println("Didn't selected an item from list");
+		}
 	}
 	public int getSelectedRowInInterestTable() {
 		return interestTable.getSelectedRow();
@@ -447,8 +457,24 @@ public class ScoutScreen extends JFrame {
 		messageArea.setVisible(true);
 		messageArea.setText(messageToDisplay);
 	}
+	public void setVisibleOfAddButton(boolean flag) {
+		addPlayerButton.setVisible(flag);
+	}
+	public void setVisibleOfRemoveButton(boolean flag) {
+		removePlayerButton.setVisible(flag);
+	}
 	public Object getValueFromInterestTable(int row, int column) {
-		return interestTable.getValueAt(row, column);
+		try 
+		{
+			return interestTable.getValueAt(row, column);
+		}
+		catch(Exception e)
+		{
+			return null;
+		}
+		finally {
+			System.out.println("Didn't selected an item from list");
+		}
 	}
 	public void addSignOutListener(ActionListener signOutButtonListner) {
 		signOutButton.addActionListener(signOutButtonListner);

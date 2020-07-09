@@ -24,7 +24,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.SpinnerNumberModel;
 import java.awt.event.ActionListener;
 
-public class SignUp extends JFrame{
+public class SignUpScreen extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField userName;
@@ -46,7 +46,7 @@ public class SignUp extends JFrame{
 	private JSpinner roleSpinner;
 	private JTextField mailValue;
 
-	public SignUp() {
+	public SignUpScreen() {
 		System.out.println("Created sign up screen");
 		setAlwaysOnTop(true);
 		setResizable(false);
@@ -69,7 +69,7 @@ public class SignUp extends JFrame{
 		panel.add(errorMessage);
 		
 		signUpButtonMenu = new JButton("");
-		signUpButtonMenu.setIcon(new ImageIcon(SignUp.class.getResource("/view/res/signUpSelected.png")));
+		signUpButtonMenu.setIcon(new ImageIcon(SignUpScreen.class.getResource("/view/res/signUpSelected.png")));
 		signUpButtonMenu.setContentAreaFilled(false);
 		signUpButtonMenu.setBorderPainted(false);
 		signUpButtonMenu.setBorder(null);
@@ -81,7 +81,7 @@ public class SignUp extends JFrame{
 		signInButton.setContentAreaFilled(false);
 		signInButton.setBorderPainted(false);
 		signInButton.setBorder(null);
-		signInButton.setIcon(new ImageIcon(SignUp.class.getResource("/view/res/signInUnselected.png")));
+		signInButton.setIcon(new ImageIcon(SignUpScreen.class.getResource("/view/res/signInUnselected.png")));
 		signInButton.setBounds(542, 33, 112, 47);
 		panel.add(signInButton);
 		
@@ -98,7 +98,7 @@ public class SignUp extends JFrame{
 		signUpButtonAction.setContentAreaFilled(false);
 		signUpButtonAction.setBorderPainted(false);
 		signUpButtonAction.setBorder(null);
-		signUpButtonAction.setIcon(new ImageIcon(SignUp.class.getResource("/view/res/SIGNUP.png")));
+		signUpButtonAction.setIcon(new ImageIcon(SignUpScreen.class.getResource("/view/res/SIGNUP.png")));
 		signUpButtonAction.setBounds(384, 411, 105, 34);
 		panel.add(signUpButtonAction);
 		userName.setBorder(null);
@@ -187,14 +187,14 @@ public class SignUp extends JFrame{
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBackground(UIManager.getColor("window"));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/loginRightSidee.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(SignInScreen.class.getResource("/view/res/loginRightSidee.png")));
 		lblNewLabel_1.setBounds(340, 0, 420, 543);
 		panel.add(lblNewLabel_1);
 		
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon(LoginView.class.getResource("/view/res/leftSideLogin.png")));
+		lblNewLabel.setIcon(new ImageIcon(SignInScreen.class.getResource("/view/res/leftSideLogin.png")));
 		lblNewLabel.setBounds(0, 0, 420, 543);
 		panel.add(lblNewLabel);
 		

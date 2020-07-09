@@ -6,20 +6,20 @@ import javax.swing.text.View;
 
 import java.awt.event.ActionEvent;
 
-import model.player;
-import model.scout;
-import model.user;
-import model.userList;
-import view.LoginView;
+import model.Player;
+import model.Scout;
+import model.User;
+import model.UserList;
+import view.SignInScreen;
 import view.PlayerScreen;
 import view.ScoutScreen;
-import view.SignUp;
+import view.SignUpScreen;
 
-public class LoginController {
-	private LoginView theView;
-	private userList theModel;
+public class SignInController {
+	private SignInScreen theView;
+	private UserList theModel;
 	
-    public LoginController(LoginView theView, userList theModel) {
+    public SignInController(SignInScreen theView, UserList theModel) {
         this.theView = theView;
         this.theModel = theModel;
         this.theView.addLoginListner(new LoginListener());
@@ -31,21 +31,21 @@ public class LoginController {
 	    public void actionPerformed(ActionEvent e) {
             String userName = theView.getUserName();
             String password = theView.getPassword();
-            user myUser = null;
+            User myUser = null;
             myUser = theModel.login(userName, password);
-            if (myUser instanceof player) 
+            if (myUser instanceof Player) 
             {
-            	PlayerScreen playerScreen = new PlayerScreen((player) myUser);
-            	PlayerController playersControl = new PlayerController(playerScreen, (player) myUser);
+            	PlayerScreen playerScreen = new PlayerScreen((Player) myUser);
+            	PlayerController playersControl = new PlayerController(playerScreen, (Player) myUser);
             	theView.setVisible(false);
             	playerScreen.setVisible(true);
     		}
-    		else if (myUser instanceof scout) 
+    		else if (myUser instanceof Scout) 
     		{
-    			ScoutScreen newView= new ScoutScreen((scout) myUser);
+    			ScoutScreen newView= new ScoutScreen((Scout) myUser);
     			theView.setVisible(false);
     			newView.setVisible(true);
-    			ScoutController scoutControl = new ScoutController(newView, (scout) myUser, theModel);
+    			ScoutController scoutControl = new ScoutController(newView, (Scout) myUser, theModel);
     		}
     		else 
     		{
@@ -56,7 +56,7 @@ public class LoginController {
 	class signUpListener implements ActionListener{
 	    public void actionPerformed(ActionEvent e) {
 	    	System.out.println("LoginController: Sign up action listner");
-            SignUp newView = new SignUp();
+            SignUpScreen newView = new SignUpScreen();
 			SignUpController signUpControl = new SignUpController(newView,theModel);
 			theView.setVisible(false);
 		    newView.setVisible(true);

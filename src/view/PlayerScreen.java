@@ -2,7 +2,7 @@ package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import model.player;
+import model.Player;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -20,7 +20,7 @@ public class PlayerScreen extends JFrame {
 	private JButton signOutButton;
 	private JButton addGameButton;
 
-	public PlayerScreen(player myPlayer) {
+	public PlayerScreen(Player myPlayer) {
 		System.out.println("Created player screen");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

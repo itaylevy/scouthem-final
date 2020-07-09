@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class game implements Serializable{
+public class Game implements Serializable{
 	
 	private String date;
 	private int yellowCard;
@@ -13,10 +13,10 @@ public class game implements Serializable{
 	private int numOfGoals;
 	/////////////////////////////////
 	
-	public game() {
+	public Game() {
 	
 	}
-	public game(String date, int yellowCard, int redCard, int playTimeGame, String rivalTeam, int numOfAssists,
+	public Game(String date, int yellowCard, int redCard, int playTimeGame, String rivalTeam, int numOfAssists,
 			int numOfGoals) {
 		this.date = date;
 		this.yellowCard = yellowCard;

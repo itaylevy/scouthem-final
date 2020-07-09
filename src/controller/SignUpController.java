@@ -5,15 +5,15 @@ import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import model.userList;
-import view.LoginView;
-import view.SignUp;
+import model.UserList;
+import view.SignInScreen;
+import view.SignUpScreen;
 
 public class SignUpController {
-	private SignUp theView;
-	private userList theModel;
+	private SignUpScreen theView;
+	private UserList theModel;
 	
-	public SignUpController(SignUp theView, userList theModel) {
+	public SignUpController(SignUpScreen theView, UserList theModel) {
 	        this.theView = theView;
 	        this.theModel = theModel;
 	        this.theView.addSignUpActionListner(new signUpActionListner());
@@ -112,9 +112,9 @@ public class SignUpController {
 			   }
 		       if (flag == true) {
 		    	   theView.setVisible(false);
-				   LoginView newView = new LoginView();
-				   userList newModel = new userList();
-				   LoginController theController = new LoginController(newView,newModel);
+				   SignInScreen newView = new SignInScreen();
+				   UserList newModel = new UserList();
+				   SignInController theController = new SignInController(newView,newModel);
 			       newView.setVisible(true);
 		       }
 		       else
@@ -148,8 +148,8 @@ public class SignUpController {
 		   public void actionPerformed(ActionEvent e) 
 		   {
 			   System.out.println("SignUpController: Sign in action listner");
-			   LoginView newView = new LoginView();
-			   LoginController theController = new LoginController(newView,theModel);
+			   SignInScreen newView = new SignInScreen();
+			   SignInController theController = new SignInController(newView,theModel);
 			   theView.setVisible(false);
 		       newView.setVisible(true);
 		   }

@@ -9,24 +9,24 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class player_List implements Serializable{
+public class PlayerList implements Serializable{
 	
-	private final String FILENAME = "players.txt";
-	private ArrayList<player> ArraylistPlayer= new ArrayList<player>();
+	private final String playersFileName = "players.txt";
+	private ArrayList<Player> ArraylistPlayer= new ArrayList<Player>();
 	/////////////////////////////////////////	
 			 
-	public player_List() {
+	public PlayerList() {
 		readFile();
 		}
 	/////////////////////////////////////////
 	
-	public ArrayList<player> getArraylistPlayer() {
+	public ArrayList<Player> getArraylistPlayer() {
 		return ArraylistPlayer;
 	}
 	////////////////////////////////////////
 	
 	//design pattern of sorting
-	public player[] SortByInt(String x){
+	public Player[] SortByInt(String x){
 		// sorting -> goal/assists/playing time.
 		switch(x) {
 		 case "goal":
@@ -40,16 +40,16 @@ public class player_List implements Serializable{
 		}
 		return null;
 	}
-	public player[] sortByX(String x) {
+	public Player[] sortByX(String x) {
 		// sort by: total playing time||assists||goal
-		 player[] sortByPlayingTime = new player[ArraylistPlayer.size()];
+		 Player[] sortByPlayingTime = new Player[ArraylistPlayer.size()];
 		 
 		 copylist(ArraylistPlayer, sortByPlayingTime);
 		 mergeSort(sortByPlayingTime, sortByPlayingTime.length, x);
 		 return sortByPlayingTime;
 		}
 
-	public player[] sortByString(String x, String y) {
+	public Player[] sortByString(String x, String y) {
 		// sorting -> role/player name/team.
 		switch(x) {
 		 case "role":
@@ -63,27 +63,27 @@ public class player_List implements Serializable{
 		}
 		return null;
 	}
-	private player[] sortByRole(String x, String y)
+	private Player[] sortByRole(String x, String y)
 	{
-		 player[] sortByRole = new player[ArraylistPlayer.size()];
+		 Player[] sortByRole = new Player[ArraylistPlayer.size()];
 		 int j=0;
 		 for (int i = 0; i < ArraylistPlayer.size(); i++) 
 				if(ArraylistPlayer.get(i).getRole().contentEquals(y))
 					sortByRole[j++] = ArraylistPlayer.get(i);
 		return sortByRole;		
 	}
-	private player[] sortByplayerName(String x, String y)
+	private Player[] sortByplayerName(String x, String y)
 	{
-		 player[] sortByplayerName = new player[ArraylistPlayer.size()];
+		 Player[] sortByplayerName = new Player[ArraylistPlayer.size()];
 		 int j=0;
 		 for (int i = 0; i < ArraylistPlayer.size(); i++) 
 				if(ArraylistPlayer.get(i).getPlayerName().contentEquals(y))
 					sortByplayerName[j++] = ArraylistPlayer.get(i);
 		return sortByplayerName;
 	}	
-	private player[] sortByTeam(String x, String y)
+	private Player[] sortByTeam(String x, String y)
 	{
-		 player[] sortByTeam = new player[ArraylistPlayer.size()];
+		 Player[] sortByTeam = new Player[ArraylistPlayer.size()];
 		 int j=0;
 		 for (int i = 0; i < ArraylistPlayer.size(); i++) 
 				if(ArraylistPlayer.get(i).getMyTeam().getTeamName().contentEquals(y))
@@ -93,28 +93,28 @@ public class player_List implements Serializable{
 		return sortByTeam;		
 	}
 
-	public player[] sortByAge(int y)
+	public Player[] sortByAge(int y)
 	{
-		 player[] sortByAge = new player[ArraylistPlayer.size()];
+		 Player[] sortByAge = new Player[ArraylistPlayer.size()];
 		 for (int i = 0; i < ArraylistPlayer.size(); i++) 
 				if(ArraylistPlayer.get(i).getAge() == y)
 					sortByAge[i] = ArraylistPlayer.get(i);
 		return sortByAge;
 	}
 	
-	public void copylist(ArrayList<player> arraylistPlayer, player[] sortByGoal) {
+	public void copylist(ArrayList<Player> arraylistPlayer, Player[] sortByGoal) {
 		for(int i=0; i<arraylistPlayer.size();i++)
 		{
 			sortByGoal[i]=arraylistPlayer.get(i);
 		}
 	}
-	public void mergeSort(player[] a, int n, String x) {
+	public void mergeSort(Player[] a, int n, String x) {
 	    if (n < 2) {
 	        return;
 	    }
 	    int mid = n / 2;
-	    player[] l = new player[mid];
-	    player[] r = new player[n - mid];
+	    Player[] l = new Player[mid];
+	    Player[] r = new Player[n - mid];
 	 
 	    for (int i = 0; i < mid; i++) {
 	        l[i] = a[i];
@@ -128,7 +128,7 @@ public class player_List implements Serializable{
 	    
 	    merge(a, l, r, mid, n - mid, x);	    
 	}
-	public void merge(player[] a, player[] l, player[] r, int left, int right, String x) {
+	public void merge(Player[] a, Player[] l, Player[] r, int left, int right, String x) {
 			  
 			    int i = 0, j = 0, k = 0;
 			    while (i < left && j < right) {
@@ -172,10 +172,10 @@ public class player_List implements Serializable{
 	}
 	
 	void readFile() {
-		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(FILENAME))) {
-			  ArraylistPlayer = (ArrayList<player>) input.readObject();
+		  try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(playersFileName))) {
+			  ArraylistPlayer = (ArrayList<Player>) input.readObject();
 		  } catch (Exception e) {
-			  ArraylistPlayer = new ArrayList<player>();
+			  ArraylistPlayer = new ArrayList<Player>();
 			  }	
 	}
 }

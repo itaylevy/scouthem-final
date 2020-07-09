@@ -2,17 +2,17 @@ package model;
 
 import java.io.Serializable;
 
-public abstract class user implements Serializable{
+public abstract class User implements Serializable{
 
 	private String userName;
 	private String password;
 	//////////////////////////////
 	
-	public user(String userName, String password) {
+	public User(String userName, String password) {
 		this.setUserName(userName);
 		this.setPassword(password);
 	}
-	public user() {
+	public User() {
 
 	}
 	///////////////////////////////

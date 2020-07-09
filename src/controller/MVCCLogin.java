@@ -2,17 +2,17 @@ package controller;
 
 import java.io.IOException;
 
-import model.scout;
-import model.user;
-import model.userList;
-import view.LoginView;
+import model.Scout;
+import model.User;
+import model.UserList;
+import view.SignInScreen;
 public class MVCCLogin {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub	
-		LoginView theView = new LoginView();
-		userList theModel = new userList();
-    	LoginController theController = new LoginController(theView,theModel);
+		SignInScreen theView = new SignInScreen();
+		UserList theModel = new UserList();
+    	SignInController theController = new SignInController(theView,theModel);
         theView.setVisible(true);
 	}
 

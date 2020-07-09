@@ -2,15 +2,15 @@ package model;
 
 import java.io.Serializable;
 
-public class team implements Serializable{
+public class Team implements Serializable{
 	
 	private String teamName;
-	private game MyGame;
+	private Game MyGame;
 	
-	public team() {
+	public Team() {
 
 	}
-	public team(String teamName) {
+	public Team(String teamName) {
 		this.teamName = teamName;
 	}
 	//////////////////////////////////////
@@ -22,10 +22,10 @@ public class team implements Serializable{
 
 		this.teamName = teamName;
 	}
-	public game getMyGame() {
+	public Game getMyGame() {
 		return MyGame;
 	}
-	public void setMyGame(game myGame) {
+	public void setMyGame(Game myGame) {
 		MyGame = myGame;
 	}
 

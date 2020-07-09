@@ -3,18 +3,18 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.player;
-import model.userList;
-import view.LoginView;
+import model.Player;
+import model.UserList;
+import view.SignInScreen;
 import view.PlayerScreen;
-import view.addGame;
+import view.AddGameScreen;
 
 public class PlayerController {
 
 	private PlayerScreen theView;
-	private player theModel;
+	private Player theModel;
 	
-	public PlayerController(PlayerScreen theView, player theModel) {
+	public PlayerController(PlayerScreen theView, Player theModel) {
 	        this.theView = theView;
 	        this.theModel = theModel;
 	        this.theView.addGameListener(new addGameListener());
@@ -25,8 +25,8 @@ public class PlayerController {
 	{
 		   public void actionPerformed(ActionEvent e) 
 		   {
-	            addGame newView = new addGame(theModel);
-	            GameController gameControl = new GameController(newView,theModel);
+	            AddGameScreen newView = new AddGameScreen(theModel);
+	            AddGameController gameControl = new AddGameController(newView,theModel);
 	            theView.setVisible(false);
 			    newView.setVisible(true);		   
 		   }
@@ -36,9 +36,9 @@ public class PlayerController {
 		   public void actionPerformed(ActionEvent e) 
 		   {
 			    System.out.println("PlayerController: Sign out action listner");
-			   	LoginView newView = new LoginView();
-				userList newModel = new userList();
-		    	LoginController theController = new LoginController(newView,newModel);
+			   	SignInScreen newView = new SignInScreen();
+				UserList newModel = new UserList();
+		    	SignInController theController = new SignInController(newView,newModel);
 		    	theView.setVisible(false);
 			    newView.setVisible(true);
 		   }

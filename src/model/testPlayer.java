@@ -13,21 +13,21 @@ import org.junit.Test;
 public class testPlayer {
 	
 	private test t;
-	private player p;
-	private ArrayList<player> playerListplayer;
+	private Player p;
+	private ArrayList<Player> playerListplayer;
 	
 	@Before
 	public void setUp() {
 		t = new test();	
-		p = new player();
-		playerListplayer = new ArrayList<player>();
+		p = new Player();
+		playerListplayer = new ArrayList<Player>();
 	}
 	
 	@Test
 	public void addGameTest()
 	{
 		t.testSignUpPlayer("mor", "hapoel tel aviv", "center back", 15, 1.83, 76.5, "mor@gmail.com", 123456789, "mor", "1");
-		game g = new game("3.7.20", 1, 0, 90, "Maccabi tel aviv", 1, 2);
+		Game g = new Game("3.7.20", 1, 0, 90, "Maccabi tel aviv", 1, 2);
 		playerListplayer = t.getTestplayersList();
 		
 		for(int i=0; i<playerListplayer.size(); i++)
@@ -70,7 +70,7 @@ public class testPlayer {
 	public void tearDown() {
 		 File myObj = new File("testUers.txt");
 		 myObj.delete();
-		 File myObj1 = new File("playersUers.txt");
+		 File myObj1 = new File("testPlayers.txt");
 		 myObj1.delete();
 	}
 

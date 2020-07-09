@@ -40,7 +40,7 @@ public class player_List implements Serializable{
 		}
 		return null;
 	}
-	private player[] sortByX(String x) {
+	public player[] sortByX(String x) {
 		// sort by: total playing time||assists||goal
 		 player[] sortByPlayingTime = new player[ArraylistPlayer.size()];
 		 
@@ -92,8 +92,7 @@ public class player_List implements Serializable{
 				}
 		return sortByTeam;		
 	}
-	
-	
+
 	public player[] sortByAge(int y)
 	{
 		 player[] sortByAge = new player[ArraylistPlayer.size()];
@@ -102,7 +101,6 @@ public class player_List implements Serializable{
 					sortByAge[i] = ArraylistPlayer.get(i);
 		return sortByAge;
 	}
-	
 	
 	public void copylist(ArrayList<player> arraylistPlayer, player[] sortByGoal) {
 		for(int i=0; i<arraylistPlayer.size();i++)

@@ -37,18 +37,19 @@ public class UserList implements Serializable{
 	}
 	public User login(String userName, String password)
 	{
-		for(int i=0;i<userList.size();i++)
-		{
-			 if((userList.get(i).getUserName().equals(userName)) && (userList.get(i).getPassword().equals(password))) 
-			 {
-					return userList.get(i);
-			 }
-		}
 		for(int i=0;i<playersList.size();i++)
 		{
 			 if((playersList.get(i).getUserName().equals(userName)) && (playersList.get(i).getPassword().equals(password))) 
 			 {
 					return playersList.get(i);
+			 }
+		}
+		
+		for(int i=0;i<userList.size();i++)
+		{
+			 if((userList.get(i).getUserName().equals(userName)) && (userList.get(i).getPassword().equals(password))) 
+			 {
+					return userList.get(i);
 			 }
 		}
 		

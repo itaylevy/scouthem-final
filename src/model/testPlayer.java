@@ -51,12 +51,12 @@ public class testPlayer {
 			assertEquals("when adding 1 assist , number of assist should be 1!",1 ,playerListplayer.get(0).getNumOfAssists());
 			assertEquals("when adding 2 goals , number of goals should be 2!",2 ,playerListplayer.get(0).getGoals());
 	}
-		
+	
 	@After
 	public void tearDown() {
 		 File myObj = new File("testUers.txt");
 		 myObj.delete();
-		 File myObj1 = new File("testPlayers.txt");
+		 File myObj1 = new File("t.txt");
 		 myObj1.delete();
 	}
 
